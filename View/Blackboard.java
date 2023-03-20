@@ -1,12 +1,22 @@
 package View;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Blackboard extends JPanel {
+public class Blackboard extends JPanel implements Observer {
 	private static Blackboard instance;
 	
 	private Blackboard() {
 		setBackground(Color.BLUE);
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		for(Shape s : Repository.getRepository().getShapes()) {
+			s.draw(g);
+		}
 	}
 	
 	public static Blackboard getInstance() {
@@ -14,5 +24,10 @@ public class Blackboard extends JPanel {
 			instance = new Blackboard();
 		}
 		return instance;
+	}
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		repaint();
 	}
 }

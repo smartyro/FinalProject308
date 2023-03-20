@@ -1,6 +1,10 @@
-import java.util.ArrayList;
+package View;
 
-public class Repository {
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Observable;
+
+public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
 
@@ -21,5 +25,6 @@ public class Repository {
 
     public void addShape(Shape shape){
         this.shapes.add(shape);
+        notifyObservers();
     }
 }
