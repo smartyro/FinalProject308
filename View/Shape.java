@@ -5,7 +5,7 @@ import java.awt.*;
  *Setup for the Shape class
  */
 public class Shape{
-    int x, y,
+    int x, y;
     /**
      *Definition of shape
      */
