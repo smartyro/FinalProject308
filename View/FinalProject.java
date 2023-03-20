@@ -31,7 +31,7 @@ public class FinalProject extends JFrame implements ActionListener{
         add(northPanel, BorderLayout.NORTH);
 
     }
-
+}
 	/**
      * Implemented Method from ActionListener class that allows the program to
      * acces the button that has been clicked to invoke an action.
