@@ -1,6 +1,8 @@
 package View;
+import javax.swing.*;
+import java.awt.*;
 
-public class Blackboard {
+public class Blackboard extends JPanel {
 	private Blackboard instance;
 	
 	private Blackboard() {
