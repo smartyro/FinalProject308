@@ -1,23 +1,16 @@
 package View;
 
-import javax.swing.*;
-import java.awt.*;
-/**
- * 
- * Final Project 308.
- * 
- * @author 
- */
-
-public class BlackBoard extends JPanel{
-    public static BlackBoard blackboard;
-
-    /**
-     * Constructor for BlackBoard.
-     */
-    public BlackBoard() {
-        setBackground(Color.PINK);
-
-    }
-
+public class Blackboard {
+	private Blackboard instance;
+	
+	private Blackboard() {
+	
+	}
+	
+	public Blackboard getInstance() {
+		if(instance == null) {
+			instance = new Blackboard();
+		}
+		return instance;
+	}
 }
