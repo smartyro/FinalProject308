@@ -25,6 +25,7 @@ public class FinalProject extends JFrame {
         file.addActionListener(ControlHandler.getInstance());
         help.addActionListener(ControlHandler.getInstance());
 
+        Blackboard board = Blackboard.getInstance();
 
         northPanel.add(file);
         northPanel.add(help);
@@ -32,6 +33,7 @@ public class FinalProject extends JFrame {
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
         add(northPanel, BorderLayout.NORTH);
+        add(board, BorderLayout.CENTER);
 
     }
 }

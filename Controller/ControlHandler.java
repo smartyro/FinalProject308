@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControlHandler implements ActionListener {
-	private ControlHandler instance;
+	private static ControlHandler instance;
 	
 	private ControlHandler() {}
 	
