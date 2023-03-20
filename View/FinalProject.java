@@ -42,5 +42,5 @@ public class FinalProject extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
     }
-
+}
 
