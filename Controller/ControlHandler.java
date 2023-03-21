@@ -22,6 +22,12 @@ public class ControlHandler implements ActionListener, MouseListener {
 		}
 		return instance;
 	}
+
+	public void setShape(String shape) {
+		// DUMMY METHOD NEED TO MAKE ACTUAL IMPLEMENTATION!!
+		// -Liam 3/20/23
+		System.out.println(shape);
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
