@@ -1,5 +1,7 @@
 package View;
 
+import Model.Arrow;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.HashMap;
@@ -7,11 +9,13 @@ import java.util.HashMap;
 public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
+    private ArrayList<Arrow> arrows;
     private HashMap<String, ArrayList<Shape>> saved;
 
     private Repository(){
-        shapes = new ArrayList<Shape>();
-        saved = new HashMap<String, ArrayList<Shape>>();
+        shapes = new ArrayList<>();
+        arrows = new ArrayList<>();
+        saved = new HashMap<>();
     }
 
     public static Repository getRepository(){
@@ -23,6 +27,10 @@ public class Repository extends Observable {
 
     public ArrayList<Shape> getShapes(){
         return shapes;
+    }
+    
+    public ArrayList<Arrow> getArrows() {
+        return arrows;
     }
 
     public void addShape(Shape shape){
@@ -55,6 +63,12 @@ public class Repository extends Observable {
                 //TODO
                 break;
         }
+    }
+    
+    public void addArrow(Arrow arrow) {
+        arrows.add(arrow);
+        setChanged();
+        notifyObservers();
     }
 
     public void clearShapes(){

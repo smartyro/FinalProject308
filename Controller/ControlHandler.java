@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Arrow;
 import View.*;
 
 import java.awt.event.ActionEvent;
@@ -43,18 +44,19 @@ public class ControlHandler implements ActionListener, MouseListener {
 		Shape s = repo.anyContains(e.getX(), e.getY());
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
-			StatusBar.getInstance().setMessage("Draw " + shapeToDraw.toString());
+			StatusBar.getInstance().setMessage("Drawing " + shapeToDraw.toString());
 			repo.addShape(shapeToDraw, e.getX(), e.getY());
 			lineStart = null;
 		} else {
 			/*Otherwise, the point is within a shape so start or finish a line*/
 			if(lineStart != null) {
 				/*Finish the line*/
-				System.out.println("TODO: Finish line");
-				
+				StatusBar.getInstance().setMessage("Line finished. Drawing it...");
+				repo.addArrow(new Arrow(lineStart.x , lineStart.y, s.x, s.y));
 				lineStart = null;
 			} else {
 				/*Start the line*/
+				StatusBar.getInstance().setMessage("Line started");
 				lineStart = s;
 			}
 		}
