@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 
 public class ControlHandler implements ActionListener, MouseListener {
 	private static ControlHandler instance;
-	private Shape drawShape;
 	
 	private ControlHandler() {}
 	
