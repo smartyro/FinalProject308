@@ -1,5 +1,5 @@
 # FinalProject308
 
-This program creates a JFrame and a JMenuBar to select shapes and create connections between them.
+This program is a tool to easily create control flow diagrams. Implemented with Java Swing
 
 Authors: Jared Swislow, Liam Hyde, Anna Rosenberg, Sophie Martyrossian, Keila Mohan, Gavin Stoddard
