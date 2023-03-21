@@ -25,10 +25,11 @@ public class FinalProject extends JFrame {
         file.addActionListener(ControlHandler.getInstance());
         help.addActionListener(ControlHandler.getInstance());
 
-        Blackboard board = Blackboard.getInstance();
-
         northPanel.add(file);
         northPanel.add(help);
+        
+		Blackboard board = Blackboard.getInstance();
+		board.addMouseListener(ControlHandler.getInstance());
 
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
