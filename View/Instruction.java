@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Objects;
 
 
 /**
@@ -17,9 +16,10 @@ public class Instruction extends Shape{
      */
     @Override
     public void draw(Graphics g){
+        g.setColor(Color.WHITE);
+        g.fillRect(x, y, 100, 50);
         g.setColor(Color.black);
-        g.drawRect(x-10, y-5, x+10, y+5);
+        g.drawRect(x, y, 100, 50);
     }
 
 }
-
