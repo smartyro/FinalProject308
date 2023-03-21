@@ -27,4 +27,20 @@ public class Repository extends Observable {
         this.shapes.add(shape);
         notifyObservers();
     }
+    
+    /**
+     * Check if a given point is in any shape
+     * @param x x coordinate of point to check
+     * @param y y coordinate of point to check
+     * @return Shape that this point is within, or null if it is not in a shape
+     */
+    public Shape anyContains(int x, int y) {
+        for(Shape s: shapes) {
+            if(s.contains(x, y)) {
+                return s;
+            }
+        }
+        return null;
+    }
+    
 }
