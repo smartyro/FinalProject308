@@ -1,12 +1,13 @@
 package View;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.HashMap;
 
 public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
+    private HashMap<String, ArrayList<Shape>> saved;
 
     private Repository(){
         shapes = new ArrayList<Shape>();
@@ -27,20 +28,17 @@ public class Repository extends Observable {
         this.shapes.add(shape);
         notifyObservers();
     }
-    
-    /**
-     * Check if a given point is in any shape
-     * @param x x coordinate of point to check
-     * @param y y coordinate of point to check
-     * @return Shape that this point is within, or null if it is not in a shape
-     */
-    public Shape anyContains(int x, int y) {
-        for(Shape s: shapes) {
-            if(s.contains(x, y)) {
-                return s;
-            }
-        }
-        return null;
+
+    public void clearShapes(){
+        this.shapes = new ArrayList<Shape>();
     }
-    
+
+    public void saveShapes(String key){
+        this.saved.put(key, shapes);
+        this.shapes = new ArrayList<Shape>();
+    }
+
+    public void loadShapes(String key){
+        this.shapes = this.saved.get(key);
+    }
 }

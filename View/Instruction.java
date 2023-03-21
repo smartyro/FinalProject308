@@ -1,3 +1,4 @@
+package View;
 import java.awt.*;
 import java.util.function.ToDoubleBiFunction;
 
