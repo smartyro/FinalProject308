@@ -30,6 +30,32 @@ public class Repository extends Observable {
         setChanged();
         notifyObservers();
     }
+    
+    public void addShape(ShapeType type, int x, int y) {
+        switch(type) {
+            case BEGIN:
+                //TODO
+                break;
+            case END:
+                //TODO
+                break;
+            case CALL:
+                addShape(new MethodShape(x, y));
+                break;
+            case INSTRUCTION:
+                addShape(new InstructionShape(x, y));
+                break;
+            case IO:
+                //TODO
+                break;
+            case VARIABLE:
+                addShape(new VariableShape(x, y));
+                break;
+            case CONDITION:
+                //TODO
+                break;
+        }
+    }
 
     public void clearShapes(){
         this.shapes = new ArrayList<Shape>();

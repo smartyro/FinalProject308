@@ -50,20 +50,21 @@ public class shapeMenu extends JMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == beginItem){
-            ControlHandler.getInstance().setShape("Begin");
-        } else if (e.getSource() == endItem) {
-            ControlHandler.getInstance().setShape("End");
-        } else if (e.getSource() == callItem) {
-            ControlHandler.getInstance().setShape("Call a Method");
-        } else if (e.getSource() == instructItem) {
-            ControlHandler.getInstance().setShape("Instruction");
-        } else if (e.getSource() == ioItem) {
-            ControlHandler.getInstance().setShape("Input or Output");
-        } else if (e.getSource() == varItem) {
-            ControlHandler.getInstance().setShape("Variable Declaration");
-        } else if (e.getSource() == condItem) {
-            ControlHandler.getInstance().setShape("Condition");
+        Object source = e.getSource();
+        if (beginItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.BEGIN);
+        } else if (endItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.END);
+        } else if (callItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.CALL);
+        } else if (instructItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.INSTRUCTION);
+        } else if (ioItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.IO);
+        } else if (varItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.VARIABLE);
+        } else if (condItem.equals(source)) {
+            ControlHandler.getInstance().setShape(ShapeType.CONDITION);
         }
     }
     
