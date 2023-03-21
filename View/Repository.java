@@ -26,7 +26,7 @@ public class Repository extends Observable {
 
     public void addShape(Shape shape){
         shapes.add(shape);
-        System.out.println("Adding shape to repo");
+        setChanged();
         notifyObservers();
     }
 
