@@ -3,6 +3,7 @@ package Controller;
 import View.Repository;
 import View.Shape;
 import View.Instruction;
+import View.StatusBar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +35,8 @@ public class ControlHandler implements ActionListener, MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+		StatusBar.getInstance().setMessage("mouse clicked");
+		
 		Repository repo = Repository.getRepository();
 		Shape s = repo.anyContains(e.getX(), e.getY());
 		if(s == null) {
