@@ -15,19 +15,8 @@ public class FinalProject extends JFrame {
 	}
 	
     public FinalProject() {
-		
+        Menu menu = new Menu();
 
-        JPanel northPanel = new JPanel();
-        northPanel.setBackground(Color.WHITE);
-        JButton file = new JButton("File");
-        JButton help = new JButton("Help");
-
-        file.addActionListener(ControlHandler.getInstance());
-        help.addActionListener(ControlHandler.getInstance());
-
-        northPanel.add(file);
-        northPanel.add(help);
-        
 		Blackboard board = Blackboard.getInstance();
 		board.addMouseListener(ControlHandler.getInstance());
 		
@@ -35,8 +24,9 @@ public class FinalProject extends JFrame {
 
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
-        add(northPanel, BorderLayout.NORTH);
+        add(menu, BorderLayout.NORTH);
         add(board, BorderLayout.CENTER);
+
 
     }
 }
