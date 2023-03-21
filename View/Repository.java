@@ -11,6 +11,7 @@ public class Repository extends Observable {
 
     private Repository(){
         shapes = new ArrayList<Shape>();
+        saved = new HashMap<String, ArrayList<Shape>>();
     }
 
     public static Repository getRepository(){
