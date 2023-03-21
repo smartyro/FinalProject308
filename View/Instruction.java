@@ -1,10 +1,14 @@
 import java.awt.*;
+import java.util.function.ToDoubleBiFunction;
 
 
 /**
  *Setup for Instruction shape
  */
-public class Instruction extends Shape{
+public class Instruction extends View.Shape{
+    private static final int WIDTH = 100;
+    private static final int HEIGHT = 50;
+    
     /**
      *Definition of Instruction object
      */
@@ -14,12 +18,17 @@ public class Instruction extends Shape{
     /**
      *Draws the Instruction object
      */
-    @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillRect(x, y, 100, 50);
+        g.fillRect(getX(), getY(), WIDTH, HEIGHT);
         g.setColor(Color.black);
-        g.drawRect(x, y, 100, 50);
+        g.drawRect(getX(), getY(), WIDTH, HEIGHT);
     }
-
+    
+    @Override
+    public boolean contains(int x2, int y2) {
+        return x2 >= getX() && x2 <= getX() + WIDTH &&
+                y2 >= getY() && y2 <= getY() + HEIGHT;
+    }
+    
 }

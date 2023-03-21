@@ -6,8 +6,8 @@ import java.awt.*;
 /**
  *Setup for the Shape class
  */
-public class Shape{
-    int x, y;
+public abstract class Shape{
+    private int x, y;
     /**
      *Definition of shape
      */
@@ -16,12 +16,24 @@ public class Shape{
         this.y = y;
 
     }
+    
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
+    
     /**
      *Empty draw method
      */
-    public void draw(Graphics g){
-
-    }
-
-
+    public abstract void draw(Graphics g);
+    
+    /**
+     * Empty contains method to determine whether a shape includes a given point
+     * @param x2 x coordinate of point
+     * @param y2 y coordinate of point
+     */
+    public abstract boolean contains(int x2, int y2);
 }
