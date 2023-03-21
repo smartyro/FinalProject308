@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 
 public class ControlHandler implements ActionListener, MouseListener {
 	private static ControlHandler instance;
+	private Shape drawShape;
 	
 	private ControlHandler() {}
 	
@@ -19,6 +20,12 @@ public class ControlHandler implements ActionListener, MouseListener {
 			instance = new ControlHandler();
 		}
 		return instance;
+	}
+
+	public void setShape(String shape) {
+		// DUMMY METHOD NEED TO MAKE ACTUAL IMPLEMENTATION!!
+		// -Liam 3/20/23
+		System.out.println(shape);
 	}
 	
 	@Override
