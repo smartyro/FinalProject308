@@ -7,14 +7,14 @@ import java.util.function.ToDoubleBiFunction;
 /**
  *Setup for Instruction shape
  */
-public class Instruction extends View.Shape{
+public class InstructionShape extends View.Shape{
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
     
     /**
      *Definition of Instruction object
      */
-    public Instruction(int x, int y){
+    public InstructionShape(int x, int y){
         super(x, y);
     }
     /**
