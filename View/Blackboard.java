@@ -31,4 +31,10 @@ public class Blackboard extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
+	
+	public void deleteAll(){}
+	
+	public void save(){}
+	
+	public void load(){}
 }
