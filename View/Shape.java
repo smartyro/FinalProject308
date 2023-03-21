@@ -7,7 +7,7 @@ import java.awt.*;
  *Setup for the Shape class
  */
 public abstract class Shape{
-    private int x, y;
+    public int x, y;
     /**
      *Definition of shape
      */
