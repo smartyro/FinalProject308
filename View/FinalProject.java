@@ -27,8 +27,8 @@ public class FinalProject extends JFrame {
 		
 		StatusBar statusBar = StatusBar.getInstance();
 		
-		statusBar.setMessage("test in main");
-
+		statusBar.setMessage("Status bar------------------------------------------------------------------------------------------------------------------------------");
+		
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
         add(menu, BorderLayout.NORTH);

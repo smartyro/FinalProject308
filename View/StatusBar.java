@@ -8,11 +8,9 @@ public class StatusBar extends JPanel {
 	private final JTextField text;
 	
 	private StatusBar() {
-		text = new JTextField();
-		text.setBounds(10, 10, 500, 100);
-		//text.setMinimumSize(new Dimension(FinalProject.WIDTH, 10));
+		text = new JTextField("");
 		text.setEditable(false);
-		add(text, BorderLayout.CENTER);
+		add(text);
 	}
 	
 	public static StatusBar getInstance() {
