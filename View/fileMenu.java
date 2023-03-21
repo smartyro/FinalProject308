@@ -14,15 +14,15 @@ public class fileMenu extends JMenu implements ActionListener{
         newItem = new JMenuItem("New");
         newItem.addActionListener(this);
 
-        loadItem = new JMenuItem("Load");
-        loadItem.addActionListener(this);
-
         saveItem = new JMenuItem("Save");
         saveItem.addActionListener(this);
 
+        loadItem = new JMenuItem("Load");
+        loadItem.addActionListener(this);
+
         add(newItem);
-        add(loadItem);
         add(saveItem);
+        add(loadItem);
     }
 
     @Override

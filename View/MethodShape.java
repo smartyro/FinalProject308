@@ -1,3 +1,5 @@
+package View;
+
 import java.awt.*;
 
 
@@ -17,5 +19,11 @@ public class MethodShape extends Shape {
         g.drawRect(x, y, 100, 50);
         g.drawLine(x+10, y, x+10,y+50);
         g.drawLine(x+90, y, x+90,y+50);
+    }
+
+    @Override
+    public boolean contains(int x2, int y2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'contains'");
     }
 }

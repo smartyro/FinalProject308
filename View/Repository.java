@@ -33,15 +33,21 @@ public class Repository extends Observable {
 
     public void clearShapes(){
         this.shapes = new ArrayList<Shape>();
+        setChanged();
+        notifyObservers();
     }
 
     public void saveShapes(String key){
         this.saved.put(key, shapes);
         this.shapes = new ArrayList<Shape>();
+        setChanged();
+        notifyObservers();
     }
 
     public void loadShapes(String key){
         this.shapes = this.saved.get(key);
+        setChanged();
+        notifyObservers();
     }
     
     /**

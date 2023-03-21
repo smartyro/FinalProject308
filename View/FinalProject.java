@@ -20,19 +20,17 @@ public class FinalProject extends JFrame {
 
 		Blackboard board = Blackboard.getInstance();
 		board.addMouseListener(ControlHandler.getInstance());
-    StatusBar statusBar = StatusBar.getInstance();
+        StatusBar statusBar = StatusBar.getInstance();
 
 		Repository.getRepository().addObserver(board);
-		
-		StatusBar statusBar = StatusBar.getInstance();
-		
+				
 		statusBar.setMessage("Status bar------------------------------------------------------------------------------------------------------------------------------");
 		
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
         add(menu, BorderLayout.NORTH);
         add(board, BorderLayout.CENTER);
-		  add(statusBar, BorderLayout.SOUTH);
+		add(statusBar, BorderLayout.SOUTH);
     }
 }
 
