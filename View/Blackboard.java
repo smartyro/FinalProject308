@@ -8,12 +8,14 @@ public class Blackboard extends JPanel implements Observer {
 	private static Blackboard instance;
 	
 	private Blackboard() {
-		setBackground(Color.BLUE);
+		setBackground(Color.LIGHT_GRAY);
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		setBackground(Color.LIGHT_GRAY);
+		System.out.println("Painting");
 		for(Shape s : Repository.getRepository().getShapes()) {
 			s.draw(g);
 		}
@@ -28,6 +30,7 @@ public class Blackboard extends JPanel implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
+		System.out.println("Update");
 		repaint();
 	}
 }

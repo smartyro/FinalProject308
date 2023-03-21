@@ -21,11 +21,12 @@ public class Repository extends Observable {
     }
 
     public ArrayList<Shape> getShapes(){
-        return this.shapes;
+        return shapes;
     }
 
     public void addShape(Shape shape){
-        this.shapes.add(shape);
+        shapes.add(shape);
+        System.out.println("Adding shape to repo");
         notifyObservers();
     }
 
@@ -40,5 +41,21 @@ public class Repository extends Observable {
 
     public void loadShapes(String key){
         this.shapes = this.saved.get(key);
+    }
+    
+    /**
+     * Tests if any shape contains the given point
+     *
+     * @param x x coordinate of point to test
+     * @param y y coordinate of point to test
+     * @return Shape that contains this point, if any; otherwise, returns null
+     */
+    public Shape anyContains(int x, int y) {
+        for(Shape s : shapes) {
+            if(s.contains(x, y)) {
+                return s;
+            }
+        }
+        return null;
     }
 }

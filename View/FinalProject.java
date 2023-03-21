@@ -30,6 +30,8 @@ public class FinalProject extends JFrame {
         
 		Blackboard board = Blackboard.getInstance();
 		board.addMouseListener(ControlHandler.getInstance());
+		
+		Repository.getRepository().addObserver(board);
 
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
