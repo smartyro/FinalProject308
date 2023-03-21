@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 
 public class ControlHandler implements ActionListener, MouseListener {
 	private static ControlHandler instance;
+	private Shape lineStart;
 	
 	private ControlHandler() {}
 	
@@ -38,8 +39,18 @@ public class ControlHandler implements ActionListener, MouseListener {
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
 			repo.addShape(new Instruction(e.getX(), e.getY()));
+			lineStart = null;
 		} else {
 			/*Otherwise, the point is within a shape so start or finish a line*/
+			if(lineStart != null) {
+				/*Finish the line*/
+				System.out.println("TODO: Finish line");
+				
+				lineStart = null;
+			} else {
+				/*Start the line*/
+				lineStart = s;
+			}
 		}
 	}
 	
