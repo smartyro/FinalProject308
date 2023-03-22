@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Arrow;
+import Model.InstructionShape;
 import Model.Shape;
 import View.*;
 
@@ -52,6 +53,7 @@ public class ControlHandler implements ActionListener, MouseListener {
 			sLabel = JOptionPane.showInputDialog("Label:");
 			newShape.setLabel(sLabel);
 			lineStart = null;
+
 		} else {
 			/*Otherwise, the point is within a shape so start or finish a line*/
 			if(lineStart != null) {
