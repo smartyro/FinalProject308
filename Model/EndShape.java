@@ -4,11 +4,6 @@ import java.awt.*;
 
 
 
-public class EndShape extends BaseShape {
-
-
-    public EndShape(int x, int y){
-        super(x, y);
 public class EndShape extends Shape {
     private static final int RADIUS = 30;
     
