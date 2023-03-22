@@ -1,4 +1,4 @@
-package View;
+package Model;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,20 +14,20 @@ public class InputOutputShape extends Shape{
     private int[] yArray = {y1, y2, y3, y4};
  
 
-    public InputOutputShape(int x, int y){
-        super(x, y);
+    public InputOutputShape(int x, int y, String label){
+        super(x, y, label);
     }
 
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
-        x1 = x;
-        x2 = (x + length);
+        x1 = getX();
+        x2 = (getX() + length);
         x3 = x1 + getDistance(x1, height, length);
         x4 = x2 - getDistance(x2, height, length);
 
-        y1 = y2 = y;
-        y3 = y4 = (y+height);
+        y1 = y2 = getY();
+        y3 = y4 = (getY()+height);
 
         Polygon p = new Polygon(xArray, yArray, numPoints);
         g.drawPolygon(p);
