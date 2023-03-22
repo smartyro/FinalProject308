@@ -22,6 +22,10 @@ public class MethodShape extends Shape {
         g.drawLine(getX()+90, getY(), getX()+90,getY()+50);
     }
 
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+    }
+
     @Override
     public boolean contains(int x2, int y2) {
         return x2 >= getX() && x2 <= getX() + WIDTH &&
