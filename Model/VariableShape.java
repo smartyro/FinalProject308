@@ -8,6 +8,13 @@ public class VariableShape extends Shape {
     private static final int HEIGHT = 50;
     public VariableShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = 1;
+        maxOut = 1;
+    }
+    
+    @Override
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
     }
 
     @Override

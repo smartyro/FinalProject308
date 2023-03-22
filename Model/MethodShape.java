@@ -10,6 +10,8 @@ public class MethodShape extends Shape {
     private static final int HEIGHT = 50;
     public MethodShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = 1;
+        maxOut = 1;
     }
 
     @Override
@@ -20,6 +22,10 @@ public class MethodShape extends Shape {
         g.drawRect(getX(), getY(), WIDTH, HEIGHT);
         g.drawLine(getX()+10, getY(), getX()+10,getY()+50);
         g.drawLine(getX()+90, getY(), getX()+90,getY()+50);
+    }
+
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
     }
 
     @Override

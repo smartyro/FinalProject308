@@ -10,7 +10,8 @@ import java.awt.*;
 public abstract class Shape{
     private int x, y;
     private String label;
-    
+    private int inDegree, outDegree;
+    protected int maxIn, maxOut;
     
     /**
      *Definition of shape
@@ -19,6 +20,8 @@ public abstract class Shape{
         this.x = x;
         this.y = y;
         this.label = label;
+        inDegree = 0;
+        outDegree = 0;
     }
     
     public int getX() {
@@ -65,6 +68,30 @@ public abstract class Shape{
     }
     
     public void drawLabel(Graphics g){}
+    
+    public void incrementInDegree() {
+        inDegree++;
+    }
+    
+    public void incrementOutDegree() {
+        outDegree++;
+    }
+    
+    public int getInDegree() {
+        return inDegree;
+    }
+    
+    public int getOutDegree() {
+        return outDegree;
+    }
+    
+    public int getMaxIn() {
+        return maxIn;
+    }
+    
+    public int getMaxOut() {
+        return maxOut;
+    }
 
     public int[] getArrowPoint(Shape s) {
         int [] ret = {0,0};

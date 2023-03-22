@@ -39,7 +39,7 @@ public class ControlHandler implements ActionListener, MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		String sLabel = "";
+		String sLabel;
 		
 		Repository repo = Repository.getRepository();
 		Shape s = repo.anyContains(e.getX(), e.getY());
@@ -63,9 +63,7 @@ public class ControlHandler implements ActionListener, MouseListener {
 				/*  Only draw a line for two different shapes*/
 				if(!s.equals(lineStart)) {
 					StatusBar.getInstance().setMessage("Line finished. Drawing it...");
-
-					repo.addArrow(new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1], 
-					s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1]));
+					repo.addArrow(new Arrow(lineStart.getX() , lineStart.getY(), s.getX(), s.getY()));
 				} else {
 					StatusBar.getInstance().setMessage("Not drawing a line to the same object");
 				}
