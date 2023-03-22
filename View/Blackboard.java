@@ -1,5 +1,6 @@
 package View;
 import Model.Arrow;
+import Model.Repository;
 import Model.BaseShape;
 
 import javax.swing.*;
@@ -20,6 +21,11 @@ public class Blackboard extends JPanel implements Observer {
 		setBackground(Color.LIGHT_GRAY);
 		for(BaseShape s : Repository.getRepository().getShapes()) {
 			s.draw(g);
+			if(s.getLabel() != null) {
+				//g.drawString(s.getLabel(), s.getX() + 50, s.getY() + 25);
+				s.drawLabel(g);
+			}
+
 		}
 		for(Arrow a : Repository.getRepository().getArrows()) {
 			a.draw(g);

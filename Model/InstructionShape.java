@@ -13,8 +13,10 @@ public class InstructionShape extends BaseShape{
     /**
      *Definition of Instruction object
      */
-    public InstructionShape(int x, int y){
-        super(x, y);
+    public InstructionShape(int x, int y, String label){
+        super(x, y, label);
+        maxIn = 1;
+        maxOut = 1;
     }
     /**
      *Draws the Instruction object
@@ -24,6 +26,10 @@ public class InstructionShape extends BaseShape{
         g.fillRect(getX(), getY(), WIDTH, HEIGHT);
         g.setColor(Color.black);
         g.drawRect(getX(), getY(), WIDTH, HEIGHT);
+    }
+
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
     }
     
     @Override

@@ -3,6 +3,7 @@ package View;
 import javax.swing.*;
 
 import Controller.ControlHandler;
+import Model.ShapeType;
 
 import java.awt.event.*;
 

@@ -1,5 +1,6 @@
 package View;
 import Controller.ControlHandler;
+import Model.Repository;
 
 import javax.swing.*;
 import java.awt.*;

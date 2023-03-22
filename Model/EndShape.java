@@ -9,19 +9,36 @@ public class EndShape extends BaseShape {
 
     public EndShape(int x, int y){
         super(x, y);
+public class EndShape extends Shape {
+    private static final int RADIUS = 30;
+    
+    public EndShape(int x, int y, String label){
+        super(x, y, label);
+        maxIn = Integer.MAX_VALUE;
+        maxOut = 0;
     }
 
     @Override
     public void draw(Graphics g){
         g.setColor(Color.GRAY);
-        g.fillOval(x, y, 30, 30);
+        g.fillOval(getX(), getY(), RADIUS, RADIUS);
         g.setColor(Color.BLACK);
-        g.drawOval(x, y, 30, 30);
+        g.drawOval(getX(), getY(), RADIUS, RADIUS);
+    }
+
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX(), this.getY() + 20);
     }
 
     @Override
     public boolean contains(int x2, int y2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        int centerX = getX() + RADIUS;
+        int centerY = getY() + RADIUS;
+    
+        int deltaX = x2 - centerX;
+        int deltaY = y2 - centerY;
+        double distance = Math.sqrt((deltaX)*(deltaX) + (deltaY)*(deltaY));
+    
+        return distance < RADIUS;
     }
 }
