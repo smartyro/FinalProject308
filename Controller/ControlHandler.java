@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Arrow;
-import Model.InstructionShape;
-import Model.Shape;
-import Model.ShapeType;
+import Model.*;
 import View.*;
 
 import javax.swing.*;
