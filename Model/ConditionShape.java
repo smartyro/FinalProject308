@@ -9,6 +9,8 @@ public class ConditionShape extends Shape {
 
     public ConditionShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = Integer.MAX_VALUE;
+        maxOut = 2;
     }
 
     @Override
@@ -25,8 +27,8 @@ public class ConditionShape extends Shape {
 
     @Override
     public boolean contains(int x2, int y2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        return (x2 < (this.getX() +LENGTH) && (x2 > (this.getX()- LENGTH))
+        && (y2 < (this.getY()+LENGTH)) && (y2 > (this.getY()-LENGTH)));
     }
     
 }

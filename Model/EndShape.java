@@ -9,6 +9,8 @@ public class EndShape extends Shape {
     
     public EndShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = Integer.MAX_VALUE;
+        maxOut = 0;
     }
 
     @Override

@@ -15,6 +15,8 @@ public class InstructionShape extends Shape{
      */
     public InstructionShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = 1;
+        maxOut = 1;
     }
     /**
      *Draws the Instruction object
