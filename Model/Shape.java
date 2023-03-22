@@ -47,4 +47,6 @@ public abstract class Shape{
         return label;
     }
 
+    public void drawLabel(Graphics g){}
+
 }

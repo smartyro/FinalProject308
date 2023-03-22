@@ -14,9 +14,13 @@ public class BeginShape extends Shape {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillOval(x, y, 30, 30);
+        g.fillOval(x, y, 35, 35);
         g.setColor(Color.black);
-        g.drawOval(x, y, 30, 30);
+        g.drawOval(x, y, 35, 35);
+    }
+
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX(), this.getY() + 20);
     }
 
     @Override
