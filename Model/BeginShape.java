@@ -9,6 +9,8 @@ public class BeginShape extends Shape {
 
     public BeginShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = 0;
+        maxOut = 1;
     }
 
     @Override

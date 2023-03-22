@@ -9,6 +9,8 @@ public class ConditionShape extends Shape {
 
     public ConditionShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = Integer.MAX_VALUE;
+        maxOut = 2;
     }
 
     @Override
