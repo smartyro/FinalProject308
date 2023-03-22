@@ -1,5 +1,6 @@
 package View;
 import Model.Arrow;
+import Model.Shape;
 
 import javax.swing.*;
 import java.awt.*;

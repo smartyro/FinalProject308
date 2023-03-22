@@ -1,6 +1,6 @@
 package View;
 
-import Model.Arrow;
+import Model.*;
 
 import java.util.ArrayList;
 import java.util.Observable;
