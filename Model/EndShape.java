@@ -19,6 +19,10 @@ public class EndShape extends Shape {
         g.drawOval(x, y, 30, 30);
     }
 
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX(), this.getY() + 20);
+    }
+
     @Override
     public boolean contains(int x2, int y2) {
         // TODO Auto-generated method stub

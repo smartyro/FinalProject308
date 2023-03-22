@@ -21,6 +21,10 @@ public class VariableShape extends Shape {
         g.drawLine(x+10, y, x+10,y+50);
     }
 
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+    }
+
     @Override
     public boolean contains(int x2, int y2) {
         // TODO Auto-generated method stub

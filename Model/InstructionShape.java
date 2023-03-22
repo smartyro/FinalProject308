@@ -25,6 +25,10 @@ public class InstructionShape extends Shape{
         g.setColor(Color.black);
         g.drawRect(getX(), getY(), WIDTH, HEIGHT);
     }
+
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+    }
     
     @Override
     public boolean contains(int x2, int y2) {
