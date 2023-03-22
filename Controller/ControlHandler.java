@@ -3,6 +3,7 @@ package Controller;
 import Model.Arrow;
 import Model.InstructionShape;
 import Model.Shape;
+import Model.ShapeType;
 import View.*;
 
 import javax.swing.*;

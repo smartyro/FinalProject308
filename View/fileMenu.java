@@ -1,5 +1,7 @@
 package View;
 
+import Model.Repository;
+
 import javax.swing.*;
 import java.awt.event.*;
 
