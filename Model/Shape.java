@@ -9,14 +9,14 @@ import java.awt.*;
  */
 public abstract class Shape{
     public int x, y;
-    String sLabel;
+    String label;
     /**
      *Definition of shape
      */
-    public Shape(int x, int y){
+    public Shape(int x, int y, String label){
         this.x = x;
         this.y = y;
-
+        this.label = label;
     }
     
     public int getX() {
@@ -40,11 +40,11 @@ public abstract class Shape{
     public abstract boolean contains(int x2, int y2);
 
     public void setLabel(String s){
-        this.sLabel = s;
+        label = s;
     }
 
     public String getLabel(){
-        return this.sLabel;
+        return label;
     }
 
 }

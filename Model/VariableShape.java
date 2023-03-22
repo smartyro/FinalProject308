@@ -7,8 +7,8 @@ import java.awt.*;
 public class VariableShape extends Shape {
 
 
-    public VariableShape(int x, int y){
-        super(x, y);
+    public VariableShape(int x, int y, String label){
+        super(x, y, label);
     }
 
     @Override

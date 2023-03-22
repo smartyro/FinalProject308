@@ -7,8 +7,8 @@ import java.awt.*;
 public class EndShape extends Shape {
 
 
-    public EndShape(int x, int y){
-        super(x, y);
+    public EndShape(int x, int y, String label){
+        super(x, y, label);
     }
 
     @Override

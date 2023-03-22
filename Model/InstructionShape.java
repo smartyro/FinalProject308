@@ -13,8 +13,8 @@ public class InstructionShape extends Shape{
     /**
      *Definition of Instruction object
      */
-    public InstructionShape(int x, int y){
-        super(x, y);
+    public InstructionShape(int x, int y, String label){
+        super(x, y, label);
     }
     /**
      *Draws the Instruction object

@@ -46,10 +46,9 @@ public class ControlHandler implements ActionListener, MouseListener {
 		Shape s = repo.anyContains(e.getX(), e.getY());
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
-			Shape newShape = new InstructionShape(e.getX(), e.getY());
-			repo.addShape(newShape);
 			sLabel = JOptionPane.showInputDialog("Label:");
-			newShape.setLabel(sLabel);
+			//newShape.setLabel(sLabel);
+			repo.addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
 			lineStart = null;
 
 		} else {

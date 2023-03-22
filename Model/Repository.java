@@ -37,28 +37,28 @@ public class Repository extends Observable {
         notifyObservers();
     }
     
-    public void addShape(ShapeType type, int x, int y) {
+    public void addShape(ShapeType type, int x, int y, String label) {
         switch(type) {
             case BEGIN:
-                addShape(new BeginShape(x, y));
+                addShape(new BeginShape(x, y, label));
                 break;
             case END:
-                addShape(new EndShape(x, y));
+                addShape(new EndShape(x, y, label));
                 break;
             case CALL:
-                addShape(new MethodShape(x, y));
+                addShape(new MethodShape(x, y, label));
                 break;
             case INSTRUCTION:
-                addShape(new InstructionShape(x, y));
+                addShape(new InstructionShape(x, y, label));
                 break;
             case IO:
                 //TODO
                 break;
             case VARIABLE:
-                addShape(new VariableShape(x, y));
+                addShape(new VariableShape(x, y, label));
                 break;
             case CONDITION:
-                addShape(new ConditionShape(x, y));
+                addShape(new ConditionShape(x, y, label));
                 break;
         }
     }

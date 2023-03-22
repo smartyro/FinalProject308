@@ -7,8 +7,8 @@ public class ConditionShape extends Shape {
     private static final int LENGTH = 50;
     
 
-    public ConditionShape(int x, int y){
-        super(x, y);
+    public ConditionShape(int x, int y, String label){
+        super(x, y, label);
     }
 
     @Override

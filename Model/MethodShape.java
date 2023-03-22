@@ -7,8 +7,8 @@ import java.awt.*;
 public class MethodShape extends Shape {
 
 
-    public MethodShape(int x, int y){
-        super(x, y);
+    public MethodShape(int x, int y, String label){
+        super(x, y, label);
     }
 
     @Override
