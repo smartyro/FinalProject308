@@ -71,8 +71,9 @@ public class Repository extends Observable {
         notifyObservers();
     }
 
-    public void clearShapes(){
-        this.shapes = new ArrayList<Shape>();
+    public void clear(){
+        shapes = new ArrayList<>();
+        arrows = new ArrayList<>();
         setChanged();
         notifyObservers();
     }
