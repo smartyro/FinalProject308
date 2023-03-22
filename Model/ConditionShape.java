@@ -3,7 +3,7 @@ package Model;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class ConditionShape extends Shape {
+public class ConditionShape extends BaseShape {
     private static final int LENGTH = 50;
     
 
@@ -21,8 +21,8 @@ public class ConditionShape extends Shape {
 
     @Override
     public boolean contains(int x2, int y2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        return x2 >= x-LENGTH && x2 <= x+LENGTH 
+                && y2 >= y-LENGTH && y2 <= y+LENGTH;
     }
     
 }

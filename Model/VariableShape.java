@@ -4,8 +4,9 @@ import java.awt.*;
 
 
 
-public class VariableShape extends Shape {
-
+public class VariableShape extends BaseShape {
+    private static final int WIDTH = 100;
+    private static final int HEIGHT = 50;
 
     public VariableShape(int x, int y){
         super(x, y);
@@ -14,16 +15,16 @@ public class VariableShape extends Shape {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillRect(x, y, 100, 50);
+        g.fillRect(x, y, WIDTH, HEIGHT);
         g.setColor(Color.black);
-        g.drawRect(x, y, 100, 50);
-        g.drawLine(x, y+10, x+100,y+10);
-        g.drawLine(x+10, y, x+10,y+50);
+        g.drawRect(x, y, WIDTH, HEIGHT);
+        g.drawLine(x, (int)(y + HEIGHT * .2), x + WIDTH, (int)(y + HEIGHT * .2));
+        g.drawLine((int)(x + (WIDTH * .1)), y, (int)(x + (WIDTH * .1)), y + HEIGHT);
     }
 
     @Override
     public boolean contains(int x2, int y2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        return x2 >= x && x2 <= x + WIDTH 
+                && y2 >= y && y2 <= y + HEIGHT;
     }
 }

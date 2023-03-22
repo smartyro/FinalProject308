@@ -4,7 +4,7 @@ import java.awt.*;
 
 
 
-public class EndShape extends Shape {
+public class EndShape extends BaseShape {
 
 
     public EndShape(int x, int y){

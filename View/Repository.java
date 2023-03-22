@@ -8,9 +8,9 @@ import java.util.HashMap;
 
 public class Repository extends Observable {
     private static Repository repository;
-    private ArrayList<Shape> shapes;
+    private ArrayList<BaseShape> shapes;
     private ArrayList<Arrow> arrows;
-    private HashMap<String, ArrayList<Shape>> saved;
+    private HashMap<String, ArrayList<BaseShape>> saved;
 
     private Repository(){
         shapes = new ArrayList<>();
@@ -25,7 +25,7 @@ public class Repository extends Observable {
         return repository;
     }
 
-    public ArrayList<Shape> getShapes(){
+    public ArrayList<BaseShape> getShapes(){
         return shapes;
     }
     
@@ -33,7 +33,7 @@ public class Repository extends Observable {
         return arrows;
     }
 
-    public void addShape(Shape shape){
+    public void addShape(BaseShape shape){
         shapes.add(shape);
         setChanged();
         notifyObservers();
@@ -80,7 +80,7 @@ public class Repository extends Observable {
 
     public void saveShapes(String key){
         this.saved.put(key, shapes);
-        this.shapes = new ArrayList<Shape>();
+        this.shapes = new ArrayList<BaseShape>();
         setChanged();
         notifyObservers();
     }
@@ -98,8 +98,8 @@ public class Repository extends Observable {
      * @param y y coordinate of point to test
      * @return Shape that contains this point, if any; otherwise, returns null
      */
-    public Shape anyContains(int x, int y) {
-        for(Shape s : shapes) {
+    public BaseShape anyContains(int x, int y) {
+        for(BaseShape s : shapes) {
             if(s.contains(x, y)) {
                 return s;
             }

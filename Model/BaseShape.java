@@ -6,12 +6,12 @@ import java.awt.*;
 /**
  *Setup for the Shape class
  */
-public abstract class Shape{
+public abstract class BaseShape{
     public int x, y;
     /**
      *Definition of shape
      */
-    public Shape(int x, int y){
+    public BaseShape(int x, int y){
         this.x = x;
         this.y = y;
 
