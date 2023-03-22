@@ -1,6 +1,7 @@
 package Model;
 
 import java.awt.*;
+import static java.lang.Math.sqrt;
 
 
 
@@ -34,4 +35,36 @@ public class EndShape extends Shape {
     
         return distance < RADIUS;
     }
+
+    public int[] getArrowPoint(Shape s){
+        //top point of circle
+        double dist = sqrt((s.getY() - (this.getY())) * (s.getY() - (this.getY())) + 
+        ((s.getX()) - (this.getX()+RADIUS/2)) * ((s.getX()) - (this.getX()+RADIUS/2)));
+        int[] ret = {this.getX()+RADIUS/2, this.getY()};
+        // bottom of circle
+        double dist2 = sqrt((s.getY() - (this.getY()+RADIUS)) * (s.getY() - (this.getY()+RADIUS)) + 
+        ((s.getX()) - (this.getX()+RADIUS/2)) * ((s.getX()) - (this.getX()+RADIUS/2)));
+        // right of circle
+        double dist3 = sqrt((s.getY() - (this.getY()+RADIUS/2)) * (s.getY() - (this.getY()+RADIUS/2)) + 
+        ((s.getX()) - this.getX()) * ((s.getX()) - this.getX()));
+        // left of circle
+        double dist4 = sqrt((s.getY() - (this.getY()+RADIUS/2)) * (s.getY() - (this.getY()+RADIUS/2)) + 
+        ((s.getX()) - (this.getX()+RADIUS)) * ((s.getX()) - (this.getX()+RADIUS)));
+
+        if (dist > dist2){
+            dist = dist2;
+            ret[1] = this.getY()+RADIUS;
+        }
+        else if (dist > dist3){
+            dist = dist3;
+            ret[0] = this.getX();
+            ret[1] = this.getY()+RADIUS/2;
+        }
+        else if (dist > dist4){
+            ret[0] = this.getX()+RADIUS;
+            ret[1] = this.getY()+RADIUS/2;
+        }
+        return ret;
+    }
+
 }

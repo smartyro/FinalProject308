@@ -2,6 +2,7 @@ package Model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import static java.lang.Math.sqrt;
 
 public class ConditionShape extends Shape {
     private static final int LENGTH = 50;
@@ -27,6 +28,37 @@ public class ConditionShape extends Shape {
     public boolean contains(int x2, int y2) {
         return (x2 < (this.getX() +LENGTH) && (x2 > (this.getX()- LENGTH))
         && (y2 < (this.getY()+LENGTH)) && (y2 > (this.getY()-LENGTH)));
+    }
+
+    public int[] getArrowPoint(Shape s){
+        //top point of rombus
+        double dist = sqrt((s.getY() - (this.getY()-LENGTH)) * (s.getY() - (this.getY()-LENGTH)) + 
+        ((s.getX()) - (this.getX())) * ((s.getX()) - (this.getX())));
+        int[] ret = {this.getX(), this.getY()-LENGTH};
+        // bottom of rombus
+        double dist2 = sqrt((s.getY() - (this.getY()+LENGTH)) * (s.getY() - (this.getY()+LENGTH)) + 
+        ((s.getX()) - (this.getX())) * ((s.getX()) - (this.getX())));
+        // left of rombus
+        double dist3 = sqrt((s.getY() - (this.getY())) * (s.getY() - (this.getY())) + 
+        ((s.getX()) - (this.getX()-LENGTH)) * ((s.getX()) - (this.getX()-LENGTH)));
+        // right of circle
+        double dist4 = sqrt((s.getY() - (this.getY())) * (s.getY() - (this.getY())) + 
+        ((s.getX()) - (this.getX()+LENGTH)) * ((s.getX()) - (this.getX()+LENGTH)));
+
+        if (dist > dist2){
+            dist = dist2;
+            ret[1] = this.getY()+LENGTH;
+        }
+        else if (dist > dist3){
+            dist = dist3;
+            ret[0] = this.getX()-LENGTH;
+            ret[1] = this.getY();
+        }
+        else if (dist > dist4){
+            ret[0] = this.getX()+LENGTH;
+            ret[1] = this.getY();
+        }
+        return ret;
     }
     
 }

@@ -66,4 +66,9 @@ public abstract class Shape{
     
     public void drawLabel(Graphics g){}
 
+    public int[] getArrowPoint(Shape s) {
+        int [] ret = {0,0};
+        return ret;
+    }
+
 }
