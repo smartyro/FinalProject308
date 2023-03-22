@@ -1,5 +1,7 @@
 package View;
 
+import Model.*;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.HashMap;
@@ -7,11 +9,13 @@ import java.util.HashMap;
 public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
+    private ArrayList<Arrow> arrows;
     private HashMap<String, ArrayList<Shape>> saved;
 
     private Repository(){
-        shapes = new ArrayList<Shape>();
-        saved = new HashMap<String, ArrayList<Shape>>();
+        shapes = new ArrayList<>();
+        arrows = new ArrayList<>();
+        saved = new HashMap<>();
     }
 
     public static Repository getRepository(){
@@ -24,9 +28,45 @@ public class Repository extends Observable {
     public ArrayList<Shape> getShapes(){
         return shapes;
     }
+    
+    public ArrayList<Arrow> getArrows() {
+        return arrows;
+    }
 
     public void addShape(Shape shape){
         shapes.add(shape);
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void addShape(ShapeType type, int x, int y) {
+        switch(type) {
+            case BEGIN:
+                addShape(new BeginShape(x, y));
+                break;
+            case END:
+                addShape(new EndShape(x, y));
+                break;
+            case CALL:
+                addShape(new MethodShape(x, y));
+                break;
+            case INSTRUCTION:
+                addShape(new InstructionShape(x, y));
+                break;
+            case IO:
+                //TODO
+                break;
+            case VARIABLE:
+                addShape(new VariableShape(x, y));
+                break;
+            case CONDITION:
+                addShape(new ConditionShape(x, y));
+                break;
+        }
+    }
+    
+    public void addArrow(Arrow arrow) {
+        arrows.add(arrow);
         setChanged();
         notifyObservers();
     }

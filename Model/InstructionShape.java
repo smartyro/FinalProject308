@@ -1,4 +1,4 @@
-package View;
+package Model;
 
 import java.awt.*;
 
@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  *Setup for Instruction shape
  */
-public class InstructionShape extends View.Shape{
+public class InstructionShape extends Shape{
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
     

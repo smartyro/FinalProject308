@@ -1,9 +1,8 @@
 package Controller;
 
-import View.Repository;
-import View.Shape;
-import View.InstructionShape;
-import View.StatusBar;
+import Model.Arrow;
+import Model.Shape;
+import View.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +13,8 @@ import java.awt.event.MouseListener;
 public class ControlHandler implements ActionListener, MouseListener {
 	private static ControlHandler instance;
 	private Shape lineStart;
-	
+	private ShapeType shapeToDraw = ShapeType.INSTRUCTION;
+
 	private ControlHandler() {}
 	
 	public static ControlHandler getInstance() {
@@ -24,10 +24,8 @@ public class ControlHandler implements ActionListener, MouseListener {
 		return instance;
 	}
 
-	public void setShape(String shape) {
-		// DUMMY METHOD NEED TO MAKE ACTUAL IMPLEMENTATION!!
-		// -Liam 3/20/23
-		System.out.println(shape);
+	public void setShape(ShapeType shape) {
+		shapeToDraw = shape;
 	}
 	
 	@Override
@@ -58,11 +56,12 @@ public class ControlHandler implements ActionListener, MouseListener {
 			/*Otherwise, the point is within a shape so start or finish a line*/
 			if(lineStart != null) {
 				/*Finish the line*/
-				System.out.println("TODO: Finish line");
-				
+				StatusBar.getInstance().setMessage("Line finished. Drawing it...");
+				repo.addArrow(new Arrow(lineStart.x , lineStart.y, s.x, s.y));
 				lineStart = null;
 			} else {
 				/*Start the line*/
+				StatusBar.getInstance().setMessage("Line started");
 				lineStart = s;
 			}
 		}

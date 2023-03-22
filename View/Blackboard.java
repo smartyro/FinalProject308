@@ -1,4 +1,7 @@
 package View;
+import Model.Arrow;
+import Model.Shape;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -18,6 +21,9 @@ public class Blackboard extends JPanel implements Observer {
 		for(Shape s : Repository.getRepository().getShapes()) {
 			s.draw(g);
 			g.drawString(s.getLabel(), s.getX() + 50, s.getY() + 25);
+		}
+		for(Arrow a : Repository.getRepository().getArrows()) {
+			a.draw(g);
 		}
 	}
 	
