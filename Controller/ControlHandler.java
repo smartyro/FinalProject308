@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 
 public class ControlHandler implements ActionListener, MouseListener {
 	private static ControlHandler instance;
-	private Shape lineStart;
+	private BaseShape lineStart;
 	private ShapeType shapeToDraw = ShapeType.INSTRUCTION;
 
 	private ControlHandler() {}
@@ -42,7 +42,7 @@ public class ControlHandler implements ActionListener, MouseListener {
 		String sLabel;
 		
 		Repository repo = Repository.getRepository();
-		Shape s = repo.anyContains(e.getX(), e.getY());
+		BaseShape s = repo.anyContains(e.getX(), e.getY());
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
 			StatusBar.getInstance().setMessage("Drawing a shape...");

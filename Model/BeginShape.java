@@ -4,7 +4,7 @@ import java.awt.*;
 
 
 
-public class BeginShape extends Shape {
+public class BeginShape extends BaseShape {
     public static final int RADIUS = 35;
 
     public BeginShape(int x, int y, String label){

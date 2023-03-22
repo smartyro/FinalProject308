@@ -3,7 +3,7 @@ package Model;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class ConditionShape extends Shape {
+public class ConditionShape extends BaseShape {
     private static final int LENGTH = 50;
     
 

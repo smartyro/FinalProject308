@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  *Setup for Instruction shape
  */
-public class InstructionShape extends Shape{
+public class InstructionShape extends BaseShape{
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
     
