@@ -5,7 +5,7 @@ import java.awt.*;
 
 
 public class BeginShape extends Shape {
-
+    public static final int RADIUS = 30;
 
     public BeginShape(int x, int y, String label){
         super(x, y, label);
@@ -14,14 +14,20 @@ public class BeginShape extends Shape {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillOval(x, y, 30, 30);
+        g.fillOval(x, y, RADIUS, RADIUS);
         g.setColor(Color.black);
-        g.drawOval(x, y, 30, 30);
+        g.drawOval(x, y, RADIUS, RADIUS);
     }
 
     @Override
     public boolean contains(int x2, int y2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        int centerX = x + RADIUS;
+        int centerY = y + RADIUS;
+        
+        int deltaX = x2 - centerX;
+        int deltaY = y2 - centerY;
+        double distance = Math.sqrt((deltaX)*(deltaX) + (deltaY)*(deltaY));
+        
+        return distance < RADIUS;
     }
 }

@@ -40,12 +40,12 @@ public class ControlHandler implements ActionListener, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		String sLabel = "";
-		StatusBar.getInstance().setMessage("mouse clicked");
 		
 		Repository repo = Repository.getRepository();
 		Shape s = repo.anyContains(e.getX(), e.getY());
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
+			StatusBar.getInstance().setMessage("Drawing a shape...");
 			if(shapeToDraw == ShapeType.BEGIN) {
 				repo.addShape(shapeToDraw, e.getX(), e.getY(), "Begin");
 			} else if(shapeToDraw == ShapeType.END) {
@@ -60,8 +60,13 @@ public class ControlHandler implements ActionListener, MouseListener {
 			/*Otherwise, the point is within a shape so start or finish a line*/
 			if(lineStart != null) {
 				/*Finish the line*/
-				StatusBar.getInstance().setMessage("Line finished. Drawing it...");
-				repo.addArrow(new Arrow(lineStart.x , lineStart.y, s.x, s.y));
+				/*  Only draw a line for two different shapes*/
+				if(!s.equals(lineStart)) {
+					StatusBar.getInstance().setMessage("Line finished. Drawing it...");
+					repo.addArrow(new Arrow(lineStart.x , lineStart.y, s.x, s.y));
+				} else {
+					StatusBar.getInstance().setMessage("Not drawing a line to the same object");
+				}
 				lineStart = null;
 			} else {
 				/*Start the line*/
