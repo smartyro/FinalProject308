@@ -11,6 +11,11 @@ public class VariableShape extends Shape {
         maxIn = 1;
         maxOut = 1;
     }
+    
+    @Override
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+    }
 
     @Override
     public void draw(Graphics g){
