@@ -1,5 +1,6 @@
 package View;
 
+import javax.swing.*;
 import java.awt.*;
 
 
@@ -8,6 +9,7 @@ import java.awt.*;
  */
 public abstract class Shape{
     public int x, y;
+    String sLabel;
     /**
      *Definition of shape
      */
@@ -36,4 +38,12 @@ public abstract class Shape{
      * @param y2 y coordinate of point
      */
     public abstract boolean contains(int x2, int y2);
+
+    public void setLabel(String s){
+        this.sLabel = s;
+    }
+
+    public String getLabel(){
+        return this.sLabel;
+    }
 }

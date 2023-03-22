@@ -5,6 +5,7 @@ import View.Shape;
 import View.InstructionShape;
 import View.StatusBar;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -41,13 +42,17 @@ public class ControlHandler implements ActionListener, MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+		String sLabel = "";
 		StatusBar.getInstance().setMessage("mouse clicked");
 		
 		Repository repo = Repository.getRepository();
 		Shape s = repo.anyContains(e.getX(), e.getY());
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
-			repo.addShape(new InstructionShape(e.getX(), e.getY()));
+			Shape newShape = new InstructionShape(e.getX(), e.getY());
+			repo.addShape(newShape);
+			sLabel = JOptionPane.showInputDialog("Label:");
+			newShape.setLabel(sLabel);
 			lineStart = null;
 		} else {
 			/*Otherwise, the point is within a shape so start or finish a line*/
