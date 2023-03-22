@@ -1,7 +1,7 @@
 package View;
 import Model.Arrow;
 import Model.Repository;
-import Model.BaseShape;
+import Model.Shape;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class Blackboard extends JPanel implements Observer {
 	public void paint(Graphics g) {
 		super.paint(g);
 		setBackground(Color.LIGHT_GRAY);
-		for(BaseShape s : Repository.getRepository().getShapes()) {
+		for(Shape s : Repository.getRepository().getShapes()) {
 			s.draw(g);
 			if(s.getLabel() != null) {
 				//g.drawString(s.getLabel(), s.getX() + 50, s.getY() + 25);
