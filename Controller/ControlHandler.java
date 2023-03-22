@@ -39,7 +39,7 @@ public class ControlHandler implements ActionListener, MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		String sLabel = "";
+		String sLabel;
 		
 		Repository repo = Repository.getRepository();
 		Shape s = repo.anyContains(e.getX(), e.getY());
@@ -63,11 +63,9 @@ public class ControlHandler implements ActionListener, MouseListener {
 				/*  Only draw a line for two different shapes*/
 				if(!s.equals(lineStart)) {
 					if(lineStart.getOutDegree() + 1 > lineStart.getMaxOut()) {
-						StatusBar.getInstance().setMessage("NO");
+						StatusBar.getInstance().setMessage("The first shape clicked has its max amount of arrows out of it already");
 					} else if(s.getInDegree() + 1 > s.getMaxIn()) {
-						System.out.println("In deg: " + s.getInDegree());
-						System.out.println("Max in: " + s.getMaxIn());
-						StatusBar.getInstance().setMessage(" nooo");
+						StatusBar.getInstance().setMessage("The second shape clicked has its max amount of arrows it to it already");
 					} else {
 						StatusBar.getInstance().setMessage("Line finished. Drawing it...");
 						repo.addArrow(new Arrow(lineStart.getX(), lineStart.getY(), s.getX(), s.getY()));
