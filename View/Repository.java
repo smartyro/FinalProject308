@@ -42,10 +42,10 @@ public class Repository extends Observable {
     public void addShape(ShapeType type, int x, int y) {
         switch(type) {
             case BEGIN:
-                //TODO
+                addShape(new BeginShape(x, y));
                 break;
             case END:
-                //TODO
+                addShape(new EndShape(x, y));
                 break;
             case CALL:
                 addShape(new MethodShape(x, y));
@@ -60,7 +60,7 @@ public class Repository extends Observable {
                 addShape(new VariableShape(x, y));
                 break;
             case CONDITION:
-                //TODO
+                addShape(new ConditionShape(x, y));
                 break;
         }
     }
