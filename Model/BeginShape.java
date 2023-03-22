@@ -5,7 +5,7 @@ import java.awt.*;
 
 
 public class BeginShape extends Shape {
-    public static final int RADIUS = 30;
+    public static final int RADIUS = 35;
 
     public BeginShape(int x, int y, String label){
         super(x, y, label);
@@ -18,7 +18,11 @@ public class BeginShape extends Shape {
         g.setColor(Color.black);
         g.drawOval(x, y, RADIUS, RADIUS);
     }
-
+    
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX(), this.getY() + 20);
+    }
+    
     @Override
     public boolean contains(int x2, int y2) {
         int centerX = x + RADIUS;

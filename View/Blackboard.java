@@ -22,7 +22,8 @@ public class Blackboard extends JPanel implements Observer {
 		for(Shape s : Repository.getRepository().getShapes()) {
 			s.draw(g);
 			if(s.getLabel() != null) {
-				g.drawString(s.getLabel(), s.getX() + 50, s.getY() + 25);
+				//g.drawString(s.getLabel(), s.getX() + 50, s.getY() + 25);
+				s.drawLabel(g);
 			}
 
 		}
