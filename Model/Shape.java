@@ -8,8 +8,10 @@ import java.awt.*;
  *Setup for the Shape class
  */
 public abstract class Shape{
-    public int x, y;
-    String label;
+    private int x, y;
+    private String label;
+    
+    
     /**
      *Definition of shape
      */

@@ -14,11 +14,11 @@ public class MethodShape extends Shape {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillRect(x, y, 100, 50);
+        g.fillRect(getX(), getY(), 100, 50);
         g.setColor(Color.black);
-        g.drawRect(x, y, 100, 50);
-        g.drawLine(x+10, y, x+10,y+50);
-        g.drawLine(x+90, y, x+90,y+50);
+        g.drawRect(getX(), getY(), 100, 50);
+        g.drawLine(getX()+10, getY(), getX()+10,getY()+50);
+        g.drawLine(getX()+90, getY(), getX()+90,getY()+50);
     }
 
     public void drawLabel(Graphics g){

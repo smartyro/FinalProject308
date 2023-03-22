@@ -14,9 +14,9 @@ public class ConditionShape extends Shape {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillPolygon(new int[]{x-LENGTH, x, x+LENGTH, x}, new int[]{y, y+LENGTH, y, y-LENGTH}, 4);
+        g.fillPolygon(new int[]{getX()-LENGTH, getX(), getX()+LENGTH, getX()}, new int[]{getY(), getY()+LENGTH, getY(), getY()-LENGTH}, 4);
         g.setColor(Color.BLACK);
-        g.drawPolygon(new int[]{x-LENGTH, x, x+LENGTH, x}, new int[]{y, y+LENGTH, y, y-LENGTH}, 4);
+        g.drawPolygon(new int[]{getX()-LENGTH, getX(), getX()+LENGTH, getX()}, new int[]{getY(), getY()+LENGTH, getY(), getY()-LENGTH}, 4);
     }
 
     public void drawLabel(Graphics g){

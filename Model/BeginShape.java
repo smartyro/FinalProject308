@@ -14,9 +14,9 @@ public class BeginShape extends Shape {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillOval(x, y, RADIUS, RADIUS);
+        g.fillOval(getX(), getY(), RADIUS, RADIUS);
         g.setColor(Color.black);
-        g.drawOval(x, y, RADIUS, RADIUS);
+        g.drawOval(getX(), getY(), RADIUS, RADIUS);
     }
     
     public void drawLabel(Graphics g){
@@ -25,8 +25,8 @@ public class BeginShape extends Shape {
     
     @Override
     public boolean contains(int x2, int y2) {
-        int centerX = x + RADIUS;
-        int centerY = y + RADIUS;
+        int centerX = getX() + RADIUS;
+        int centerY = getY() + RADIUS;
         
         int deltaX = x2 - centerX;
         int deltaY = y2 - centerY;

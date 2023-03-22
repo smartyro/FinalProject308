@@ -14,11 +14,11 @@ public class VariableShape extends Shape {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.WHITE);
-        g.fillRect(x, y, 100, 50);
+        g.fillRect(getX(), getY(), 100, 50);
         g.setColor(Color.black);
-        g.drawRect(x, y, 100, 50);
-        g.drawLine(x, y+10, x+100,y+10);
-        g.drawLine(x+10, y, x+10,y+50);
+        g.drawRect(getX(), getY(), 100, 50);
+        g.drawLine(getX(), getY()+10, getX()+100,getY()+10);
+        g.drawLine(getX()+10, getY(), getX()+10,getY()+50);
     }
 
     public void drawLabel(Graphics g){
