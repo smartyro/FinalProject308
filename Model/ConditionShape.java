@@ -19,6 +19,10 @@ public class ConditionShape extends Shape {
         g.drawPolygon(new int[]{x-LENGTH, x, x+LENGTH, x}, new int[]{y, y+LENGTH, y, y-LENGTH}, 4);
     }
 
+    public void drawLabel(Graphics g){
+        g.drawString(this.getLabel(), this.getX()-20, this.getY());
+    }
+
     @Override
     public boolean contains(int x2, int y2) {
         // TODO Auto-generated method stub
