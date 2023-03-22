@@ -28,7 +28,7 @@ public class fileMenu extends JMenu implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newItem){
-            Repository.getRepository().clearShapes();
+            Repository.getRepository().clear();
         } else if (e.getSource() == saveItem){
             String key = JOptionPane.showInputDialog("Enter a name for your Diagram:");
             Repository.getRepository().saveShapes(key);
