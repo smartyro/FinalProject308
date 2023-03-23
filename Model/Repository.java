@@ -9,6 +9,7 @@ public class Repository extends Observable {
     private ArrayList<Shape> shapes;
     private ArrayList<Arrow> arrows;
     private HashMap<String, ArrayList<Shape>> saved;
+    private Shape outlineShape;
 
     private Repository(){
         shapes = new ArrayList<>();
@@ -103,5 +104,41 @@ public class Repository extends Observable {
             }
         }
         return null;
+    }
+
+    public Shape getOutlineShape(){
+        return this.outlineShape;
+    }
+
+    public void setOutlineShape(ShapeType type, int x, int y){
+        switch(type) {
+            case BEGIN:
+                outlineShape = new BeginShape(x, y, null);
+                break;
+            case END:
+                outlineShape = new EndShape(x, y, null);
+                break;
+            case CALL:
+                outlineShape = new MethodShape(x, y, null);
+                break;
+            case INSTRUCTION:
+                outlineShape = new InstructionShape(x, y, null);
+                break;
+            case IO:
+                //TODO
+                break;
+            case VARIABLE:
+                outlineShape = new VariableShape(x, y, null);
+                break;
+            case CONDITION:
+                outlineShape = new ConditionShape(x, y, null);
+                break;
+        }
+        setChanged();
+        notifyObservers();
+    }
+
+    public void clearOutlineShape(){
+        this.outlineShape = null;
     }
 }

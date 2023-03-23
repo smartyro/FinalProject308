@@ -8,8 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class ControlHandler implements ActionListener, MouseListener {
+public class ControlHandler implements ActionListener, MouseListener, MouseMotionListener{
 	private static ControlHandler instance;
 	private Shape lineStart;
 	private ShapeType shapeToDraw = ShapeType.INSTRUCTION;
@@ -39,6 +40,11 @@ public class ControlHandler implements ActionListener, MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		Repository.getRepository().clearOutlineShape();
 		String sLabel;
 		
 		Repository repo = Repository.getRepository();
@@ -78,11 +84,6 @@ public class ControlHandler implements ActionListener, MouseListener {
 	}
 	
 	@Override
-	public void mouseReleased(MouseEvent e) {
-	
-	}
-	
-	@Override
 	public void mouseEntered(MouseEvent e) {
 	
 	}
@@ -90,5 +91,19 @@ public class ControlHandler implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 	
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		Repository.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
+		StatusBar.getInstance().setMessage("dragging mouse");
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// // TODO Auto-generated method stub
+		// throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
+		StatusBar.getInstance().setMessage("Dragging the mouse");
+
 	}
 }
