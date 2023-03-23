@@ -21,6 +21,7 @@ public class FinalProject extends JFrame {
 
 		Blackboard board = Blackboard.getInstance();
 		board.addMouseListener(ControlHandler.getInstance());
+		board.addMouseMotionListener(ControlHandler.getInstance());
         StatusBar statusBar = StatusBar.getInstance();
 
 		Repository.getRepository().addObserver(board);

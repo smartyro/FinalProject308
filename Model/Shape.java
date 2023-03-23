@@ -66,6 +66,14 @@ public abstract class Shape{
         
         return x == other.x && y == other.y && label.equals(other.label);
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
     
     public void drawLabel(Graphics g){}
     

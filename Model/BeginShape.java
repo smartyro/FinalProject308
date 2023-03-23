@@ -66,4 +66,10 @@ public class BeginShape extends Shape {
         }
         return ret;
     }
+
+    @Override
+    public void setY(int y) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setY'");
+    }
 }
