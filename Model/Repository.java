@@ -17,6 +17,10 @@ public class Repository extends Observable {
         saved = new HashMap<>();
     }
 
+    /**
+     * 
+     * @return new repositiory of two ArrayLists and one HashMap
+     */
     public static Repository getRepository(){
         if (repository == null){
             repository = new Repository();
@@ -24,20 +28,40 @@ public class Repository extends Observable {
         return repository;
     }
 
+    /**
+     * 
+     * @return ArrayList of type Shapes
+     */
     public ArrayList<Shape> getShapes(){
         return shapes;
     }
-    
+
+    /**
+     * 
+     * @return ArrayList of type Arrows
+     */
     public ArrayList<Arrow> getArrows() {
         return arrows;
     }
 
+    /**
+     * 
+     * @param shape
+     */
     public void addShape(Shape shape){
         shapes.add(shape);
         setChanged();
         notifyObservers();
     }
     
+    /**
+     * 
+     * Adds shapes to the ArrayList
+     * @param type
+     * @param x
+     * @param y
+     * @param label
+     */
     public void addShape(ShapeType type, int x, int y, String label) {
         switch(type) {
             case BEGIN:
@@ -64,6 +88,10 @@ public class Repository extends Observable {
         }
     }
     
+    /**
+     * 
+     * @param arrow
+     */
     public void addArrow(Arrow arrow) {
         arrows.add(arrow);
         setChanged();
@@ -77,6 +105,10 @@ public class Repository extends Observable {
         notifyObservers();
     }
 
+    /**
+     * 
+     * @param key
+     */
     public void saveShapes(String key){
         this.saved.put(key, shapes);
         this.shapes = new ArrayList<Shape>();
@@ -84,6 +116,10 @@ public class Repository extends Observable {
         notifyObservers();
     }
 
+    /**
+     * 
+     * @param key
+     */
     public void loadShapes(String key){
         this.shapes = this.saved.get(key);
         setChanged();
@@ -106,10 +142,20 @@ public class Repository extends Observable {
         return null;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Shape getOutlineShape(){
         return this.outlineShape;
     }
 
+    /**
+     * 
+     * @param type
+     * @param x
+     * @param y
+     */
     public void setOutlineShape(ShapeType type, int x, int y){
         switch(type) {
             case BEGIN:

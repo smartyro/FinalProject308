@@ -13,6 +13,13 @@ public class InputOutputShape extends Shape{
     private int y1, y2, y3, y4;
     private Polygon p;
  
+    /**
+     * 
+     * Constructor for InputOutput Shape (Parallelogram)
+     * @param x
+     * @param y
+     * @param label
+     */
 
     public InputOutputShape(int x, int y, String label){
         super(x, y, label);
@@ -53,6 +60,14 @@ public class InputOutputShape extends Shape{
         g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
     }
 
+    /**
+     * 
+     * Gets hypotonuse by reciving the length and height of the parallelogram
+     * @param x
+     * @param height
+     * @param length
+     * @return
+     */
     public int getDistance(int x, int height, int length){
         int xdist;
         double a2, b2;
