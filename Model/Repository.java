@@ -53,7 +53,7 @@ public class Repository extends Observable {
                 addShape(new InstructionShape(x, y, label));
                 break;
             case IO:
-                //TODO
+                addShape(new InputOutputShape(x, y, label));
                 break;
             case VARIABLE:
                 addShape(new VariableShape(x, y, label));
