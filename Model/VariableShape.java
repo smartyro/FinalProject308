@@ -14,7 +14,7 @@ public class VariableShape extends Shape {
     
     @Override
     public void drawLabel(Graphics g){
-        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+        g.drawString(this.getLabel(), this.getX() + 25, this.getY() + 30);
     }
 
     @Override

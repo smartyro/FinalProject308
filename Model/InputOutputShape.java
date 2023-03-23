@@ -3,6 +3,7 @@ package Model;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import static java.lang.Math.sqrt;
 
 public class InputOutputShape extends Shape{
     private static final int numPoints = 4;
@@ -66,5 +67,27 @@ public class InputOutputShape extends Shape{
         xdist = (int)Math.sqrt(xdist);
 
         return xdist;
+    }
+    
+    public int[] getArrowPoint(Shape s) {
+        //top point of shape
+        int m1 = this.getX();
+        int m2 = (this.getX() + length);
+        int m4 = x1 + getDistance(x1, height, length);
+        int m3 = x2 - getDistance(x2, height, length);
+
+        double dist = sqrt((s.getY() - this.getY()) * (s.getY() - this.getY()) + 
+        ((s.getX() - m1 * ((s.getX()) - m1))));
+        int[] ret = {(m1), this.getY()};
+        // bottom of shape
+        double dist2 = sqrt((s.getY() - (this.getY()+height)) * (s.getY() - (this.getY()+height)) + 
+        ((s.getX() - (m2))) * ((s.getX()) - (m2)));
+
+        if (dist > dist2){
+            dist = dist2;
+            ret[0] = m2;
+            ret[1] = this.getY()+height;
+        }
+        return ret;
     }
 }
