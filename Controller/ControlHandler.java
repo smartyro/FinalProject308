@@ -14,6 +14,8 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 	private static ControlHandler instance;
 	private Shape lineStart;
 	private ShapeType shapeToDraw = ShapeType.INSTRUCTION;
+	private boolean dragging = false;
+	private Shape draggedShape = null;
 
 	private ControlHandler() {}
 	
@@ -49,6 +51,10 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 		
 		Repository repo = Repository.getRepository();
 		Shape s = repo.anyContains(e.getX(), e.getY());
+		if (draggedShape != null) {
+			draggedShape = null;
+			return;
+		}
 		if(s == null) {
 			/*If we are here, the point is not within a shape, so draw a new shape*/
 			StatusBar.getInstance().setMessage("Drawing a shape...");
@@ -58,7 +64,9 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 				repo.addShape(shapeToDraw, e.getX(), e.getY(), "End");
 			} else {
 				sLabel = JOptionPane.showInputDialog("Label:");
-				repo.addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
+				if(sLabel != null){
+					repo.addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
+				}
 			}
 			lineStart = null;
 
@@ -103,15 +111,20 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		Repository.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
+		if (Repository.getRepository().anyContains(e.getX(), e.getY()) != null && draggedShape == null){
+			draggedShape = Repository.getRepository().anyContains(e.getX(), e.getY());
+		}
+		else if (draggedShape != null) {
+			draggedShape.setX(e.getX());
+			draggedShape.setY(e.getY());
+		}
+		else {
+			Repository.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
+		}
 		StatusBar.getInstance().setMessage("dragging mouse");
+		Repository.getRepository().update();
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
-		// // TODO Auto-generated method stub
-		// throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
-		StatusBar.getInstance().setMessage("Dragging the mouse");
-
-	}
+	public void mouseMoved(MouseEvent e) {}
 }

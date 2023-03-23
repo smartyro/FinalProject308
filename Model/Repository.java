@@ -134,11 +134,14 @@ public class Repository extends Observable {
                 outlineShape = new ConditionShape(x, y, null);
                 break;
         }
-        setChanged();
-        notifyObservers();
     }
 
     public void clearOutlineShape(){
         this.outlineShape = null;
+    }
+
+    public void update() {
+        setChanged();
+        notifyObservers();
     }
 }
