@@ -9,6 +9,10 @@ public class FinalProject extends JFrame {
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 400;
 	
+	/**
+	 * Main method for the FinalProject
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		FinalProject f = new FinalProject();
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);

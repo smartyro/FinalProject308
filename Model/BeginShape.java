@@ -6,6 +6,13 @@ import static java.lang.Math.sqrt;
 public class BeginShape extends Shape {
     public static final int RADIUS = 50;
 
+    /**
+     * 
+     * Constructor for circle (beginning shape) method
+     * @param x
+     * @param y
+     * @param label
+     */
     public BeginShape(int x, int y, String label){
         super(x, y, label);
         maxIn = 0;

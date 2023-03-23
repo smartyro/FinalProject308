@@ -16,6 +16,10 @@ public class shapeMenu extends JMenu implements ActionListener {
     JMenuItem varItem;
     JMenuItem condItem;
 
+    /**
+     * Creates new shapeMenu for the JMenu
+     * @param name
+     */
     public shapeMenu(String name) {
         setText(name);
 

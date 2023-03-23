@@ -10,6 +10,10 @@ public class fileMenu extends JMenu implements ActionListener{
     JMenuItem loadItem;
     JMenuItem saveItem;
 
+    /**
+     * Creates new fileMenu
+     * @param name
+     */
     public fileMenu(String name){
         setText(name);
         

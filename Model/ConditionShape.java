@@ -7,7 +7,13 @@ import static java.lang.Math.sqrt;
 public class ConditionShape extends Shape {
     private static final int LENGTH = 50;
     
-
+    /**
+     * 
+     * Constructor for the condition shape (diamond)
+     * @param x
+     * @param y
+     * @param label
+     */
     public ConditionShape(int x, int y, String label){
         super(x, y, label);
         maxIn = Integer.MAX_VALUE;

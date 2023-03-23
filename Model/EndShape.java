@@ -8,6 +8,13 @@ import static java.lang.Math.sqrt;
 public class EndShape extends Shape {
     private static final int RADIUS = 50;
     
+    /**
+     * 
+     * Creates constructor for EndShape (dark circle)
+     * @param x
+     * @param y
+     * @param label
+     */
     public EndShape(int x, int y, String label){
         super(x, y, label);
         maxIn = Integer.MAX_VALUE;

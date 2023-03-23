@@ -8,6 +8,14 @@ public class Arrow {
     int y1;
     int y2;
 
+    /**
+     * 
+     * Constructor for the Arrow
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     */
     public Arrow(int x1, int y1, int x2, int y2){
         this.x1 = x1;
         this.y1 = y1;
@@ -16,6 +24,11 @@ public class Arrow {
     }
 
 
+    /**
+     * 
+     * Creates the drawing for the arrow
+     * @param g
+     */
     public void draw(Graphics g){
         int width = 10;
         int height = 10;

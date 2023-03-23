@@ -6,6 +6,14 @@ public class VariableShape extends Shape {
 
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
+
+    /**
+     * 
+     * Constructor for the VariableShape (rectangle with horizontal and vertical lines)
+     * @param x
+     * @param y
+     * @param label
+     */
     public VariableShape(int x, int y, String label){
         super(x, y, label);
         maxIn = 1;
@@ -32,6 +40,7 @@ public class VariableShape extends Shape {
         return x2 >= getX() && x2 <= getX() + WIDTH &&
                 y2 >= getY() && y2 <= getY() + HEIGHT;
     }
+
     public int[] getArrowPoint(Shape s) {
         //top point of shape
         double dist = sqrt(((s.getY() - this.getY()) * (s.getY() - this.getY())) + 
