@@ -37,26 +37,41 @@ public class InputOutputShape extends Shape{
         g.setColor(Color.BLACK);
         g.drawPolygon(p);
     }
-
+    
+    /**Determines whether a given point is in the shape
+     *
+     * @param x2 x coordinate of point to test
+     * @param y2 y coordinate of point to test
+     * @return True if the shape includes the point; false otherwise
+     */
     @Override
     public boolean contains(int x2, int y2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        /*This function checks what side of each line the point is in;
+         * if the point is on the left side of each line (assuming
+         * the lines are counterclockwise, which is how we pass them
+         * to getSide()), the point is within the shape*/
+        int[] sides = {0, 0, 0, 0};
+        
+        sides[0] = getSide(x2, y2, xArray[0], yArray[0], xArray[1], yArray[1]);
+        sides[1] = getSide(x2, y2, xArray[1], yArray[1], xArray[2], yArray[2]);
+        sides[2] = getSide(x2, y2, xArray[2], yArray[2], xArray[3], yArray[3]);
+        sides[3] = getSide(x2, y2, xArray[3], yArray[3], xArray[0], yArray[0]);
+        
+        return sides[0] > 0 && sides[1] > 0 && sides[2] > 0 && sides[3] > 0;
     }
-
-    public int getDistance(int x1, int height, int length){
-        int xdist;
-        double a2, b2;
-
-        a2 = (x1 + height);
-        b2 = (length - x1);
-
-        a2 = Math.pow(a2, 2.0);
-        b2 = Math.pow(b2, 2.0);
-
-        xdist = (int)(a2 + b2);
-        xdist = (int)Math.sqrt(xdist);
-
-        return xdist;
+    
+    /**
+     * Determines what side of a given line a point is on
+     *
+     * @param xPoint x coordinate of the point to test
+     * @param yPoint y coordinate of the point to test
+     * @param x1 x coordinate of the start of the line
+     * @param y1 y coordinate of the start of the line
+     * @param x2 x coordinate of the end of the line
+     * @param y2 y coordinate of the end of the line
+     * @return >0 if point is on the left of the line; =0 if the point is on the line; <0 if the point is on the right of the line
+     */
+    private int getSide(int xPoint, int yPoint, int x1, int y1, int x2, int y2) {
+        return (yPoint - y1) * (x2 - x1) - (xPoint - x1) * (y2 - y1);
     }
 }

@@ -37,10 +37,11 @@ public abstract class Shape{
      */
     public abstract void draw(Graphics g);
     
-    /**
-     * Empty contains method to determine whether a shape includes a given point
-     * @param x2 x coordinate of point
-     * @param y2 y coordinate of point
+    /**Determines whether a given point is in the shape
+     *
+     * @param x2 x coordinate of point to test
+     * @param y2 y coordinate of point to test
+     * @return True if the shape includes the point; false otherwise
      */
     public abstract boolean contains(int x2, int y2);
 
