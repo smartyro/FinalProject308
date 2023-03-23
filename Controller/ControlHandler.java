@@ -64,7 +64,9 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 				repo.addShape(shapeToDraw, e.getX(), e.getY(), "End");
 			} else {
 				sLabel = JOptionPane.showInputDialog("Label:");
-				repo.addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
+				if(sLabel != null){
+					repo.addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
+				}
 			}
 			lineStart = null;
 
