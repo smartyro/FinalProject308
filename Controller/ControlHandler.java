@@ -68,9 +68,17 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 				/*Finish the line*/
 				/*  Only draw a line for two different shapes*/
 				if(!s.equals(lineStart)) {
-					StatusBar.getInstance().setMessage("Line finished. Drawing it...");
-					repo.addArrow(new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1], 
-					s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1]));
+					if(lineStart.getOutDegree() + 1 > lineStart.getMaxOut()) {
+						StatusBar.getInstance().setMessage("The first shape clicked has its max amount of arrows out of it already");
+					} else if(s.getInDegree() + 1 > s.getMaxIn()) {
+						StatusBar.getInstance().setMessage("The second shape clicked has its max amount of arrows it to it already");
+					} else {
+						StatusBar.getInstance().setMessage("Line finished. Drawing it...");
+						repo.addArrow(new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1],
+								s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1]));
+						lineStart.incrementOutDegree();
+						lineStart.incrementInDegree();
+					}
 				} else {
 					StatusBar.getInstance().setMessage("Not drawing a line to the same object");
 				}
