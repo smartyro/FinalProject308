@@ -6,7 +6,7 @@ import static java.lang.Math.sqrt;
 
 
 public class EndShape extends Shape {
-    private static final int RADIUS = 30;
+    private static final int RADIUS = 50;
     
     public EndShape(int x, int y, String label){
         super(x, y, label);
@@ -23,7 +23,7 @@ public class EndShape extends Shape {
     }
 
     public void drawLabel(Graphics g){
-        g.drawString(this.getLabel(), this.getX(), this.getY() + 20);
+        g.drawString(this.getLabel(), this.getX() + 10, this.getY() + 30);
     }
 
     @Override

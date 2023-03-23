@@ -10,8 +10,8 @@ public class MethodShape extends Shape {
     private static final int HEIGHT = 50;
     public MethodShape(int x, int y, String label){
         super(x, y, label);
-        maxIn = 1;
-        maxOut = 1;
+        maxIn = 3;
+        maxOut = 3;
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Repository extends Observable {
     private ArrayList<Shape> shapes;
     private ArrayList<Arrow> arrows;
     private HashMap<String, ArrayList<Shape>> saved;
+    private HashMap<String, ArrayList<Arrow>> savedarrows;
     private Shape outlineShape;
 
     private Repository(){
@@ -79,13 +80,16 @@ public class Repository extends Observable {
 
     public void saveShapes(String key){
         this.saved.put(key, shapes);
+        this.savedarrows.put(key, arrows);
         this.shapes = new ArrayList<Shape>();
+        this.arrows = new ArrayList<Arrow>();
         setChanged();
         notifyObservers();
     }
 
     public void loadShapes(String key){
         this.shapes = this.saved.get(key);
+        this.arrows = this.savedarrows.get(key);
         setChanged();
         notifyObservers();
     }
