@@ -1,7 +1,7 @@
 package Model;
 
 import java.awt.*;
-
+import static java.lang.Math.sqrt;
 
 /**
  *Setup for Instruction shape
