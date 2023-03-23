@@ -37,19 +37,8 @@ public class InputOutputShape extends Shape{
         g.drawPolygon(p);
     }
 
-    @Override
     public boolean contains(int x, int y) {
-        int triDistance = (Math.abs(length - x1));
-        // check if inside the square
-        if ((x >= this.x1) && (x <= this.x4) && (y >= this.y1) && (y <= this.y4)){
-            return true;
-        }
-        // check if inside the left triangle
-        else if ((x >= this.x3) && (x<= this.x1) && (x >= (getDistance(x, triDistance, length)) && (y >= this.y1) && (y <= this.y4))){
-            return true;
-        }
-        // check if inside the right triangle
-        else if ((x <= this.x2) && (x<= this.x4) && (x >= (getDistance(x, triDistance, length)) + this.x4) && (y >= this.y1) && (y <= this.y4)){
+        if (p.contains(x, y)){
             return true;
         }
         return false;
