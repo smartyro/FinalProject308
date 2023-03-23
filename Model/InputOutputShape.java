@@ -6,30 +6,35 @@ import java.awt.Polygon;
 
 public class InputOutputShape extends Shape{
     private static final int numPoints = 4;
-    private static int length = 100;
-    private static int height = 50;
-    private int x1, x2, x3, x4;
-    private int y1, y2, y3, y4;
-    private int[] xArray = {x1, x2, x3, x4};
-    private int[] yArray = {y1, y2, y3, y4};
+    private static final int length = 100;
+    private static final int height = 50;
+    private static final int diffX = 15;
+    private final int[] xArray = {0, 0, 0, 0};
+    private final int[] yArray = {0, 0, 0, 0};
  
 
     public InputOutputShape(int x, int y, String label){
         super(x, y, label);
+        maxIn = 1;
+        maxOut = 1;
     }
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.WHITE);
-        x1 = getX();
-        x2 = (getX() + length);
-        x3 = x1 + getDistance(x1, height, length);
-        x4 = x2 - getDistance(x2, height, length);
+        xArray[0] = getX();
+        xArray[1] = getX() + length;
+        xArray[2] = getX() + length - diffX;
+        xArray[3] = getX() - diffX;
 
-        y1 = y2 = getY();
-        y3 = y4 = (getY()+height);
-
+        yArray[0] = getY();
+        yArray[1] = getY();
+        yArray[2] = getY() + height;
+        yArray[3] = getY() + height;
+        
         Polygon p = new Polygon(xArray, yArray, numPoints);
+        g.setColor(Color.WHITE);
+        g.fillPolygon(p);
+        g.setColor(Color.BLACK);
         g.drawPolygon(p);
     }
 
