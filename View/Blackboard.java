@@ -34,6 +34,10 @@ public class Blackboard extends JPanel implements Observer {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return new instance of a Blackboard
+	 */
 	public static Blackboard getInstance() {
 		if(instance == null) {
 			instance = new Blackboard();

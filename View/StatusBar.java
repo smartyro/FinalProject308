@@ -13,6 +13,10 @@ public class StatusBar extends JPanel {
 		add(text);
 	}
 	
+	/**
+	 * 
+	 * @return new instance of statusBar
+	 */
 	public static StatusBar getInstance() {
 		if(instance == null) {
 			instance = new StatusBar();
@@ -20,6 +24,10 @@ public class StatusBar extends JPanel {
 		return instance;
 	}
 	
+	/**
+	 * Sets a new message
+	 * @param msg
+	 */
 	public void setMessage(String msg) {
 		text.setText(msg);
 	}
