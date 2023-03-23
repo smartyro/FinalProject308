@@ -10,6 +10,7 @@ public class InputOutputShape extends Shape{
     private static int height = 50;
     private int x1, x2, x3, x4;
     private int y1, y2, y3, y4;
+    private Polygon p;
  
 
     public InputOutputShape(int x, int y, String label){
@@ -29,7 +30,7 @@ public class InputOutputShape extends Shape{
         int[] xArray = {x1, x4, x2, x3};
         int[] yArray = {y1, y2, y3, y4};
 
-        Polygon p = new Polygon(xArray, yArray, numPoints);
+        p = new Polygon(xArray, yArray, numPoints);
 
         g.setColor(Color.WHITE);
         g.fillPolygon(p);

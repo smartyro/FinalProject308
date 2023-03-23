@@ -125,7 +125,7 @@ public class Repository extends Observable {
                 outlineShape = new InstructionShape(x, y, null);
                 break;
             case IO:
-                //TODO
+                outlineShape = new InputOutputShape(x, y, null);
                 break;
             case VARIABLE:
                 outlineShape = new VariableShape(x, y, null);
