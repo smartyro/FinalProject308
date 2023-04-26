@@ -30,12 +30,13 @@ public class InputOutputShape extends Shape{
     @Override
     public void draw(Graphics g) {
         x1 = getX();
-        x2 = (getX() + length);
-        x4 = x1 + getDistance(x1, height, length);
-        x3 = x2 - getDistance(x2, height, length);
-
         y1 = y2 = getY();
-        y3 = y4 = (getY()+height);
+
+        x2 = x1 + height;
+        x4 = x1 + length;
+        x3 = x2 - length;
+
+        y3 = y4 = y1+height;
 
         int[] xArray = {x1, x4, x2, x3};
         int[] yArray = {y1, y2, y3, y4};
