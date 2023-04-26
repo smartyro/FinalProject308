@@ -7,7 +7,7 @@ public class MethodShape extends Shape {
 
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
-    private String label
+    private String label;
 
     /**
      * 
