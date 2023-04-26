@@ -2,11 +2,14 @@ package Model;
 
 import java.awt.*;
 
+import javax.swing.text.html.HTMLEditorKit.InsertHTMLTextAction;
+
 public class Arrow {
     int x1;
     int x2;
     int y1;
     int y2;
+    Shape inShape, outShape;
 
     /**
      * 
@@ -16,11 +19,13 @@ public class Arrow {
      * @param x2
      * @param y2
      */
-    public Arrow(int x1, int y1, int x2, int y2){
+    public Arrow(int x1, int y1, int x2, int y2, Shape inShape, Shape outShape){
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.inShape = inShape;
+        this.outShape = outShape;
     }
 
 
@@ -50,5 +55,27 @@ public class Arrow {
         g.fillPolygon(xList, yList, 3);
     }
 
+    public void setX1(int x) {
+        this.x1 = x;
+    }
 
+    public void setX2(int x) {
+        this.x2 = x;
+    }
+
+    public void setY1(int y) {
+        this.y1 = y;
+    }
+
+    public void setY2(int y) {
+        this.y2 = y;
+    }
+
+    public Shape getInShape() {
+        return this.inShape;
+    }
+
+    public Shape getOutShape() {
+        return this.outShape;
+    }
 }

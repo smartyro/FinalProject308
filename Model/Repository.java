@@ -7,14 +7,12 @@ import java.util.HashMap;
 public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
-    private ArrayList<Arrow> arrows;
     private HashMap<String, ArrayList<Shape>> saved;
     private HashMap<String, ArrayList<Arrow>> savedarrows;
     private Shape outlineShape;
 
     private Repository(){
         shapes = new ArrayList<>();
-        arrows = new ArrayList<>();
         saved = new HashMap<>();
     }
 
@@ -35,14 +33,6 @@ public class Repository extends Observable {
      */
     public ArrayList<Shape> getShapes(){
         return shapes;
-    }
-
-    /**
-     * 
-     * @return ArrayList of type Arrows
-     */
-    public ArrayList<Arrow> getArrows() {
-        return arrows;
     }
 
     /**
@@ -88,20 +78,9 @@ public class Repository extends Observable {
                 break;
         }
     }
-    
-    /**
-     * 
-     * @param arrow
-     */
-    public void addArrow(Arrow arrow) {
-        arrows.add(arrow);
-        setChanged();
-        notifyObservers();
-    }
 
     public void clear(){
         shapes = new ArrayList<>();
-        arrows = new ArrayList<>();
         setChanged();
         notifyObservers();
     }
@@ -112,9 +91,7 @@ public class Repository extends Observable {
      */
     public void saveShapes(String key){
         this.saved.put(key, shapes);
-        this.savedarrows.put(key, arrows);
         this.shapes = new ArrayList<Shape>();
-        this.arrows = new ArrayList<Arrow>();
         setChanged();
         notifyObservers();
     }
@@ -125,7 +102,6 @@ public class Repository extends Observable {
      */
     public void loadShapes(String key){
         this.shapes = this.saved.get(key);
-        this.arrows = this.savedarrows.get(key);
         setChanged();
         notifyObservers();
     }

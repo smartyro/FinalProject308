@@ -2,6 +2,7 @@ package Model;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 /**
@@ -10,8 +11,8 @@ import java.awt.*;
 public abstract class Shape{
     private int x, y;
     private String label;
-    private int inDegree, outDegree;
     protected int maxIn, maxOut;
+    private ArrayList<Arrow> inArrows, outArrows;
     
     /**
      * 
@@ -24,8 +25,8 @@ public abstract class Shape{
         this.x = x;
         this.y = y;
         this.label = label;
-        inDegree = 0;
-        outDegree = 0;
+        this.inArrows = new ArrayList<>();
+        this.outArrows = new ArrayList<>();
     }
     
     /**
@@ -110,20 +111,13 @@ public abstract class Shape{
      */
     public void drawLabel(Graphics g){}
     
-    public void incrementInDegree() {
-        inDegree++;
-    }
-    
-    public void incrementOutDegree() {
-        outDegree++;
-    }
-    
+
     public int getInDegree() {
-        return inDegree;
+        return this.inArrows.size();
     }
     
     public int getOutDegree() {
-        return outDegree;
+        return this.outArrows.size();
     }
     
     public int getMaxIn() {
@@ -132,6 +126,22 @@ public abstract class Shape{
     
     public int getMaxOut() {
         return maxOut;
+    }
+
+    public void addInArrow(Arrow a) {
+        this.inArrows.add(a);
+    }
+
+    public ArrayList<Arrow> getInArrows() {
+        return this.inArrows;
+    }
+
+    public void addOutArrow(Arrow a) {
+        this.outArrows.add(a);
+    }
+
+    public ArrayList<Arrow> getOutArrows() {
+        return this.outArrows;
     }
 
     /**
@@ -143,5 +153,4 @@ public abstract class Shape{
         int [] ret = {0,0};
         return ret;
     }
-
 }
