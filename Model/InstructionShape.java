@@ -9,6 +9,8 @@ import static java.lang.Math.sqrt;
 public class InstructionShape extends Shape {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
+    private String label;
+
 
     /**
      * 
@@ -32,7 +34,9 @@ public class InstructionShape extends Shape {
     }
 
     public void drawLabel(Graphics g) {
-        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+        g.setColor(Color.black);
+        label = this.getLabel();
+        g.drawString(label, getX() + WIDTH / 2 - label.length() * 3, getY() + HEIGHT / 2);
     }
 
     @Override

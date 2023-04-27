@@ -4,7 +4,7 @@ import java.awt.*;
 import static java.lang.Math.sqrt;
 
 public class BeginShape extends Shape {
-    public static final int RADIUS = 35;
+    public static final int RADIUS = 50;
 
     /**
      * 
@@ -28,7 +28,7 @@ public class BeginShape extends Shape {
     }
     
     public void drawLabel(Graphics g){
-        g.drawString(this.getLabel(), this.getX(), this.getY() + 20);
+        g.drawString(this.getLabel(), this.getX() + 10, this.getY() + 30);
     }
     
     @Override

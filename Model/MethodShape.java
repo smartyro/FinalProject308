@@ -7,6 +7,7 @@ public class MethodShape extends Shape {
 
     private static final int WIDTH = 100;
     private static final int HEIGHT = 50;
+    private String label;
 
     /**
      * 
@@ -18,8 +19,8 @@ public class MethodShape extends Shape {
      */
     public MethodShape(int x, int y, String label) {
         super(x, y, label);
-        maxIn = 1;
-        maxOut = 1;
+        maxIn = 3;
+        maxOut = 3;
     }
 
     @Override
@@ -33,8 +34,8 @@ public class MethodShape extends Shape {
     }
 
     public void drawLabel(Graphics g) {
-        g.drawString(this.getLabel(), this.getX() + 25, this.getY() + 25);
-    }
+        label = this.getLabel();
+        g.drawString(label, getX() + WIDTH / 2 - label.length() * 3, getY() + HEIGHT / 2);    }
 
     @Override
     public boolean contains(int x2, int y2) {

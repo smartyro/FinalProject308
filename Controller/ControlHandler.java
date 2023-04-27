@@ -91,10 +91,11 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 								.setMessage("The second shape clicked has its max amount of arrows it to it already");
 					} else {
 						StatusBar.getInstance().setMessage("Line finished. Drawing it...");
-						repo.addArrow(new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1],
-								s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1]));
-						lineStart.incrementOutDegree();
-						lineStart.incrementInDegree();
+						Arrow a = new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1],
+						s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1], lineStart, s);
+						lineStart.addOutArrow(a);
+						s.addInArrow(a);
+						Repository.getRepository().update();
 					}
 				} else {
 					StatusBar.getInstance().setMessage("Not drawing a line to the same object");
@@ -123,6 +124,18 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 		} else if (draggedShape != null) {
 			draggedShape.setX(e.getX());
 			draggedShape.setY(e.getY());
+			if (draggedShape.getInDegree() > 0) {
+				for (Arrow a : draggedShape.getInArrows()) {
+					a.setX2(a.getOutShape().getArrowPoint(draggedShape)[0]);
+					a.setY2(a.getOutShape().getArrowPoint(draggedShape)[1]);
+				}
+			}
+			if (draggedShape.getOutDegree() > 0) {
+				for (Arrow a : draggedShape.getOutArrows()) {
+					a.setX1(draggedShape.getArrowPoint(a.getInShape())[0]); 
+					a.setY1(draggedShape.getArrowPoint(a.getInShape())[1]);
+				}
+			}
 		} else {
 			Repository.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
 		}

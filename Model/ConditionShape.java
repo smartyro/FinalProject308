@@ -6,6 +6,8 @@ import static java.lang.Math.sqrt;
 
 public class ConditionShape extends Shape {
     private static final int LENGTH = 50;
+    private String label;
+
     
     /**
      * 
@@ -29,7 +31,8 @@ public class ConditionShape extends Shape {
     }
 
     public void drawLabel(Graphics g){
-        g.drawString(this.getLabel(), this.getX()-20, this.getY());
+        label = this.getLabel();
+        g.drawString(label, (getX() + LENGTH / 2 - label.length() * 3) - 25, getY() + 5);
     }
 
     @Override

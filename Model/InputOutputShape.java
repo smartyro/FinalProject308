@@ -12,6 +12,8 @@ public class InputOutputShape extends Shape{
     private int x1, x2, x3, x4;
     private int y1, y2, y3, y4;
     private Polygon p;
+    private String label;
+
  
     /**
      * 
@@ -58,7 +60,9 @@ public class InputOutputShape extends Shape{
 
     @Override
     public void drawLabel(Graphics g){
-        g.drawString(this.getLabel(), this.getX() + 50, this.getY() + 25);
+        label = this.getLabel();
+        g.setColor(Color.black);
+        g.drawString(label, (getX() + length / 2 - label.length() * 3) - 20, getY() + height / 2);
     }
 
     /**
