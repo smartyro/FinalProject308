@@ -11,7 +11,6 @@ public class FinalProject extends JFrame {
 	
 	/**
 	 * Main method for the FinalProject
-	 * @param args
 	 */
 	public static void main(String[] args) {
 		FinalProject f = new FinalProject();
@@ -24,6 +23,8 @@ public class FinalProject extends JFrame {
         Menu menu = new Menu();
 
 		Blackboard board = Blackboard.getInstance();
+		CodePanel codePanel = new CodePanel();
+		HintPanel hintPanel = new HintPanel();
 		board.addMouseListener(ControlHandler.getInstance());
 		board.addMouseMotionListener(ControlHandler.getInstance());
         StatusBar statusBar = StatusBar.getInstance();
@@ -32,11 +33,50 @@ public class FinalProject extends JFrame {
 				
 		statusBar.setMessage("Status bar------------------------------------------------------------------------------------------------------------------------------");
 		
-        BorderLayout layout = new BorderLayout();
-        setLayout(layout);
-        add(menu, BorderLayout.NORTH);
-        add(board, BorderLayout.CENTER);
-		add(statusBar, BorderLayout.SOUTH);
+        GridBagLayout layout = new GridBagLayout();
+		setLayout(layout);
+        GridBagConstraints constraints = new GridBagConstraints();
+        
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridwidth = 2;
+		constraints.gridheight = 1;
+		constraints.weightx = 1;
+		constraints.weighty = 0.05;
+        add(menu, constraints);
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		constraints.weightx = 0.5;
+		constraints.weighty = 0.8;
+		add(codePanel, constraints);
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.gridx = 1;
+		constraints.gridy = 1;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 2;
+		constraints.weightx = 0.5;
+		constraints.weighty = 0.9;
+		add(board, constraints);
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.gridx = 0;
+		constraints.gridy = 2;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		constraints.weightx = 0.5;
+		constraints.weighty = 0.8;
+		add(hintPanel, constraints);
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 0;
+		constraints.gridy = 3;
+		constraints.gridwidth = 2;
+		constraints.gridheight = 1;
+		constraints.weightx = 1;
+		constraints.weighty = 0.05;
+		add(statusBar, constraints);
     }
 }
 
