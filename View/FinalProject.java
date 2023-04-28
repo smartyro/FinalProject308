@@ -21,6 +21,8 @@ public class FinalProject extends JFrame {
 	
     public FinalProject() {
         Menu menu = new Menu();
+	Tutorial tut = new Tutorial();
+	    add(tut);
 
 		Blackboard board = Blackboard.getInstance();
 		CodePanel codePanel = new CodePanel();
