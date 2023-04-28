@@ -25,9 +25,6 @@ public class CodePanel extends JPanel implements ActionListener{
 		String statement = Problem.getProblemStatement();
 		JLabel label = new JLabel(statement);
 		add(label);
-		JButton check = new JButton("Check");
-		check.addActionListener(this);
-		add(check);
 	}
 
 	@Override
