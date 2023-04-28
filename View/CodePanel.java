@@ -10,8 +10,9 @@ import Model.Shape;
 
 
 public class CodePanel extends JPanel {
+	private static final Color myColor = new Color(175, 203, 255);
 	CodePanel() {
-		setBackground(Color.RED);
+		setBackground(myColor);
 		ArrayList<Shape> shapes = new ArrayList<>();
 		shapes.add(new BeginShape(0,0, ""));
 
