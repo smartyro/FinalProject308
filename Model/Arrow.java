@@ -2,7 +2,6 @@ package Model;
 
 import java.awt.*;
 
-import javax.swing.text.html.HTMLEditorKit.InsertHTMLTextAction;
 
 public class Arrow {
     int x1;

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.HashMap;
 import View.Problem;
-import View.Problem;
 
 public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
     private HashMap<String, ArrayList<Shape>> saved;
     private Shape outlineShape;
+    private Problem problem;
 
     private Repository(){
         shapes = new ArrayList<>();
