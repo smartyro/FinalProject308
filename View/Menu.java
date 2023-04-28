@@ -12,7 +12,7 @@ public class Menu extends JMenuBar{
 
         shapeMenu = new shapeMenu("Shape");
 
-        helpMenu = new JMenu("Help");
+        helpMenu = new helpMenu("Help");
 
         add(fileMenu);
         add(shapeMenu);

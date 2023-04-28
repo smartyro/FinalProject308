@@ -10,15 +10,16 @@ import java.util.Observer;
 
 public class Blackboard extends JPanel implements Observer {
 	private static Blackboard instance;
+	private static final Color myColor = new Color(255, 239, 211);
 	
 	private Blackboard() {
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(myColor);
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(myColor);
 		for(Shape s : Repository.getRepository().getShapes()) {
 			s.draw(g);
 			if(s.getLabel() != null) {
