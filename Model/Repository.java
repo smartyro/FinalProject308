@@ -10,7 +10,7 @@ public class Repository extends Observable {
     private ArrayList<Shape> shapes;
     private HashMap<String, ArrayList<Shape>> saved;
     private Shape outlineShape;
-    private Problem problem;
+    private Problem problem = null;
 
     private Repository(){
         shapes = new ArrayList<>();
@@ -116,7 +116,7 @@ public class Repository extends Observable {
     }
 
     public void CheckDiagram() {
-        CheckDiagram.check(shapes, problem.getShapes());
+        CheckDiagram.check(shapes, problem);
     }
 
 

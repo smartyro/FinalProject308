@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import View.Problem;
+
 public class CheckDiagram {
-    public static void check(ArrayList<Shape> diagram, ArrayList<Shape> key) {
-        if (diagram.size() != key.size()) {
-            if (diagram.size() < key.size()) {
+    public static void check(ArrayList<Shape> diagram, Problem key) {
+        if (key == null) {
+            JOptionPane.showMessageDialog(null, "You need to set the problem!");
+            return;
+        }
+        if (diagram.size() != key.getShapes().size()) {
+            if (diagram.size() < key.getShapes().size()) {
                 JOptionPane.showMessageDialog(null, "You don't have enough elements!");
                 return;
             }
@@ -19,7 +25,7 @@ public class CheckDiagram {
         }
         for (Shape diagramShape : diagram) {
             boolean match = false;
-            for (Shape keyShape : key) {
+            for (Shape keyShape : key.getShapes()) {
                 if (diagramShape.equals(keyShape)) {
                     match = true;
                 }
