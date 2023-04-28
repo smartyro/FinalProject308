@@ -16,8 +16,8 @@ public class FinalProject extends JFrame {
 		FinalProject f = new FinalProject();
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		f.setSize(new Dimension(WIDTH, HEIGHT));
-		Tutorial tut = new Tutorial();
-		f.add(tut);
+		//Tutorial tut = new Tutorial();
+		//f.add(tut);
 		f.setVisible(true);
 	}
 	
