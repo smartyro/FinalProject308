@@ -3,6 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.HashMap;
+import View.Problem;
 
 public class Repository extends Observable {
     private static Repository repository;
@@ -10,6 +11,8 @@ public class Repository extends Observable {
     private HashMap<String, ArrayList<Shape>> saved;
     private HashMap<String, ArrayList<Arrow>> savedarrows;
     private Shape outlineShape;
+    private Problem problem;
+    private ArrayList<Shape> teachShapes;
 
     private Repository(){
         shapes = new ArrayList<>();

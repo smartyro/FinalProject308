@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import Model.Shape;
 
 public class Problem {
-    private String probStatement;
+    private static String probStatement;
     private ArrayList<Shape> shapes;
-    public Problem(String pstatement, ArrayList<Shape> shapes){
+
+    public Problem(String pstatement, ArrayList<Shape> shapes2){
         probStatement = pstatement;
-        this.shapes = shapes;
+        this.shapes = shapes2;
     }
 
-    public String getProblemStatement()
+    public static String getProblemStatement()
     {
         return probStatement;
     }
