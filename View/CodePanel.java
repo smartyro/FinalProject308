@@ -21,7 +21,7 @@ public class CodePanel extends JPanel implements ActionListener{
 		ArrayList<Shape> shapes = new ArrayList<>();
 		shapes.add(new BeginShape(0,0, ""));
 
-		Problem p = new Problem("<html>int x = 4;<br/>int y = 5;<br/>if (y > x)<br/>\t{<br/>add_nums(x, y);<br/>} </html>", shapes);
+		Problem p = new Problem("<html>int x = 4;<br/>if (5 > x)<br/>\t{<br/>add_nums(x, 5);<br/>} </html>", shapes);
 		String statement = Problem.getProblemStatement();
 		JLabel label = new JLabel(statement);
 		add(label);
