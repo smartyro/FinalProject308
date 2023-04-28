@@ -9,7 +9,7 @@ public class Problem {
     public Problem(String pstatement, ArrayList<Shape> shapes){
         probStatement = pstatement;
         this.shapes = shapes;
-    }   
+    }
 
     public String getProblemStatement()
     {
@@ -21,7 +21,5 @@ public class Problem {
         return shapes;
     }
     
-
-
     
 }
