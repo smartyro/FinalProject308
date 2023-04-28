@@ -14,7 +14,6 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 	private static ControlHandler instance;
 	private Shape lineStart;
 	private ShapeType shapeToDraw = ShapeType.INSTRUCTION;
-	private boolean dragging = false;
 	private Shape draggedShape = null;
 
 	private ControlHandler() {

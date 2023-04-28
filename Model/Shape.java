@@ -153,4 +153,9 @@ public abstract class Shape{
         int [] ret = {0,0};
         return ret;
     }
+
+    public boolean equals(Shape s) {
+        return (this.getInDegree() == s.getInDegree()) && (this.getOutDegree() == this.getInDegree())
+                && (this.getClass() == s.getClass());
+    }
 }

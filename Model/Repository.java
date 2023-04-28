@@ -3,13 +3,14 @@ package Model;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.HashMap;
+import View.Problem;
 
 public class Repository extends Observable {
     private static Repository repository;
     private ArrayList<Shape> shapes;
     private HashMap<String, ArrayList<Shape>> saved;
-    private HashMap<String, ArrayList<Arrow>> savedarrows;
     private Shape outlineShape;
+    private Problem problem = null;
 
     private Repository(){
         shapes = new ArrayList<>();
@@ -105,7 +106,20 @@ public class Repository extends Observable {
         setChanged();
         notifyObservers();
     }
-    
+
+    public void setProblem(Problem problem) {
+        this.problem = problem;
+    }
+
+    public Problem getProblem() {
+        return this.problem;
+    }
+
+    public void CheckDiagram() {
+        CheckDiagram.check(shapes, problem.getShapes());
+    }
+
+
     /**
      * Tests if any shape contains the given point
      *
