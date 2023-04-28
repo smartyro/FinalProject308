@@ -1,0 +1,71 @@
+
+
+RSM Command Line,-C -OC:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\output.csv -FC:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\rsm_file_list.lst
+License File,C:\Program Files (x86)\MSquared\M2 RSM\rsm.lic
+Configuration File,C:\Program Files (x86)\MSquared\M2 RSM\rsm.cfg
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\Blackboard.java
+LOC,49,eLOC,37,lLOC,17,Comment,5,Lines,63
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\CodePanel.java
+LOC,29,eLOC,26,lLOC,22,Comment,1,Lines,38
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\fileMenu.java
+LOC,33,eLOC,29,lLOC,22,Comment,4,Lines,47
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\FinalProject.java
+LOC,71,eLOC,68,lLOC,65,Comment,5,Lines,85
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\helpMenu.java
+LOC,25,eLOC,21,lLOC,16,Comment,3,Lines,38
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\HintPanel.java
+LOC,9,eLOC,7,lLOC,5,Comment,0,Lines,12
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\Menu.java
+LOC,15,eLOC,13,lLOC,11,Comment,0,Lines,21
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\Problem.java
+LOC,30,eLOC,24,lLOC,20,Comment,0,Lines,37
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\shapeMenu.java
+LOC,57,eLOC,53,lLOC,42,Comment,4,Lines,76
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\StatusBar.java
+LOC,21,eLOC,16,lLOC,11,Comment,8,Lines,34
+File End
+
+File,C:\Users\liamh\OneDrive\Desktop\csc308\FinalProject308\View\Tutorial.java
+LOC,27,eLOC,25,lLOC,22,Comment,0,Lines,31
+File End
+
+Project,11,Files
+LOC,366,eLOC,319,lLOC,253,Comment,30,Lines,482
+Avg LOC,33,eLOC,29,lLOC,23,Comment,2,Lines,43
+
+File Summary
+
+C Source Files *.c,         0
+C/C++ Include Files *.h,         0
+C++ Source Files *.c*,         0
+C++ Include Files *.h*,         0
+C# Source Files *.cs,         0
+Java Source File *.jav*,        11
+Other File Count,         0
+Total File Count,        11
+
+
+          Shareware evaluation licenses process only 20 files.
+          Paid licenses enable processing for an unlimited number of files.
+
+
+Report Banner - Edit rsm.cfg File

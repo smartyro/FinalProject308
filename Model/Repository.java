@@ -10,7 +10,7 @@ public class Repository extends Observable {
     private ArrayList<Shape> shapes;
     private HashMap<String, ArrayList<Shape>> saved;
     private Shape outlineShape;
-    private Problem problem = null;
+    private Problem problem = new Problem("Problem", shapes);
 
     private Repository(){
         shapes = new ArrayList<>();
