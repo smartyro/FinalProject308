@@ -16,14 +16,13 @@ public class FinalProject extends JFrame {
 		FinalProject f = new FinalProject();
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		f.setSize(new Dimension(WIDTH, HEIGHT));
+		Tutorial tut = new Tutorial();
+		f.add(tut);
 		f.setVisible(true);
 	}
 	
     public FinalProject() {
         Menu menu = new Menu();
-	Tutorial tut = new Tutorial();
-	    add(tut);
-
 		Blackboard board = Blackboard.getInstance();
 		CodePanel codePanel = new CodePanel();
 		HintPanel hintPanel = new HintPanel();
