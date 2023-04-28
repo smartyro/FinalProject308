@@ -16,6 +16,7 @@ public class Problem {
 
     public Problem(String pstatement, ArrayList<Shape> shapes2){
         probStatement = pstatement;
+<<<<<<< Updated upstream
         BeginShape bs = new BeginShape(0, 0, "");
         VariableShape v1 = new VariableShape(0, 0, "x = 4");
         ConditionShape cs = new ConditionShape(0, 0, "if (y > x)");
@@ -39,6 +40,14 @@ public class Problem {
         this.shapes.add(ms);
         this.shapes.add(es);
 
+=======
+        this.shapes.add(new BeginShape(0, 0, ""));
+        this.shapes.add(new VariableShape(0, 0, "x = 4"));
+        this.shapes.add(new VariableShape(0, 0, "y = 5"));
+        this.shapes.add(new ConditionShape(0, 0, "if (y > x)"));
+        this.shapes.add(new MethodShape(0, 0, "add_nums(x, y)"));
+        this.shapes.add(new EndShape(0, 0, ""));
+>>>>>>> Stashed changes
     }
 
     public static String getProblemStatement()
