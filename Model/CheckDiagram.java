@@ -35,5 +35,6 @@ public class CheckDiagram {
                 return;
             }
         }
+        JOptionPane.showMessageDialog(null, "Your diagram is correct!");
     }
 }
