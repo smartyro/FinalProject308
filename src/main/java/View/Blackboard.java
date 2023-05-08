@@ -13,12 +13,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Blackboard extends JPanel implements Observer, ActionListener, MouseListener {
-	private static Blackboard instance;
 	JButton check = new JButton("Check");
 	private static final Color myColor = new Color(255, 239, 211);
 	private static final Color valColor = new Color(4, 231, 98);
 	
-	private Blackboard() {
+	public Blackboard() {
 		setBackground(myColor);
 		check.setBackground(valColor);
 		check.setOpaque(true);
@@ -52,16 +51,6 @@ public class Blackboard extends JPanel implements Observer, ActionListener, Mous
 		}
 	}
 	
-	/**
-	 * 
-	 * @return new instance of a Blackboard
-	 */
-	public static Blackboard getInstance() {
-		if(instance == null) {
-			instance = new Blackboard();
-		}
-		return instance;
-	}
 	
 	@Override
 	public void update(Observable o, Object arg) {

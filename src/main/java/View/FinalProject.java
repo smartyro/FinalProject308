@@ -25,17 +25,18 @@ public class FinalProject extends JFrame {
 	}
 	
     public FinalProject() {
-        Menu menu = new Menu();
-		Blackboard board = Blackboard.getInstance();
+		Blackboard board = new Blackboard();
 		CodePanel codePanel = new CodePanel();
 		HintPanel hintPanel = new HintPanel();
-		board.addMouseListener(ControlHandler.getInstance());
-		board.addMouseMotionListener(ControlHandler.getInstance());
-        StatusBar statusBar = StatusBar.getInstance();
+		StatusBar statusBar = new StatusBar();
+		statusBar.setMessage("Status bar------------------------------------------------------------------------------------------------------------------------------");
+		ControlHandler controlHandler = new ControlHandler(statusBar);
+		Menu menu = new Menu(controlHandler);
+		board.addMouseListener(controlHandler);
+		board.addMouseMotionListener(controlHandler);
 
 		Repository.getRepository().addObserver(board);
 				
-		statusBar.setMessage("Status bar------------------------------------------------------------------------------------------------------------------------------");
 		
         GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);

@@ -15,12 +15,15 @@ public class shapeMenu extends JMenu implements ActionListener {
     JMenuItem ioItem;
     JMenuItem varItem;
     JMenuItem condItem;
+    private ControlHandler controlHandler;
 
     /**
      * Creates new shapeMenu for the JMenu
      * @param name
      */
-    public shapeMenu(String name) {
+    public shapeMenu(String name, ControlHandler controlHandler) {
+        this.controlHandler = controlHandler;
+
         setText(name);
 
         beginItem = new JMenuItem("Begin");
@@ -57,19 +60,19 @@ public class shapeMenu extends JMenu implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (beginItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.BEGIN);
+            controlHandler.setShape(ShapeType.BEGIN);
         } else if (endItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.END);
+            controlHandler.setShape(ShapeType.END);
         } else if (callItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.CALL);
+            controlHandler.setShape(ShapeType.CALL);
         } else if (instructItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.INSTRUCTION);
+            controlHandler.setShape(ShapeType.INSTRUCTION);
         } else if (ioItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.IO);
+            controlHandler.setShape(ShapeType.IO);
         } else if (varItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.VARIABLE);
+            controlHandler.setShape(ShapeType.VARIABLE);
         } else if (condItem.equals(source)) {
-            ControlHandler.getInstance().setShape(ShapeType.CONDITION);
+            controlHandler.setShape(ShapeType.CONDITION);
         }
     }
     

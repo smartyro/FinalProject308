@@ -11,23 +11,13 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class ControlHandler implements ActionListener, MouseListener, MouseMotionListener {
-	private static ControlHandler instance;
 	private Shape lineStart;
 	private ShapeType shapeToDraw = ShapeType.INSTRUCTION;
 	private Shape draggedShape = null;
+	private StatusBar statusBar;
 
-	private ControlHandler() {
-	}
-
-	/**
-	 * 
-	 * @return new instance if it hasn't been instantiated yet  
-	 */
-	public static ControlHandler getInstance() {
-		if (instance == null) {
-			instance = new ControlHandler();
-		}
-		return instance;
+	public ControlHandler(StatusBar statusBar) {
+		this.statusBar = statusBar;
 	}
 
 	/**
@@ -63,7 +53,7 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 		}
 		if (s == null) {
 			/* If we are here, the point is not within a shape, so draw a new shape */
-			StatusBar.getInstance().setMessage("Drawing a shape...");
+			statusBar.setMessage("Drawing a shape...");
 			if (shapeToDraw == ShapeType.BEGIN) {
 				repo.addShape(shapeToDraw, e.getX(), e.getY(), "Begin");
 			} else if (shapeToDraw == ShapeType.END) {
@@ -83,13 +73,13 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 				/* Only draw a line for two different shapes */
 				if (!s.equals(lineStart)) {
 					if (lineStart.getOutDegree() + 1 > lineStart.getMaxOut()) {
-						StatusBar.getInstance()
+						statusBar
 								.setMessage("The first shape clicked has its max amount of arrows out of it already");
 					} else if (s.getInDegree() + 1 > s.getMaxIn()) {
-						StatusBar.getInstance()
+						statusBar
 								.setMessage("The second shape clicked has its max amount of arrows it to it already");
 					} else {
-						StatusBar.getInstance().setMessage("Line finished. Drawing it...");
+						statusBar.setMessage("Line finished. Drawing it...");
 						Arrow a = new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1],
 						s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1], lineStart, s);
 						lineStart.addOutArrow(a);
@@ -97,12 +87,12 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 						Repository.getRepository().update();
 					}
 				} else {
-					StatusBar.getInstance().setMessage("Not drawing a line to the same object");
+					statusBar.setMessage("Not drawing a line to the same object");
 				}
 				lineStart = null;
 			} else {
 				/* Start the line */
-				StatusBar.getInstance().setMessage("Line started");
+				statusBar.setMessage("Line started");
 				lineStart = s;
 			}
 		}
@@ -138,7 +128,7 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 		} else {
 			Repository.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
 		}
-		StatusBar.getInstance().setMessage("dragging mouse");
+		statusBar.setMessage("dragging mouse");
 		Repository.getRepository().update();
 	}
 
