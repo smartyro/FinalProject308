@@ -4,6 +4,8 @@ import Model.Repository;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FinalProject extends JFrame {
 	public static final int WIDTH = 600;
@@ -36,7 +38,14 @@ public class FinalProject extends JFrame {
 		board.addMouseMotionListener(controlHandler);
 
 		Repository.getRepository().addObserver(board);
-				
+		
+		JButton undoButton = new JButton("Undo");
+		undoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Repository.getRepository().Undo();
+			}
+		});
+		add(undoButton);
 		
         GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);

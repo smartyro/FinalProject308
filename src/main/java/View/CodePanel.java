@@ -7,6 +7,7 @@ import Model.Repository;
 import java.awt.*;
 import View.Problem;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import Model.BeginShape;
 import Model.Shape;
@@ -18,7 +19,7 @@ public class CodePanel extends JPanel implements ActionListener{
 	private static final Color myColor = new Color(175, 203, 255);
 	CodePanel() {
 		setBackground(myColor);
-		ArrayList<Shape> shapes = new ArrayList<>();
+		Stack<Shape> shapes = new Stack<Shape>();
 		shapes.add(new BeginShape(0,0, ""));
 
 		Problem p = new Problem("<html>int x = 4;<br/>if (5 > x)<br/>\t{<br/>add_nums(x, 5);<br/>} </html>", shapes);

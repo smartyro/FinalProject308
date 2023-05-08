@@ -1,5 +1,6 @@
 package View;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import Model.Arrow;
 import Model.BeginShape;
@@ -12,9 +13,9 @@ import Model.VariableShape;
 
 public class Problem {
     private static String probStatement;
-    private ArrayList<Shape> shapes = new ArrayList<Shape>();
+    private Stack<Shape> shapes = new Stack<Shape>();
 
-    public Problem(String pstatement, ArrayList<Shape> shapes2){
+    public Problem(String pstatement, Stack<Shape> shapes2){
         probStatement = pstatement;
         BeginShape bs = new BeginShape(0, 0, "");
         VariableShape v1 = new VariableShape(0, 0, "x = 4");
@@ -52,7 +53,7 @@ public class Problem {
         return probStatement;
     }
 
-    public ArrayList<Shape> getShapes()
+    public Stack<Shape> getShapes()
     {
         return shapes;
     }

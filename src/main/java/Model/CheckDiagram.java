@@ -1,6 +1,6 @@
 package Model;
 
-import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import View.Problem;
 
 public class CheckDiagram {
-    public static void check(ArrayList<Shape> diagram, Problem key) {
+    public static void check(Stack<Shape> diagram, Problem key) {
         if (key == null) {
             JOptionPane.showMessageDialog(null, "You need to set the problem!");
             return;

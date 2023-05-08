@@ -1,11 +1,12 @@
 package Model;
 
-import java.util.ArrayList;
+import java.util.Stack;
+
 import View.Problem;
 
 
 public interface RepositoryInterface {
-    ArrayList<Shape> getShapes();
+    Stack<Shape> getShapes();
     void addShape(Shape shape);
     void addShape(ShapeType type, int x, int y, String label);
     void clear();

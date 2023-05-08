@@ -2,18 +2,19 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Stack;
 import java.util.HashMap;
 import View.Problem;
 
 public class Repository extends Observable implements RepositoryInterface {
-    private static Repository repository;
-    private ArrayList<Shape> shapes;
-    private HashMap<String, ArrayList<Shape>> saved;
+    private static Repository repository ;
+    private Stack<Shape> shapes;
+    private HashMap<String, Stack<Shape>> saved;
     private Shape outlineShape;
     private Problem problem = new Problem("Problem", shapes);
 
     private Repository(){
-        shapes = new ArrayList<>();
+        shapes = new Stack<>();
         saved = new HashMap<>();
     }
 
@@ -32,7 +33,7 @@ public class Repository extends Observable implements RepositoryInterface {
      * 
      * @return ArrayList of type Shapes
      */
-    public ArrayList<Shape> getShapes(){
+    public Stack<Shape> getShapes(){
         return shapes;
     }
 
@@ -81,7 +82,7 @@ public class Repository extends Observable implements RepositoryInterface {
     }
 
     public void clear(){
-        shapes = new ArrayList<>();
+        shapes = new Stack<>();
         setChanged();
         notifyObservers();
     }
@@ -92,7 +93,7 @@ public class Repository extends Observable implements RepositoryInterface {
      */
     public void saveShapes(String key){
         this.saved.put(key, shapes);
-        this.shapes = new ArrayList<Shape>();
+        this.shapes = new Stack<Shape>();
         setChanged();
         notifyObservers();
     }
@@ -183,5 +184,12 @@ public class Repository extends Observable implements RepositoryInterface {
     public void update() {
         setChanged();
         notifyObservers();
+    }
+
+    public void Undo() {
+        if (!this.shapes.empty()) {
+            this.shapes.pop();
+            update();
+        }
     }
 }
