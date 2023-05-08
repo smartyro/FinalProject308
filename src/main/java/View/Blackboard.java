@@ -66,7 +66,7 @@ public class Blackboard extends JPanel implements Observer, ActionListener, Mous
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		Repository.getRepository().CheckDiagram();
+		Repository.getRepository().checkDiagram();
 	}
 
 	@Override

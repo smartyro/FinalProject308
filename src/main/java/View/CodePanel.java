@@ -30,6 +30,6 @@ public class CodePanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		Repository.getRepository().CheckDiagram();
+		Repository.getRepository().checkDiagram();
 	}
 }

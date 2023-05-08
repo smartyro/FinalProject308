@@ -5,7 +5,7 @@ import java.util.Observable;
 import java.util.HashMap;
 import View.Problem;
 
-public class Repository extends Observable {
+public class Repository extends Observable implements RepositoryInterface {
     private static Repository repository;
     private ArrayList<Shape> shapes;
     private HashMap<String, ArrayList<Shape>> saved;
@@ -115,7 +115,7 @@ public class Repository extends Observable {
         return this.problem;
     }
 
-    public void CheckDiagram() {
+    public void checkDiagram() {
         CheckDiagram.check(shapes, problem);
     }
 
