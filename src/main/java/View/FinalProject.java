@@ -1,6 +1,8 @@
 package View;
 import Controller.ControlHandler;
 import Model.Repository;
+import Model.problemContainer;
+
 import javax.swing.border.TitledBorder;
 
 import javax.swing.*;
@@ -25,6 +27,7 @@ public class FinalProject extends JFrame {
 		//f.add(tut);
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		f.setVisible(true);
+		problemContainer.createProblems();
 	}
 	
     public FinalProject() {
