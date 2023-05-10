@@ -19,7 +19,7 @@ public class CodePanel extends JPanel implements ActionListener{
 	private static final Color myColor = new Color(175, 203, 255);
 	CodePanel() {
 		setBackground(myColor);
-		Stack<Shape> shapes = new Stack<Shape>();
+		Stack<Shape> shapes = new Stack<>();
 		shapes.add(new BeginShape(0,0, ""));
 
 		Problem p = new Problem("<html>int x = 4;<br/>if (5 > x)<br/>\t{<br/>add_nums(x, 5);<br/>} </html>", shapes);

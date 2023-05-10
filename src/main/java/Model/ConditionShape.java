@@ -71,5 +71,14 @@ public class ConditionShape extends Shape {
         }
         return ret;
     }
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.CONDITION;
+	}
     
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }

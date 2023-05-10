@@ -9,32 +9,33 @@ import View.Problem;
 
 public class CheckDiagram {
     public static void check(Stack<Shape> diagram, Problem key) {
+    
         if (key == null) {
             JOptionPane.showMessageDialog(null, "You need to set the problem!");
             return;
         }
-        if (diagram.size() != key.getShapes().size()) {
-            if (diagram.size() < key.getShapes().size()) {
-                JOptionPane.showMessageDialog(null, "You don't have enough elements!");
-                return;
-            }
-            else {
+        
+        Flowchart correct = new Flowchart(key.getShapes());
+        Flowchart toCheck = new Flowchart(diagram);
+        
+        Flowchart.DiffResult diffResult = correct.diff(toCheck);
+        
+        switch(diffResult.summary) {
+            case NONE:
+                JOptionPane.showMessageDialog(null, "Your diagram is correct!");
+                break;
+            case TOO_MANY_ELEMENTS:
                 JOptionPane.showMessageDialog(null, "You have too many elements!");
-                return;
-            }
+                break;
+            case NOT_ENOUGH_ELEMENTS:
+                JOptionPane.showMessageDialog(null, "You don't have enough elements!");
+                break;
+            case TOO_MANY_SPECIFIC:
+                JOptionPane.showMessageDialog(null, "You don't have enough " + diffResult.type + " elements!");
+                break;
+            case NOT_ENOUGH_SPECIFIC:
+                JOptionPane.showMessageDialog(null, "You have too many " + diffResult.type + " elements!");
+                break;
         }
-        for (Shape diagramShape : diagram) {
-            boolean match = false;
-            for (Shape keyShape : key.getShapes()) {
-                if (diagramShape.equals(keyShape)) {
-                    match = true;
-                }
-            }
-            if (!match) {
-                JOptionPane.showMessageDialog(null, "You have an incorrect element!");
-                return;
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Your diagram is correct!");
     }
 }

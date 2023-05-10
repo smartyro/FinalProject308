@@ -71,4 +71,14 @@ public class VariableShape extends Shape {
         }
         return ret;
     }
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.VARIABLE;
+	}
+    
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }

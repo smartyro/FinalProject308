@@ -110,4 +110,14 @@ public class InputOutputShape extends Shape{
         }
         return ret;
     }
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.IO;
+	}
+    
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }

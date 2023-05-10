@@ -73,5 +73,14 @@ public class InstructionShape extends Shape {
         }
         return ret;
     }
-
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.INSTRUCTION;
+	}
+    
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }

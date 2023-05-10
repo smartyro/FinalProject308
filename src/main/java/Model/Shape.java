@@ -3,6 +3,7 @@ package Model;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -86,7 +87,11 @@ public abstract class Shape{
         
         Shape other = (Shape) o;
         
-        return x == other.x && y == other.y && label.equals(other.label);
+        return x == other.x &&
+                y == other.y &&
+                label.equals(other.label) &&
+                getInDegree() == other.getInDegree() &&
+                getOutDegree() == other.getOutDegree();
     }
 
     /**
@@ -153,9 +158,6 @@ public abstract class Shape{
         int [] ret = {0,0};
         return ret;
     }
-
-    public boolean equals(Shape s) {
-        return (this.getInDegree() == s.getInDegree()) && (this.getOutDegree() == this.getInDegree())
-                && (this.getClass() == s.getClass());
-    }
+    
+    public abstract ShapeType getShapeType();
 }

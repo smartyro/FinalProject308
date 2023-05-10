@@ -73,4 +73,14 @@ public class BeginShape extends Shape {
         }
         return ret;
     }
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.BEGIN;
+	}
+    
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }
