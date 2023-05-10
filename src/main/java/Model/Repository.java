@@ -1,9 +1,7 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Stack;
-import java.util.HashMap;
+import java.util.*;
+
 import View.Problem;
 
 public class Repository extends Observable implements RepositoryInterface {
@@ -12,10 +10,12 @@ public class Repository extends Observable implements RepositoryInterface {
     private HashMap<String, Stack<Shape>> saved;
     private Shape outlineShape;
     private Problem problem = new Problem("Problem", shapes);
+    private List<Problem> problems;
 
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
+        problems = new ArrayList<Problem>();
     }
 
     /**
@@ -119,6 +119,8 @@ public class Repository extends Observable implements RepositoryInterface {
     public void checkDiagram() {
         CheckDiagram.check(shapes, problem);
     }
+
+    public void addProblem(Problem problem) {this.problems.add(problem);}
 
 
     /**

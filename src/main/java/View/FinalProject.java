@@ -1,6 +1,9 @@
 package View;
 import Controller.ControlHandler;
 import Model.Repository;
+import Model.problemContainer;
+
+import javax.swing.border.TitledBorder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +27,7 @@ public class FinalProject extends JFrame {
 		//f.add(tut);
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		f.setVisible(true);
+		problemContainer.createProblems();
 	}
 	
     public FinalProject() {
@@ -36,6 +40,15 @@ public class FinalProject extends JFrame {
 		Menu menu = new Menu(controlHandler);
 		board.addMouseListener(controlHandler);
 		board.addMouseMotionListener(controlHandler);
+	    
+	    	TitledBorder boardTitle = BorderFactory.createTitledBorder("Control Flow Diagram");
+		TitledBorder codeTitle = BorderFactory.createTitledBorder("Problem Code");
+		TitledBorder hintTitle = BorderFactory.createTitledBorder("Chat Help Bot");
+
+
+		board.setBorder(boardTitle);
+		codePanel.setBorder(codeTitle);
+		hintPanel.setBorder(hintTitle);
 
 		Repository.getRepository().addObserver(board);
 		
