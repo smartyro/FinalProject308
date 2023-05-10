@@ -25,6 +25,9 @@ public class CodePanel extends JPanel implements ActionListener{
 		Problem p = new Problem("<html>int x = 4;<br/>if (5 > x)<br/>\t{<br/>add_nums(x, 5);<br/>} </html>", shapes);
 		String statement = Problem.getProblemStatement();
 		JLabel label = new JLabel(statement);
+		Font font = new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 30);
+        	label.setFont(font);
+
 		add(label);
 	}
 
