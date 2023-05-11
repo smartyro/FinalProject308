@@ -33,7 +33,7 @@ public class Repository extends Observable implements RepositoryInterface {
      * Changes to next problem in the list.
      */
     public void nextProblem(){
-        if (problemNum < 1)
+        if (problemNum < 4)
         {
             this.problemNum++;
         }
