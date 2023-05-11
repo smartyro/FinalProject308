@@ -33,7 +33,10 @@ public class Repository extends Observable implements RepositoryInterface {
      * Changes to next problem in the list.
      */
     public void nextProblem(){
-        this.problemNum++;
+        if (problemNum < 1)
+        {
+            this.problemNum++;
+        }
     }
 
     /**
@@ -118,11 +121,21 @@ public class Repository extends Observable implements RepositoryInterface {
 
 
     public Problem getProblem() {
-        return this.problems.get(problemNum);
+        try{
+            return this.problems.get(problemNum);
+        }
+        catch(IndexOutOfBoundsException e){
+            return this.problems.get(problemNum--);
+        }
     }
 
     public void checkDiagram() {
-        CheckDiagram.check(shapes, problems.get(problemNum));
+        try{
+            CheckDiagram.check(shapes, problems.get(problemNum));
+        }
+        catch(IndexOutOfBoundsException e){
+
+        }
     }
 
     public void addProblem(Problem problem) {this.problems.add(problem);}

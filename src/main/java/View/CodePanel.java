@@ -40,9 +40,5 @@ public class CodePanel extends JPanel implements ActionListener{
 
 			label.setText(Repository.getRepository().getProblem().getProblemStatement());
 		}
-		else if (act.equals("Check"))
-		{
-			Repository.getRepository().checkDiagram();
-		}
 	}
 }
