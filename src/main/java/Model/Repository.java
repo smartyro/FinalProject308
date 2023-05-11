@@ -9,13 +9,14 @@ public class Repository extends Observable implements RepositoryInterface {
     private Stack<Shape> shapes;
     private HashMap<String, Stack<Shape>> saved;
     private Shape outlineShape;
-    private Problem problem = new Problem("Problem", shapes);
+    private int problemNum;
     private List<Problem> problems;
 
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
         problems = new ArrayList<Problem>();
+        problemNum = 0;
     }
 
     /**
@@ -27,6 +28,12 @@ public class Repository extends Observable implements RepositoryInterface {
             repository = new Repository();
         }
         return repository;
+    }
+    /**
+     * Changes to next problem in the list.
+     */
+    public void nextProblem(){
+        this.problemNum++;
     }
 
     /**
@@ -108,16 +115,14 @@ public class Repository extends Observable implements RepositoryInterface {
         notifyObservers();
     }
 
-    public void setProblem(Problem problem) {
-        this.problem = problem;
-    }
+
 
     public Problem getProblem() {
-        return this.problem;
+        return this.problems.get(problemNum);
     }
 
     public void checkDiagram() {
-        CheckDiagram.check(shapes, problem);
+        CheckDiagram.check(shapes, problems.get(problemNum));
     }
 
     public void addProblem(Problem problem) {this.problems.add(problem);}

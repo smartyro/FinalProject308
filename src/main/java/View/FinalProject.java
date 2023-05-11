@@ -20,6 +20,7 @@ public class FinalProject extends JFrame {
 	 * Main method for the FinalProject
 	 */
 	public static void main(String[] args) {
+		problemContainer.createProblems();
 		FinalProject f = new FinalProject();
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		f.setSize(new Dimension(WIDTH, HEIGHT));
@@ -27,7 +28,6 @@ public class FinalProject extends JFrame {
 		//f.add(tut);
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		f.setVisible(true);
-		problemContainer.createProblems();
 	}
 	
     public FinalProject() {
