@@ -44,7 +44,14 @@ public class FinalProject extends JFrame {
 	    	TitledBorder boardTitle = BorderFactory.createTitledBorder("Control Flow Diagram");
 		TitledBorder codeTitle = BorderFactory.createTitledBorder("Problem Code");
 		TitledBorder hintTitle = BorderFactory.createTitledBorder("Chat Help Bot");
-
+	    
+	    	boardTitle.setTitleFont(new Font("Inter", Font.PLAIN, 20));
+		boardTitle.setTitlePosition(TitledBorder.CENTER);
+		boardTitle.setTitleColor(Color.WHITE);
+		codeTitle.setTitleFont(new Font("Inter", Font.PLAIN, 20));
+		codeTitle.setTitlePosition(TitledBorder.CENTER);
+		hintTitle.setTitleFont(new Font("Inter", Font.PLAIN, 20));
+		hintTitle.setTitlePosition(TitledBorder.CENTER);
 
 		board.setBorder(boardTitle);
 		codePanel.setBorder(codeTitle);
