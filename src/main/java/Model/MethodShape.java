@@ -71,4 +71,14 @@ public class MethodShape extends Shape {
         }
         return ret;
     }
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.CALL;
+	}
+    
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }

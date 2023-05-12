@@ -12,7 +12,6 @@ public interface RepositoryInterface {
     void clear();
     void saveShapes(String key);
     void loadShapes(String key);
-    void setProblem(Problem problem);
     Problem getProblem();
     void checkDiagram();
     Shape anyContains(int x, int y);

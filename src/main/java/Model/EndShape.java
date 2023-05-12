@@ -75,5 +75,14 @@ public class EndShape extends Shape {
         }
         return ret;
     }
-
+    
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.END;
+    }
+    
+    @Override
+    public String toString() {
+        return getShapeType().toString();
+    }
 }
