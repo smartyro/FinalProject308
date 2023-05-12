@@ -14,13 +14,15 @@ import java.util.Observer;
 
 public class Blackboard extends JPanel implements Observer, ActionListener, MouseListener {
 	JButton check = new JButton("Check");
-	private static final Color myColor = new Color(255, 239, 211);
-	private static final Color valColor = new Color(4, 231, 98);
+	private static final Color myColor = new Color(70, 74, 83);
+	private static final Color valColor = new Color(51, 156, 53);
 	
 	public Blackboard() {
 		setBackground(myColor);
 		check.setBackground(valColor);
 		check.setOpaque(true);
+		check.setForeground(Color.WHITE);
+		check.setFont(new Font("Inter", Font.BOLD, 20));
 		check.setBorderPainted(false);
 		check.addActionListener(this);
 		check.addMouseListener(this);
