@@ -23,7 +23,7 @@ public class CodePanel extends JPanel implements ActionListener{
 		setBackground(myColor);
 		currentProb = Repository.getRepository().getProblem();
 		label = new JLabel(currentProb.getProblemStatement());
-		Font font = new Font("Cascadia Code", Font.LAYOUT_LEFT_TO_RIGHT, 30);
+		Font font = new Font("Inter", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 		label.setFont(font);
 		add(label);
 		JButton next = new JButton("Next");
