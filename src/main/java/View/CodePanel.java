@@ -21,6 +21,9 @@ public class CodePanel extends JPanel implements ActionListener{
 	JLabel label;
 	CodePanel() {
 		setBackground(myColor);
+		JButton prev = new JButton("Prev");
+		prev.addActionListener(this);
+		add(prev);
 		currentProb = Repository.getRepository().getProblem();
 		label = new JLabel(currentProb.getProblemStatement());
 		Font font = new Font("Inter", Font.LAYOUT_LEFT_TO_RIGHT, 20);
@@ -37,6 +40,11 @@ public class CodePanel extends JPanel implements ActionListener{
 		if (act.equals("Next"))
 		{
 			Repository.getRepository().nextProblem();
+
+			label.setText(Repository.getRepository().getProblem().getProblemStatement());
+		}
+		else if (act.equals("Prev")) {
+			Repository.getRepository().previousProblem();
 
 			label.setText(Repository.getRepository().getProblem().getProblemStatement());
 		}

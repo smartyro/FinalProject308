@@ -39,6 +39,12 @@ public class Repository extends Observable implements RepositoryInterface {
         }
     }
 
+    public void previousProblem() {
+        if (problemNum > 0) {
+            this.problemNum--;
+        }
+    }
+
     /**
      * 
      * @return ArrayList of type Shapes
