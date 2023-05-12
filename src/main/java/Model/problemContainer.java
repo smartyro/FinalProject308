@@ -22,23 +22,32 @@ public class problemContainer {
         Arrow a3P1 = new Arrow(0,0,0,0, e1, i1);
         Arrow a4P1 = new Arrow(0,0,0,0, e1, i2);
         Arrow a5P1 = new Arrow(0,0,0,0, c1, b1);
-        b1.addOutArrow(a5P1);
-        c1.addOutArrow(a1P1);
-        c1.addOutArrow(a2P1);
-        i1.addInArrow(a1P1);
-        i2.addInArrow(a2P1);
-        e1.addInArrow(a3P1);
-        e1.addInArrow(a4P1);
-        s1.add(c1);
-        s1.add(b1);
-        s1.add(i1);
-        s1.add(i2);
-        s1.add(e1);
-        Problem p1 = new Problem("<html>def uselessFunc(x):<br/>if x < 0:<br/>  " +
-                "return 1<br/>else:<br/> return 0</html>", s1);
+        b1.addOutArrow(a5P1); c1.addOutArrow(a1P1); c1.addOutArrow(a2P1);
+        i1.addInArrow(a1P1); i2.addInArrow(a2P1); e1.addInArrow(a3P1); e1.addInArrow(a4P1);
+        s1.add(c1); s1.add(b1); s1.add(i1); s1.add(i2); s1.add(e1);
+        Problem p1 = new Problem("<html>def uselessFunc(x):<br/>&emsp if x &lt 0:<br/>" +
+                "&emsp &emsp return 1<br/>&emsp else:<br/>&emsp &emsp return 0</html>", s1);
         Repository.getRepository().addProblem(p1);
 
         // Problem 2
+        Stack<Shape> s7 = new Stack<Shape>();
+        BeginShape bs7 = new BeginShape(0, 0, "");
+        VariableShape v7 = new VariableShape(0,0, "int c");
+        MethodShape ms7 = new MethodShape(0, 0, "Math.sqrt();");
+        InputOutputShape io7 = new InputOutputShape(0,0, "return c");
+        EndShape e7 = new EndShape(0,0, "");
+        Arrow a71 = new Arrow(0, 0, 0, 0, v7, bs7);
+        Arrow a72 = new Arrow(0, 0, 0, 0, ms7, v7);
+        Arrow a73 = new Arrow(0, 0, 0, 0, io7, ms7);
+        Arrow a74 = new Arrow(0, 0, 0, 0, e7, io7);
+        bs7.addOutArrow(a71); v7.addInArrow(a71); v7.addOutArrow(a72); ms7.addInArrow(a72);
+        ms7.addOutArrow(a73); io7.addInArrow(a73); io7.addOutArrow(a74); e7.addInArrow(a74);
+        s7.add(bs7); s7.add(v7); s7.add(ms7); s7.add(io7); s7.add(e7);
+        Problem p7 = new Problem("<html>def triangleSolve(a, b):<br/>&emsp c = "+
+                "Math.sqrt(a * a + b * b)<br/>&emsp return c </html>", s7);
+        Repository.getRepository().addProblem(p7);
+
+        // Problem 3
         BeginShape b2 = new BeginShape(0, 0, "");
         EndShape e2 = new EndShape(0,0, "");
         ConditionShape c2 = new ConditionShape(0,0, "if A[i] == x:");
@@ -55,33 +64,16 @@ public class problemContainer {
         Arrow a6P2 = new Arrow(0,0,0,0, i4, c3);
         Arrow a7P2 = new Arrow(0,0,0,0,e2,i4);
         Arrow a8P2 = new Arrow(0,0,0,0,e2, i3);
-        c2.addInArrow(a1P2);
-        b2.addOutArrow(a1P2);
-        i3.addInArrow(a2P2);
-        c2.addOutArrow(a2P2);
-        c3.addInArrow(a3P2);
-        c2.addOutArrow(a3P2);
-        m1.addInArrow(a4P2);
-        c3.addOutArrow(a4P2);
-        c2.addInArrow(a5P2);
-        m1.addOutArrow(a5P2);
-        i4.addInArrow(a6P2);
-        c3.addOutArrow(a6P2);
-        e2.addInArrow(a7P2);
-        i4.addOutArrow(a7P2);
-        e2.addInArrow(a8P2);
-        i3.addOutArrow(a8P2);
-        s2.add(b2);
-        s2.add(e2);
-        s2.add(c2);
-        s2.add(i3);
-        s2.add(m1);
-        s2.add(i4);
-        Problem p2 = new Problem("<html>def simpleSearch(x, A):<br/>for i in range(len(A)):<br/>" +
-                "if A[i] == x:<br/> return True <br/> return False", s2);
+        c2.addInArrow(a1P2); b2.addOutArrow(a1P2); i3.addInArrow(a2P2); c2.addOutArrow(a2P2);
+        c3.addInArrow(a3P2); c2.addOutArrow(a3P2); m1.addInArrow(a4P2); c3.addOutArrow(a4P2); c2.addInArrow(a5P2);
+        m1.addOutArrow(a5P2); i4.addInArrow(a6P2); c3.addOutArrow(a6P2); e2.addInArrow(a7P2);
+        i4.addOutArrow(a7P2); e2.addInArrow(a8P2); i3.addOutArrow(a8P2);
+        s2.add(b2); s2.add(e2); s2.add(c2); s2.add(i3); s2.add(m1); s2.add(i4);
+        Problem p2 = new Problem("<html>def simpleSearch(x, A):<br/>&emsp for i in range(len(A)):<br/>" +
+                "&emsp &emsp if A[i] == x:<br/> &emsp &emsp &emsp return True <br/> &emsp return False", s2);
         Repository.getRepository().addProblem(p2);
 
-        // Problem 6
+        // Problem 4
         Stack<Shape> s6 = new Stack<Shape>();
         BeginShape bs6 = new BeginShape(0, 0, "");
         VariableShape v6 = new VariableShape(0, 0, "x = 4");
@@ -92,51 +84,16 @@ public class problemContainer {
         Arrow a2 = new Arrow(0, 0, 0, 0, v6, cs6);
         Arrow a3 = new Arrow(0, 0, 0, 0, cs6, ms6);
         Arrow a4 = new Arrow(0, 0, 0, 0, ms6, es6);
-        bs6.addOutArrow(a1);
-        v6.addInArrow(a1);
-        v6.addOutArrow(a2);
-        cs6.addInArrow(a2);
-        cs6.addOutArrow(a3);
-        ms6.addInArrow(a3);
-        ms6.addOutArrow(a4);
-        es6.addInArrow(a4);
-        s6.add(bs6);
-        s6.add(v6);
-        s6.add(cs6);
-        s6.add(ms6);
-        s6.add(es6);
-        Problem p6 = new Problem("<html>public void callAddNums(x):<br/>int x = 4;<br/>if (5 > x)<br/>\t{<br/>addNums(x, 5);<br/>} </html>", s6);
+        bs6.addOutArrow(a1); v6.addInArrow(a1); v6.addOutArrow(a2); cs6.addInArrow(a2);
+        cs6.addOutArrow(a3); ms6.addInArrow(a3); ms6.addOutArrow(a4); es6.addInArrow(a4);
+        s6.add(bs6); s6.add(v6); s6.add(cs6); s6.add(ms6); s6.add(es6);
+        Problem p6 = new Problem("<html>public void callAddNums(x):<br/>&emsp int x = 4;<br/>" +
+                "&emsp if (5 > x){<br/>\t&emsp &emsp addNums(x, 5);<br/>&emsp } </html>", s6);
         Repository.getRepository().addProblem(p6);
 
-        // Problem 7
-        Stack<Shape> s7 = new Stack<Shape>();
-        BeginShape bs7 = new BeginShape(0, 0, "");
-        VariableShape v7 = new VariableShape(0,0, "int c");
-        MethodShape ms7 = new MethodShape(0, 0, "Math.sqrt();");
-        InputOutputShape io7 = new InputOutputShape(0,0, "return c");
-        EndShape e7 = new EndShape(0,0, "");
-        Arrow a71 = new Arrow(0, 0, 0, 0, bs6, v6);
-        Arrow a72 = new Arrow(0, 0, 0, 0, v6, cs6);
-        Arrow a73 = new Arrow(0, 0, 0, 0, cs6, ms6);
-        Arrow a74 = new Arrow(0, 0, 0, 0, ms6, es6);
-        bs7.addOutArrow(a71);
-        v7.addInArrow(a71);
-        v7.addOutArrow(a72);
-        ms7.addInArrow(a72);
-        ms7.addOutArrow(a73);
-        io7.addInArrow(a73);
-        io7.addOutArrow(a74);
-        e7.addInArrow(a74);
-        s7.add(bs7);
-        s7.add(v7);
-        s7.add(ms7);
-        s7.add(io7);
-        s7.add(e7);
-        Problem p7 = new Problem("<html>def triangleSolve(a, b):<br/>c = "+
-                "Math.sqrt(a * a + b * b)<br/>return c </html>", s7);
-        Repository.getRepository().addProblem(p7);
 
-        //Problem 8
+
+        //Problem 5
         Stack<Shape> s8 = new Stack<Shape>();
         BeginShape b8 = new BeginShape(0,0, "");
         ConditionShape cs8 = new ConditionShape(0,0, "if len(l1) == 0:");
@@ -161,18 +118,12 @@ public class problemContainer {
         Arrow a811 = new Arrow(0,0,0,0, io84, cs8);
 
         //need to add in and out arrows
-        s8.add(b8);
-        s8.add(cs8);
-        s8.add(cs82);
-        s8.add(cs83);
-        s8.add(io81);
-        s8.add(io82);
-        s8.add(io83);
-        s8.add(io84);
-        s8.add(e8);
+        s8.add(b8); s8.add(cs8); s8.add(cs82); s8.add(cs83); s8.add(io81); s8.add(io82); s8.add(io83); s8.add(io84); s8.add(e8);
         Problem p8 = new Problem("<html>def merge(l1, l2):<br/>"+
-                "if len(l1) == 0:<br/>return l2 <br/>if len(l2) == 0:<br/>return l1 <br/>if l1[0] <= l2[0]:<br/>return l1[0] + merge(l1[1:], l2)"+
-                "<br/>else:<br/>return l2[0] + merge(l1, l2[1:])</html>", s8);
+                "&emsp if len(l1) == 0:<br/>&emsp &emsp return l2 <br/>&emsp if len(l2) == 0:<br/>&emsp &emsp return l1 <br/>" +
+                "&emsp if l1[0] <= l2[0]:<br/>&emsp &emsp return l1[0] + merge(l1[1:], l2)"+
+                "<br/>&emsp else:<br/>&emsp &emsp return l2[0] + merge(l1, l2[1:])</html>", s8);
+
         Repository.getRepository().addProblem(p8);
 
 
