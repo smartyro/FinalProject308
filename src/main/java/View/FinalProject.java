@@ -22,6 +22,8 @@ public class FinalProject extends JFrame {
 	public static void main(String[] args) {
 		problemContainer.createProblems();
 		FinalProject f = new FinalProject();
+		Login loginDlg = new Login(f);
+		loginDlg.setVisible(true);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		f.setSize(new Dimension(WIDTH, HEIGHT));
 		//Tutorial tut = new Tutorial();

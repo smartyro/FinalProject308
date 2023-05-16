@@ -13,7 +13,7 @@ public class HintPanel extends JPanel {
 		dialogueBox.setAlignmentY(Component.CENTER_ALIGNMENT);
 		dialogueBox.setPreferredSize(new Dimension(500, 300));
 		dialogueBox.setBackground(dColor);
-       		add(dialogueBox);
+       	add(dialogueBox);
 		setBackground(myColor);
 	}
 }
