@@ -39,23 +39,37 @@ public class Login extends JDialog implements ActionListener {
         panel.setBorder(new LineBorder(Color.GRAY));
 
         JButton btnLogin = new JButton("Login");
-        cs.gridx = 2;
+        cs.gridx = 1;
         cs.gridy = 2;
         btnLogin.addActionListener(this);
         panel.add(btnLogin, cs);
 
         JLabel cont = new JLabel(" ");
-        cs.gridx = 2;
+        cs.gridx = 1;
         cs.gridy = 3;
-        cs.gridwidth = 2;
+        cs.gridwidth = 1;
         panel.add(cont, cs);
 
-        JButton btnGuest = new JButton("Guest Login");
-        cs.gridx = 2;
+        JButton btnGuest = new JButton("Continue as a Guest");
+        cs.gridx = 0;
         cs.gridy = 4;
-        cs.gridwidth = 1;
+        cs.gridwidth = 3;
         btnGuest.addActionListener(this);
         panel.add(btnGuest, cs);
+
+
+            // JLabel signupText = new JLabel("Don't already have an account?");
+            // cs.gridx = 1;
+            // cs.gridy = 5;
+            // cs.gridwidth = 2;
+            // panel.add(signupText, cs);
+
+        JButton createAccount = new JButton("Create an Account");
+        cs.gridx = 0;
+        cs.gridy = 6;
+        cs.gridwidth = 3;
+        createAccount.addActionListener(this);
+        panel.add(createAccount, cs);
 
         getContentPane().add(panel, BorderLayout.CENTER);
         pack();
@@ -72,9 +86,13 @@ public class Login extends JDialog implements ActionListener {
             System.out.println(getPfPassword());
             dispose();
 		}
-		else if (act.equals("Guest Login")) {
+		else if (act.equals("Continue as a Guest")) {
             dispose();
 		}
+        else if (act.equals("Create An Account"))
+        {
+            dispose();
+        }
 	}
 
     public String getTfUsername() {
