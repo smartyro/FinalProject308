@@ -11,11 +11,13 @@ public class Repository extends Observable implements RepositoryInterface {
     private Shape outlineShape;
     private int problemNum;
     private List<Problem> problems;
+    private Stack<Shape> undoShapes;
 
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
         problems = new ArrayList<Problem>();
+        undoShapes = new Stack<>();
         problemNum = 0;
     }
 
@@ -59,6 +61,7 @@ public class Repository extends Observable implements RepositoryInterface {
      */
     public void addShape(Shape shape){
         shapes.add(shape);
+        undoShapes.removeAllElements();
         setChanged();
         notifyObservers();
     }
@@ -213,9 +216,22 @@ public class Repository extends Observable implements RepositoryInterface {
     }
 
     public void Undo() {
-        if (!this.shapes.empty()) {
-            this.shapes.pop();
+        if (!shapes.empty()) {
+            undoShapes.push(shapes.pop());
             update();
+            System.out.println("IN UNDO: " + undoShapes.toString());
         }
     }
+	
+	public void Redo() {
+        System.out.println("IN REDO");
+        if(!undoShapes.empty()) {
+            shapes.push(undoShapes.pop());
+            update();
+            System.out.println("IN REDO: " + undoShapes.toString());
+        } else {
+            System.out.println("EMPTY UNDOSHAPES STACK");
+        }
+        System.out.println("END OF REDO");
+	}
 }

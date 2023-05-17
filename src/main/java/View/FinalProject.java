@@ -62,12 +62,12 @@ public class FinalProject extends JFrame {
 		Repository.getRepository().addObserver(board);
 		
 		JButton undoButton = new JButton("Undo");
-		undoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Repository.getRepository().Undo();
-			}
-		});
+		undoButton.addActionListener(e -> Repository.getRepository().Undo());
 		add(undoButton);
+	
+		JButton redoButton = new JButton("Redo");
+		redoButton.addActionListener(e -> Repository.getRepository().Redo());
+		add(redoButton);
 		
         GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
