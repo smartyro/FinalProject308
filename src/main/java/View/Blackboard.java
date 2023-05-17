@@ -58,16 +58,9 @@ public class Blackboard extends JPanel implements Observer, ActionListener, Mous
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
-	
-	public void deleteAll(){}
-	
-	public void save(){}
-	
-	public void load(){}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("Check"))
 		{
 			Repository.getRepository().checkDiagram();

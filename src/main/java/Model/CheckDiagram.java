@@ -2,9 +2,9 @@ package Model;
 
 import java.util.Stack;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import View.HintPanel;
 import View.Problem;
 
 public class CheckDiagram {
@@ -19,22 +19,32 @@ public class CheckDiagram {
         Flowchart toCheck = new Flowchart(diagram);
         
         Flowchart.DiffResult diffResult = correct.diff(toCheck);
+        String message;
         
         switch(diffResult.summary) {
             case NONE:
-                JOptionPane.showMessageDialog(null, "Your diagram is correct!");
+                message = "Your diagram is correct!";
+                JOptionPane.showMessageDialog(null, message);
                 break;
             case TOO_MANY_ELEMENTS:
-                JOptionPane.showMessageDialog(null, "You have too many elements!");
+                message = "You have too many elements!";
+                JOptionPane.showMessageDialog(null, message);
+                Repository.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_ELEMENTS:
-                JOptionPane.showMessageDialog(null, "You don't have enough elements!");
+                message = "You don't have enough elements!";
+                JOptionPane.showMessageDialog(null, message);
+                Repository.getRepository().addMessage(message);
                 break;
             case TOO_MANY_SPECIFIC:
-                JOptionPane.showMessageDialog(null, "You don't have enough " + diffResult.type + " elements!");
+                message = "You don't have enough " + diffResult.type + " elements!";
+                JOptionPane.showMessageDialog(null, message);
+                Repository.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_SPECIFIC:
-                JOptionPane.showMessageDialog(null, "You have too many " + diffResult.type + " elements!");
+                message = "You have too many " + diffResult.type + " elements!";
+                JOptionPane.showMessageDialog(null, message);
+                Repository.getRepository().addMessage(message);
                 break;
         }
     }

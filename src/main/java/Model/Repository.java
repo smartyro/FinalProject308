@@ -12,10 +12,13 @@ public class Repository extends Observable implements RepositoryInterface {
     private int problemNum;
     private List<Problem> problems;
 
+    private ArrayList<String> messages;
+
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
         problems = new ArrayList<Problem>();
+        messages = new ArrayList<>();
         problemNum = 0;
     }
 
@@ -217,5 +220,15 @@ public class Repository extends Observable implements RepositoryInterface {
             this.shapes.pop();
             update();
         }
+    }
+
+    public void addMessage(String message) {
+        this.messages.add(message);
+        setChanged();
+        notifyObservers();
+    }
+
+    public ArrayList<String> getMessages() {
+        return this.messages;
     }
 }
