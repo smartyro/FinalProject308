@@ -60,6 +60,7 @@ public class FinalProject extends JFrame {
 		hintPanel.setBorder(hintTitle);
 
 		Repository.getRepository().addObserver(board);
+		Repository.getRepository().addObserver(hintPanel);
 		
 		JButton undoButton = new JButton("Undo");
 		undoButton.addActionListener(e -> Repository.getRepository().Undo());

@@ -13,10 +13,13 @@ public class Repository extends Observable implements RepositoryInterface {
     private List<Problem> problems;
     private Stack<Shape> undoShapes;
 
+    private ArrayList<String> messages;
+
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
         problems = new ArrayList<Problem>();
+        messages = new ArrayList<>();
         undoShapes = new Stack<>();
         problemNum = 0;
     }
@@ -219,19 +222,23 @@ public class Repository extends Observable implements RepositoryInterface {
         if (!shapes.empty()) {
             undoShapes.push(shapes.pop());
             update();
-            System.out.println("IN UNDO: " + undoShapes.toString());
         }
     }
 	
 	public void Redo() {
-        System.out.println("IN REDO");
         if(!undoShapes.empty()) {
             shapes.push(undoShapes.pop());
             update();
-            System.out.println("IN REDO: " + undoShapes.toString());
-        } else {
-            System.out.println("EMPTY UNDOSHAPES STACK");
         }
-        System.out.println("END OF REDO");
 	}
+
+    public void addMessage(String message) {
+        this.messages.add(message);
+        setChanged();
+        notifyObservers();
+    }
+
+    public ArrayList<String> getMessages() {
+        return this.messages;
+    }
 }
