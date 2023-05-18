@@ -11,11 +11,16 @@ public class Repository extends Observable implements RepositoryInterface {
     private Shape outlineShape;
     private int problemNum;
     private List<Problem> problems;
+    private Stack<Shape> undoShapes;
+
+    private ArrayList<String> messages;
 
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
         problems = new ArrayList<Problem>();
+        messages = new ArrayList<>();
+        undoShapes = new Stack<>();
         problemNum = 0;
     }
 
@@ -60,6 +65,7 @@ public class Repository extends Observable implements RepositoryInterface {
      */
     public void addShape(Shape shape){
         shapes.add(shape);
+        undoShapes.removeAllElements();
         setChanged();
         notifyObservers();
     }
@@ -221,16 +227,32 @@ public class Repository extends Observable implements RepositoryInterface {
     }
 
     public void Undo() {
-        if (!this.shapes.empty()) {
-            this.shapes.pop();
+        if (!shapes.empty()) {
+            undoShapes.push(shapes.pop());
             update();
         }
     }
-
     public void Clear() {
         if (!this.shapes.empty()) {
             this.shapes.clear();
             update();
         }
+    }
+
+    public void Redo() {
+        if(!undoShapes.empty()) {
+            shapes.push(undoShapes.pop());
+            update();
+        }
+	}
+
+    public void addMessage(String message) {
+        this.messages.add(message);
+        setChanged();
+        notifyObservers();
+    }
+
+    public ArrayList<String> getMessages() {
+        return this.messages;
     }
 }

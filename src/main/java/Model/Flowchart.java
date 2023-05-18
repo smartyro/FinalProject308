@@ -8,13 +8,13 @@ import java.util.Stack;
  * Represents a control flow chart as a graph of shapes, with the control flow connections as edges
  * */
 public class Flowchart {
-	private ArrayList<Vertex<Shape>> vertices;
-	private ArrayList<Edge<Shape>> edges;
+	private final ArrayList<Vertex<Shape>> vertices;
+	private final ArrayList<Edge<Shape>> edges;
 	
 	/**
 	 * Stores the result of diff. See details in DiffSummary enum
 	 * */
-	public class DiffResult {
+	public static class DiffResult {
 		DiffSummary summary;
 		ShapeType type;
 		
@@ -73,7 +73,7 @@ public class Flowchart {
 		}
 	}
 	
-	private class Vertex<T> {
+	private static class Vertex<T> {
 		private final T value;
 		public Vertex(T t) {
 			this.value = t;
@@ -91,7 +91,7 @@ public class Flowchart {
 		}
 	}
 
-	private class Edge<T> {
+	private static class Edge<T> {
 		private final Vertex<T> from;
 		private final Vertex<T> to;
 		public Edge(Vertex<T> from, Vertex<T> to) {
@@ -119,15 +119,14 @@ public class Flowchart {
 		}
 		
 		Flowchart other = (Flowchart) o;
-		DiffResult diffResult = diff(other);
 		
-		return diffResult.summary.equals(DiffSummary.NONE);
+		return diff(other).summary.equals(DiffSummary.NONE);
 	}
 	
 	/**
-	 * Compares two flowcharts and returns a diffresult
-	 * 	The DiffResult has a DiffSummary, which shows the result of the test and an optional ShapeType
-	 * 	which gives more detail
+	 * Compares two flowcharts and returns a DiffResult
+	 * 	The DiffResult has a DiffSummary, which shows the result of the test, and an optional ShapeType
+	 * 	which gives more detail in specific cases
 	 * */
 	public DiffResult diff(Flowchart other) {
 		//Check number of elements
