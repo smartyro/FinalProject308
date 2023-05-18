@@ -126,5 +126,44 @@ public class problemContainer {
 
         Repository.getRepository().addProblem(p8);
 
+        // Problem 6
+        Stack<Shape> s9 = new Stack<Shape>();
+        BeginShape b9 = new BeginShape(0,0, "");
+        VariableShape v9 = new VariableShape(0,0, "mid = (max + min) // 2");
+        ConditionShape cs9 = new ConditionShape(0,0, "if max < min:");
+        ConditionShape cs92 = new ConditionShape(0,0, "else if x < A[mid]:");
+        ConditionShape cs93 = new ConditionShape(0,0, "else if x > A[mid]:");
+        InputOutputShape io91 = new InputOutputShape(0, 0, "return -1");
+        InputOutputShape io92 = new InputOutputShape(0, 0, "return binarySearch(A, x, min, mid-1");
+        InputOutputShape io93 = new InputOutputShape(0, 0, "return binarySearch(A, x, mid + 1, max");
+        InputOutputShape io94 = new InputOutputShape(0, 0, "return mid");
+        EndShape e9 = new EndShape(0,0, "");
+        Arrow a91 = new Arrow(0,0,0,0, v9, b9);
+        Arrow a92 = new Arrow(0,0,0,0, cs9, v9);
+        Arrow a93 = new Arrow(0,0,0,0, cs92, cs9);
+        Arrow a94 = new Arrow(0,0,0,0, io91, cs9);
+        Arrow a95 = new Arrow(0,0,0,0, cs93, cs92);
+        Arrow a98 = new Arrow(0, 0, 0, 0, io92, cs92);
+        Arrow a96 = new Arrow(0,0,0,0, io93, cs93);
+        Arrow a97 = new Arrow(0,0,0,0, io94, cs93);
+        Arrow a99 = new Arrow(0,0,0,0, e9, io94);
+        Arrow a910 = new Arrow(0,0,0,0, e9, io91);
+        Arrow a911 = new Arrow(0,0,0,0, v9, io92);
+        Arrow a912 = new Arrow(0,0,0,0, v9, io93);
+        v9.addInArrow(a91); b9.addOutArrow(a91); cs9.addInArrow(a92); v9.addOutArrow(a92); cs92.addInArrow(a93);
+        cs9.addOutArrow(a93); io91.addInArrow(a94); cs9.addOutArrow(a94); cs93.addInArrow(a95); cs92.addOutArrow(a95);
+        io92.addInArrow(a98); cs92.addOutArrow(a98); io93.addInArrow(a96); cs93.addOutArrow(a96); io94.addInArrow(a97);
+        cs93.addOutArrow(a97); e9.addInArrow(a99); io94.addOutArrow(a99); e9.addInArrow(a910); io91.addOutArrow(a910);
+        v9.addInArrow(a911); io92.addOutArrow(a911); v9.addInArrow(a912); io93.addOutArrow(a912);
+        s9.add(b9); s9.add(v9); s9.add(cs9); s9.add(cs92); s9.add(cs93); s9.add(io91); s9.add(io92); s9.add(io93);
+        s9.add(io94); s9.add(e9);
+
+        Problem p9 = new Problem("<html>def binarySearch(A, x, min, max):<br/> &emsp mid = (max + min) // 2<br/>" +
+                "&emsp if max < min: &emsp &emsp return -1 <br/> &emsp else if x < A[mid]: <br/> &emsp &emsp " +
+                "return binarySearch(A, x, min, mid-1) <br/> &emsp else if x > A[mid]: <br/> &emsp &emsp " +
+                "return binarySearch(A, x, mid + 1, max) <br/> &emsp else: <br/> &emsp &emsp return mid <html>", s9);
+
+        Repository.getRepository().addProblem(p9);
+
     }
 }
