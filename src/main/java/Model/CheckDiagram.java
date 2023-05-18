@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 import View.Problem;
 
 public class CheckDiagram {
+    private static boolean isCorrect[] = new boolean[10];
     public static void check(Stack<Shape> diagram, Problem key) {
-    
         if (key == null) {
             JOptionPane.showMessageDialog(null, "You need to set the problem!");
             return;
@@ -23,6 +23,7 @@ public class CheckDiagram {
         switch(diffResult.summary) {
             case NONE:
                 JOptionPane.showMessageDialog(null, "Your diagram is correct!");
+                isCorrect[Repository.getRepository().getProblemNum()] = true;
                 break;
             case TOO_MANY_ELEMENTS:
                 JOptionPane.showMessageDialog(null, "You have too many elements!");
@@ -37,5 +38,17 @@ public class CheckDiagram {
                 JOptionPane.showMessageDialog(null, "You have too many " + diffResult.type + " elements!");
                 break;
         }
+    }
+ 
+    public static boolean getCorrectValue() {
+        if (!isCorrect[Repository.getRepository().getProblemNum()]){
+            JOptionPane.showMessageDialog(null, "Your diagram must be correct to move onto the next question.");
+        }
+        return isCorrect[Repository.getRepository().getProblemNum()];
+
+    }
+
+    public static void setCorrectValue(boolean reset){
+        isCorrect[Repository.getRepository().getProblemNum()] = reset;
     }
 }

@@ -37,6 +37,7 @@ public class Repository extends Observable implements RepositoryInterface {
         {
             this.problemNum++;
         }
+        CheckDiagram.setCorrectValue(false);
     }
 
     public void previousProblem() {
@@ -61,6 +62,10 @@ public class Repository extends Observable implements RepositoryInterface {
         shapes.add(shape);
         setChanged();
         notifyObservers();
+    }
+
+    public boolean getProblemIsCorrect(){
+        return CheckDiagram.getCorrectValue();
     }
     
     /**
@@ -125,6 +130,9 @@ public class Repository extends Observable implements RepositoryInterface {
     }
 
 
+    public int getProblemNum() {
+        return problemNum;
+    }
 
     public Problem getProblem() {
         try{
@@ -215,6 +223,13 @@ public class Repository extends Observable implements RepositoryInterface {
     public void Undo() {
         if (!this.shapes.empty()) {
             this.shapes.pop();
+            update();
+        }
+    }
+
+    public void Clear() {
+        if (!this.shapes.empty()) {
+            this.shapes.clear();
             update();
         }
     }

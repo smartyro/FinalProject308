@@ -2,15 +2,10 @@ package View;
 
 import javax.swing.*;
 
+import Model.CheckDiagram;
 import Model.Repository;
 
 import java.awt.*;
-import View.Problem;
-import java.util.ArrayList;
-import java.util.Stack;
-
-import Model.BeginShape;
-import Model.Shape;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,9 +34,11 @@ public class CodePanel extends JPanel implements ActionListener{
 		String act = e.getActionCommand();
 		if (act.equals("Next"))
 		{
-			Repository.getRepository().nextProblem();
-
-			label.setText(Repository.getRepository().getProblem().getProblemStatement());
+			if (CheckDiagram.getCorrectValue()){
+				Repository.getRepository().nextProblem();
+				label.setText(Repository.getRepository().getProblem().getProblemStatement());
+				Repository.getRepository().Clear();
+			}
 		}
 		else if (act.equals("Prev")) {
 			Repository.getRepository().previousProblem();

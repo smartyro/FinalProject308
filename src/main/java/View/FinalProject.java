@@ -68,6 +68,14 @@ public class FinalProject extends JFrame {
 			}
 		});
 		add(undoButton);
+
+		JButton clearButton = new JButton("Clear");
+		clearButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Repository.getRepository().Clear();
+			}
+		});
+		add(clearButton);
 		
         GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
