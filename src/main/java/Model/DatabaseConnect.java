@@ -19,9 +19,15 @@ public class DatabaseConnect {
               .getConnection(DB_URL,
               USER, PASS);
 
-            //Statement stmt = conn.createStatement();
-            //String sql = "CREATE TABLE USERS( ID INT,USERNAME TEXT, PASSWORD TEXT);";
-            //stmt.executeUpdate(sql);
+            //print the users table
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM USERS;";
+            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("Users table:");
+            while(rs.next()){
+                System.out.print("username: " + rs.getString("USERNAME") + ", ");
+                System.out.println("password: " + rs.getString("PASSWORD"));
+            }
 
             System.out.println("Opened database successfully");
 
@@ -31,7 +37,6 @@ public class DatabaseConnect {
            System.err.println(e.getClass().getName()+": "+e.getMessage());
            System.exit(0);
         }
-   
      }
     
     public static void addUser(String username, String password){
