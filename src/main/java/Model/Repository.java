@@ -4,6 +4,8 @@ import java.util.*;
 
 import View.Problem;
 
+import javax.swing.*;
+
 public class Repository extends Observable implements RepositoryInterface {
     private static Repository repository ;
     private Stack<Shape> shapes;
@@ -228,7 +230,21 @@ public class Repository extends Observable implements RepositoryInterface {
 
     public void Undo() {
         if (!shapes.empty()) {
-            undoShapes.push(shapes.pop());
+            Shape undoShape = shapes.pop();
+            if (!undoShape.getInArrows().isEmpty()) {
+                for (Arrow inArrow : undoShape.getInArrows()) {
+                    Shape outShape = inArrow.getOutShape();
+                    for (int i = 0; i < outShape.getOutDegree(); i++) {
+                        Arrow outArrow = outShape.getOutArrows().get(i);
+                        if (outArrow.getX2() == inArrow.getX2()
+                                && outArrow.getY2() == inArrow.getY2()) {
+                            outShape.getOutArrows().remove(i);
+                            break;
+                        }
+                    }
+                }
+            }
+            undoShapes.push(undoShape);
             update();
         }
     }

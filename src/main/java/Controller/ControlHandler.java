@@ -81,7 +81,7 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 					} else {
 						statusBar.setMessage("Line finished. Drawing it...");
 						Arrow a = new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1],
-						s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1], lineStart, s);
+						s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1], s, lineStart);
 						lineStart.addOutArrow(a);
 						s.addInArrow(a);
 						Repository.getRepository().update();
@@ -115,14 +115,14 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 			draggedShape.setY(e.getY());
 			if (draggedShape.getInDegree() > 0) {
 				for (Arrow a : draggedShape.getInArrows()) {
-					a.setX2(a.getOutShape().getArrowPoint(draggedShape)[0]);
-					a.setY2(a.getOutShape().getArrowPoint(draggedShape)[1]);
+					a.setX2(a.getInShape().getArrowPoint(draggedShape)[0]);
+					a.setY2(a.getInShape().getArrowPoint(draggedShape)[1]);
 				}
 			}
 			if (draggedShape.getOutDegree() > 0) {
 				for (Arrow a : draggedShape.getOutArrows()) {
-					a.setX1(draggedShape.getArrowPoint(a.getInShape())[0]); 
-					a.setY1(draggedShape.getArrowPoint(a.getInShape())[1]);
+					a.setX1(draggedShape.getArrowPoint(a.getOutShape())[0]);
+					a.setY1(draggedShape.getArrowPoint(a.getOutShape())[1]);
 				}
 			}
 		} else {
