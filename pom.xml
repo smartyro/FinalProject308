@@ -26,6 +26,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.4.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
