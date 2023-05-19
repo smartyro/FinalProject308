@@ -1,6 +1,6 @@
 package View;
 
-import Model.Repository;
+import Model.RepositoryInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +26,7 @@ public class HintPanel extends JPanel implements java.util.Observer {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		ArrayList<String> messages = Repository.getRepository().getMessages();
+		ArrayList<String> messages = RepositoryInterface.getRepository().getMessages();
 		super.paintComponent(g);
 
 		dialogueBox.removeAll();

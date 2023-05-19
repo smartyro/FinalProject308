@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Model.CheckDiagram;
 import Model.Repository;
+import Model.RepositoryInterface;
 
 import java.awt.*;
 
@@ -19,7 +20,7 @@ public class CodePanel extends JPanel implements ActionListener{
 		JButton prev = new JButton("Prev");
 		prev.addActionListener(this);
 		add(prev);
-		currentProb = Repository.getRepository().getProblem();
+		currentProb = RepositoryInterface.getRepository().getProblem();
 		label = new JLabel(currentProb.getProblemStatement());
 		Font font = new Font("Inter", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 		label.setFont(font);
@@ -35,15 +36,15 @@ public class CodePanel extends JPanel implements ActionListener{
 		if (act.equals("Next"))
 		{
 			if (CheckDiagram.getCorrectValue()){
-				Repository.getRepository().nextProblem();
-				label.setText(Repository.getRepository().getProblem().getProblemStatement());
-				Repository.getRepository().Clear();
+				RepositoryInterface.getRepository().nextProblem();
+				label.setText(RepositoryInterface.getRepository().getProblem().getProblemStatement());
+				RepositoryInterface.getRepository().Clear();
 			}
 		}
 		else if (act.equals("Prev")) {
-			Repository.getRepository().previousProblem();
+			RepositoryInterface.getRepository().previousProblem();
 
-			label.setText(Repository.getRepository().getProblem().getProblemStatement());
+			label.setText(RepositoryInterface.getRepository().getProblem().getProblemStatement());
 		}
 	}
 }

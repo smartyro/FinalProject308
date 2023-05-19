@@ -27,7 +27,7 @@ public class problemContainer {
         s1.add(c1); s1.add(b1); s1.add(i1); s1.add(i2); s1.add(e1);
         Problem p1 = new Problem("<html>def uselessFunc(x):<br/>&emsp if x &lt 0:<br/>" +
                 "&emsp &emsp return 1<br/>&emsp else:<br/>&emsp &emsp return 0</html>", s1);
-        Repository.getRepository().addProblem(p1);
+        RepositoryInterface.getRepository().addProblem(p1);
 
         // Problem 2
         Stack<Shape> s7 = new Stack<Shape>();
@@ -45,7 +45,7 @@ public class problemContainer {
         s7.add(bs7); s7.add(v7); s7.add(ms7); s7.add(io7); s7.add(e7);
         Problem p7 = new Problem("<html>def triangleSolve(a, b):<br/>&emsp c = "+
                 "Math.sqrt(a * a + b * b)<br/>&emsp return c </html>", s7);
-        Repository.getRepository().addProblem(p7);
+        RepositoryInterface.getRepository().addProblem(p7);
 
         // Problem 3
         BeginShape b2 = new BeginShape(0, 0, "");
@@ -71,7 +71,7 @@ public class problemContainer {
         s2.add(b2); s2.add(e2); s2.add(c2); s2.add(i3); s2.add(m1); s2.add(i4);
         Problem p2 = new Problem("<html>def simpleSearch(x, A):<br/>&emsp for i in range(len(A)):<br/>" +
                 "&emsp &emsp if A[i] == x:<br/> &emsp &emsp &emsp return True <br/> &emsp return False", s2);
-        Repository.getRepository().addProblem(p2);
+        RepositoryInterface.getRepository().addProblem(p2);
 
         // Problem 4
         Stack<Shape> s6 = new Stack<Shape>();
@@ -89,7 +89,7 @@ public class problemContainer {
         s6.add(bs6); s6.add(v6); s6.add(cs6); s6.add(ms6); s6.add(es6);
         Problem p6 = new Problem("<html>public void callAddNums(x):<br/>&emsp int x = 4;<br/>" +
                 "&emsp if (5 > x){<br/>\t&emsp &emsp addNums(x, 5);<br/>&emsp } </html>", s6);
-        Repository.getRepository().addProblem(p6);
+        RepositoryInterface.getRepository().addProblem(p6);
 
 
 
@@ -124,7 +124,7 @@ public class problemContainer {
                 "&emsp if l1[0] <= l2[0]:<br/>&emsp &emsp return l1[0] + merge(l1[1:], l2)"+
                 "<br/>&emsp else:<br/>&emsp &emsp return l2[0] + merge(l1, l2[1:])</html>", s8);
 
-        Repository.getRepository().addProblem(p8);
+        RepositoryInterface.getRepository().addProblem(p8);
 
     }
 }

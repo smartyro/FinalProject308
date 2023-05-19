@@ -1,6 +1,6 @@
 package View;
 import Controller.ControlHandler;
-import Model.Repository;
+import Model.RepositoryInterface;
 import Model.problemContainer;
 
 import javax.swing.border.TitledBorder;
@@ -59,21 +59,21 @@ public class FinalProject extends JFrame {
 		codePanel.setBorder(codeTitle);
 		hintPanel.setBorder(hintTitle);
 
-		Repository.getRepository().addObserver(board);
-		Repository.getRepository().addObserver(hintPanel);
+		RepositoryInterface.getRepository().addObserver(board);
+		RepositoryInterface.getRepository().addObserver(hintPanel);
 		
 		JButton undoButton = new JButton("Undo");
-		undoButton.addActionListener(e -> Repository.getRepository().Undo());
+		undoButton.addActionListener(e -> RepositoryInterface.getRepository().Undo());
 		add(undoButton);
 	
 		JButton redoButton = new JButton("Redo");
-		redoButton.addActionListener(e -> Repository.getRepository().Redo());
+		redoButton.addActionListener(e -> RepositoryInterface.getRepository().Redo());
 		add(redoButton);
 
 		JButton clearButton = new JButton("Clear");
 		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Repository.getRepository().Clear();
+				RepositoryInterface.getRepository().Clear();
 			}
 		});
 		add(clearButton);

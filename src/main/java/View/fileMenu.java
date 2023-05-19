@@ -1,6 +1,7 @@
 package View;
 
 import Model.Repository;
+import Model.RepositoryInterface;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -34,13 +35,13 @@ public class fileMenu extends JMenu implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newItem){
-            Repository.getRepository().clear();
+            RepositoryInterface.getRepository().clear();
         } else if (e.getSource() == saveItem){
             String key = JOptionPane.showInputDialog("Enter a name for your Diagram:");
-            Repository.getRepository().saveShapes(key);
+            RepositoryInterface.getRepository().saveShapes(key);
         } else if (e.getSource() == loadItem){
             String key = JOptionPane.showInputDialog("Enter the name of a saved Diagram:");
-            Repository.getRepository().loadShapes(key);
+            RepositoryInterface.getRepository().loadShapes(key);
         }
     }
     

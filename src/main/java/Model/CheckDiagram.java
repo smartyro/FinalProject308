@@ -25,40 +25,40 @@ public class CheckDiagram {
             case NONE:
                 message = "Your diagram is correct!";
                 JOptionPane.showMessageDialog(null, message);
-                isCorrect[Repository.getRepository().getProblemNum()] = true;
+                isCorrect[RepositoryInterface.getRepository().getProblemNum()] = true;
                 break;
             case TOO_MANY_ELEMENTS:
                 message = "You have too many elements!";
                 JOptionPane.showMessageDialog(null, message);
-                Repository.getRepository().addMessage(message);
+                RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_ELEMENTS:
                 message = "You don't have enough elements!";
                 JOptionPane.showMessageDialog(null, message);
-                Repository.getRepository().addMessage(message);
+                RepositoryInterface.getRepository().addMessage(message);
                 break;
             case TOO_MANY_SPECIFIC:
                 message = "You don't have enough " + diffResult.type + " elements!";
                 JOptionPane.showMessageDialog(null, message);
-                Repository.getRepository().addMessage(message);
+                RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_SPECIFIC:
                 message = "You have too many " + diffResult.type + " elements!";
                 JOptionPane.showMessageDialog(null, message);
-                Repository.getRepository().addMessage(message);
+                RepositoryInterface.getRepository().addMessage(message);
                 break;
         }
     }
  
     public static boolean getCorrectValue() {
-        if (!isCorrect[Repository.getRepository().getProblemNum()]){
+        if (!isCorrect[RepositoryInterface.getRepository().getProblemNum()]){
             JOptionPane.showMessageDialog(null, "Your diagram must be correct to move onto the next question.");
         }
-        return isCorrect[Repository.getRepository().getProblemNum()];
+        return isCorrect[RepositoryInterface.getRepository().getProblemNum()];
 
     }
 
     public static void setCorrectValue(boolean reset){
-        isCorrect[Repository.getRepository().getProblemNum()] = reset;
+        isCorrect[RepositoryInterface.getRepository().getProblemNum()] = reset;
     }
 }

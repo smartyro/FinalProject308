@@ -228,6 +228,11 @@ public class Repository extends Observable implements RepositoryInterface {
         notifyObservers();
     }
 
+    @Override
+    public ArrayList<String> getMessages() {
+        return this.messages;
+    }
+
     public void Undo() {
         if (!shapes.empty()) {
             Shape undoShape = shapes.pop();
@@ -277,7 +282,4 @@ public class Repository extends Observable implements RepositoryInterface {
         notifyObservers();
     }
 
-    public ArrayList<String> getMessages() {
-        return this.messages;
-    }
 }
