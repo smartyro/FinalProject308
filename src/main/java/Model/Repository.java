@@ -257,7 +257,16 @@ public class Repository extends Observable implements RepositoryInterface {
 
     public void Redo() {
         if(!undoShapes.empty()) {
-            shapes.push(undoShapes.pop());
+            Shape redoShape = undoShapes.pop();
+            if (!redoShape.getInArrows().isEmpty()) {
+                for (Arrow inArrow : redoShape.getInArrows()) {
+                    Shape outShape = inArrow.getOutShape();
+                    inArrow.setX2(redoShape.getArrowPoint(outShape)[0]);
+                    inArrow.setY2(redoShape.getArrowPoint(outShape)[1]);
+                    outShape.getOutArrows().add(inArrow);
+                }
+            }
+            shapes.push(redoShape);
             update();
         }
 	}
