@@ -16,14 +16,17 @@ public class problemContainer {
         InputOutputShape i1 = new InputOutputShape(0,0, "return 0");
         InputOutputShape i2 = new InputOutputShape(0,0, "return 1");
         EndShape e1 = new EndShape(0,0, "");
-        Stack<Shape> s1 = new Stack<Shape>();
+        Stack<Shape> s1 = new Stack<>();
         Arrow a1P1 = new Arrow(0,0,0,0, i1, c1);
         Arrow a2P1 = new Arrow(0,0,0,0,i2, c1);
         Arrow a3P1 = new Arrow(0,0,0,0, e1, i1);
         Arrow a4P1 = new Arrow(0,0,0,0, e1, i2);
         Arrow a5P1 = new Arrow(0,0,0,0, c1, b1);
-        b1.addOutArrow(a5P1); c1.addOutArrow(a1P1); c1.addOutArrow(a2P1);
-        i1.addInArrow(a1P1); i2.addInArrow(a2P1); e1.addInArrow(a3P1); e1.addInArrow(a4P1);
+        i1.addInArrow(a1P1); c1.addOutArrow(a1P1);
+        i2.addInArrow(a2P1); c1.addOutArrow(a2P1);
+        e1.addInArrow(a3P1); i1.addOutArrow(a3P1);
+        e1.addInArrow(a4P1); i2.addOutArrow(a4P1);
+        c1.addInArrow(a5P1); b1.addOutArrow(a5P1);
         s1.add(c1); s1.add(b1); s1.add(i1); s1.add(i2); s1.add(e1);
         Problem p1 = new Problem("<html>def uselessFunc(x):<br/>&emsp if x &lt 0:<br/>" +
                 "&emsp &emsp return 1<br/>&emsp else:<br/>&emsp &emsp return 0</html>", s1);

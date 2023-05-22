@@ -38,12 +38,32 @@ public class CheckDiagram {
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case TOO_MANY_SPECIFIC:
-                message = "You don't have enough " + diffResult.type + " elements!";
+                message = "You don't have enough " + diffResult.specificType + " elements!";
                 JOptionPane.showMessageDialog(null, message);
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_SPECIFIC:
-                message = "You have too many " + diffResult.type + " elements!";
+                message = "You have too many " + diffResult.specificType + " elements!";
+                JOptionPane.showMessageDialog(null, message);
+                RepositoryInterface.getRepository().addMessage(message);
+                break;
+            case TOO_MANY_EDGES:
+                message = "You have too many connections!";
+                JOptionPane.showMessageDialog(null, message);
+                RepositoryInterface.getRepository().addMessage(message);
+                break;
+            case NOT_ENOUGH_EDGES:
+                message = "You don't have enough connections!";
+                JOptionPane.showMessageDialog(null, message);
+                RepositoryInterface.getRepository().addMessage(message);
+                break;
+            case TOO_MANY_EDGES_SPECIFIC:
+                message = "You have too many connections from " + diffResult.specificTypeFrom + " to " + diffResult.specificTypeTo + "!";
+                JOptionPane.showMessageDialog(null, message);
+                RepositoryInterface.getRepository().addMessage(message);
+                break;
+            case NOT_ENOUGH_EDGES_SPECIFIC:
+                message = "You don't have enough connections from " + diffResult.specificTypeFrom + " to " + diffResult.specificTypeTo + "!";
                 JOptionPane.showMessageDialog(null, message);
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
