@@ -39,6 +39,7 @@ public class DatabaseConnect {
         }
      }
     
+
     public static void addUser(String username, String password){
       Connection conn = null;
         try {
@@ -48,7 +49,7 @@ public class DatabaseConnect {
               USER, PASS);
 
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO USERS (USERNAME,PASSWORD) VALUES ('"+username+"','"+password+"');";
+            String sql = "INSERT INTO USERS (USERNAME, PASSWORD, problem_num) SELECT '"+username+"','"+password+"', 0 WHERE NOT EXISTS (SELECT 1 FROM USERS WHERE USERNAME = '"+username+"');";
             stmt.executeUpdate(sql);
             
 
@@ -61,6 +62,57 @@ public class DatabaseConnect {
            System.exit(0);
         }
 
+   }
+
+
+
+   public static String checkUserExists(String username, String password){
+      Connection conn = null;
+      try {
+         Class.forName("org.postgresql.Driver");
+         conn = DriverManager
+            .getConnection(DB_URL,
+            USER, PASS);
+
+            String sql = "SELECT 1 FROM users WHERE username = '"+username+"'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            //stmt.setString(1, usernameToCheck);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                sql = "SELECT 1 FROM users WHERE username = '"+username+"' AND password = '"+password+"'";
+                stmt = conn.prepareStatement(sql);
+                //stmt.setString(1, usernameToCheck);
+                rs = stmt.executeQuery();
+                if (rs.next()){
+
+                  sql = "SELECT problem_num FROM USERS WHERE username = '"+username+"'";
+                  stmt = conn.prepareStatement(sql);
+                  //stmt.setInt(1, primaryKeyValue);
+                  rs = stmt.executeQuery();
+      
+                  if (rs.next()) {
+                      String columnValue = rs.getString("problem_num");
+                      return columnValue;
+                  } else {
+                     //throw an error
+                      System.out.println("No row found with the specified primary key value.");
+                  }
+                }
+                else{
+                  return "unmatched";
+                }
+                
+               }
+         return "no exist";
+          
+      
+      } catch (Exception e) {
+         e.printStackTrace();
+         System.err.println(e.getClass().getName()+": "+e.getMessage());
+         System.exit(0);
+      }
+      return password;
    }
 
      

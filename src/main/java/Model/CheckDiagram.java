@@ -14,7 +14,7 @@ public class CheckDiagram {
             JOptionPane.showMessageDialog(null, "You need to set the problem!");
             return;
         }
-        
+
         Flowchart correct = new Flowchart(key.getShapes());
         Flowchart toCheck = new Flowchart(diagram);
         
@@ -60,5 +60,12 @@ public class CheckDiagram {
 
     public static void setCorrectValue(boolean reset){
         isCorrect[RepositoryInterface.getRepository().getProblemNum()] = reset;
+    }
+
+    public static void loginCorrectValues(int num){
+        for(int i = 0; i < num; i ++){
+            isCorrect[i] = true; 
+        }
+        
     }
 }

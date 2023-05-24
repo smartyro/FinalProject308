@@ -44,7 +44,6 @@ public class Repository extends Observable implements RepositoryInterface {
         {
             this.problemNum++;
         }
-        CheckDiagram.setCorrectValue(false);
     }
 
     public void previousProblem() {
@@ -142,6 +141,9 @@ public class Repository extends Observable implements RepositoryInterface {
         return problemNum;
     }
 
+    public void setProblemNum(int num) {
+        this.problemNum = num;
+    }
     public Problem getProblem() {
         try{
             return this.problems.get(problemNum);

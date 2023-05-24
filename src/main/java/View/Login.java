@@ -4,9 +4,18 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import Model.CheckDiagram;
+import Model.DatabaseConnect;
+import Model.Repository;
+
 public class Login extends JDialog implements ActionListener {
     private JTextField tfUsername;
     private JPasswordField pfPassword;
+    private JLabel loginText;
+    private JButton btnLogin;
+    private JButton createAccount;
+    private JButton btnGuest;
+
     public Login(Frame parent){
         super(parent, "Login", true);
         JPanel panel = new JPanel(new GridBagLayout());
@@ -38,19 +47,19 @@ public class Login extends JDialog implements ActionListener {
         panel.add(pfPassword, cs);
         panel.setBorder(new LineBorder(Color.GRAY));
 
-        JButton btnLogin = new JButton("Login");
+        btnLogin = new JButton("Login");
         cs.gridx = 1;
         cs.gridy = 2;
         btnLogin.addActionListener(this);
         panel.add(btnLogin, cs);
 
-        JLabel cont = new JLabel(" ");
-        cs.gridx = 1;
-        cs.gridy = 3;
-        cs.gridwidth = 1;
-        panel.add(cont, cs);
+        // JLabel cont = new JLabel(" ");
+        // cs.gridx = 1;
+        // cs.gridy = 3;
+        // cs.gridwidth = 1;
+        // panel.add(cont, cs);
 
-        JButton btnGuest = new JButton("Continue as a Guest");
+        btnGuest = new JButton("Continue as a Guest");
         cs.gridx = 0;
         cs.gridy = 4;
         cs.gridwidth = 3;
@@ -58,13 +67,13 @@ public class Login extends JDialog implements ActionListener {
         panel.add(btnGuest, cs);
 
 
-            // JLabel signupText = new JLabel("Don't already have an account?");
-            // cs.gridx = 1;
-            // cs.gridy = 5;
-            // cs.gridwidth = 2;
-            // panel.add(signupText, cs);
+        loginText = new JLabel(" ");
+        cs.gridx = 1;
+        cs.gridy = 3;
+        cs.gridwidth = 2;
+        panel.add(loginText, cs);
 
-        JButton createAccount = new JButton("Create an Account");
+        createAccount = new JButton("Create an Account");
         cs.gridx = 0;
         cs.gridy = 6;
         cs.gridwidth = 3;
@@ -75,6 +84,7 @@ public class Login extends JDialog implements ActionListener {
         pack();
         setResizable(false);
         setLocationRelativeTo(parent);
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     @Override
@@ -82,16 +92,48 @@ public class Login extends JDialog implements ActionListener {
         String act = e.getActionCommand();
 		if (act.equals("Login"))
 		{
-			System.out.println(getTfUsername());
-            System.out.println(getPfPassword());
-            dispose();
+
+            String tryLogin = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
+            if(tryLogin == "no exist"){
+                loginText.setText("Username not found.");
+            }
+            else if (tryLogin == "unmatched"){
+                loginText.setText("Username and password do not match.");
+            }
+            else{
+                //assuming it is the last problem they got right
+                Repository.getRepository().setProblemNum(Integer.parseInt(tryLogin)+1);
+                CheckDiagram.loginCorrectValues(Integer.parseInt(tryLogin)+1);
+                CodePanel.updateProblemText();
+                dispose();
+            }
 		}
 		else if (act.equals("Continue as a Guest")) {
             dispose();
 		}
-        else if (act.equals("Create An Account"))
+        else if (act.equals("Create an Account"))
         {
-            dispose();
+            btnLogin.setText("Create Account");
+            btnGuest.setVisible(false);
+            loginText.setText(" ");
+            createAccount.setText("Back to Login");
+        }
+        else if(act.equals("Create Account")){
+            String tryAccount = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
+            if(tryAccount == "no exist"){
+                DatabaseConnect.addUser(getTfUsername(), getPfPassword());
+                dispose();
+            }
+            else {
+                loginText.setText("Username already taken.");
+            }
+
+        }
+        else if (act.equals("Back to Login")){
+            btnGuest.setVisible(true);
+            loginText.setText(" ");
+            createAccount.setText("Create an Account");
+            btnLogin.setText("Login");
         }
 	}
 

@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 
 public class CodePanel extends JPanel implements ActionListener{
 	private static final Color myColor = new Color(175, 203, 255);
-	Problem currentProb;
-	JLabel label;
+	private Problem currentProb;
+	private static JLabel label;
 	CodePanel() {
 		setBackground(myColor);
 		JButton prev = new JButton("Prev");
@@ -46,5 +46,9 @@ public class CodePanel extends JPanel implements ActionListener{
 
 			label.setText(RepositoryInterface.getRepository().getProblem().getProblemStatement());
 		}
+	}
+
+	public static void updateProblemText(){
+		label.setText(Repository.getRepository().getProblem().getProblemStatement());
 	}
 }
