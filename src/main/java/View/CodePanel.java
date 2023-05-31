@@ -22,7 +22,7 @@ public class CodePanel extends JPanel implements ActionListener{
 		add(prev);
 		currentProb = RepositoryInterface.getRepository().getProblem();
 		label = new JLabel(currentProb.getProblemStatement());
-		Font font = new Font("Inter", Font.LAYOUT_LEFT_TO_RIGHT, 20);
+		Font font = new Font("Courier", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 		label.setFont(font);
 		add(label);
 		JButton next = new JButton("Next");
