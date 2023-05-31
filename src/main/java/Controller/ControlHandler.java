@@ -42,11 +42,10 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		Repository.getRepository().clearOutlineShape();
+		RepositoryInterface.getRepository().clearOutlineShape();
 		String sLabel;
 
-		Repository repo = Repository.getRepository();
-		Shape s = repo.anyContains(e.getX(), e.getY());
+		Shape s = RepositoryInterface.getRepository().anyContains(e.getX(), e.getY());
 		if (draggedShape != null) {
 			draggedShape = null;
 			return;
@@ -55,13 +54,13 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 			/* If we are here, the point is not within a shape, so draw a new shape */
 			statusBar.setMessage("Drawing a shape...");
 			if (shapeToDraw == ShapeType.BEGIN) {
-				repo.addShape(shapeToDraw, e.getX(), e.getY(), "Begin");
+				RepositoryInterface.getRepository().addShape(shapeToDraw, e.getX(), e.getY(), "Begin");
 			} else if (shapeToDraw == ShapeType.END) {
-				repo.addShape(shapeToDraw, e.getX(), e.getY(), "End");
+				RepositoryInterface.getRepository().addShape(shapeToDraw, e.getX(), e.getY(), "End");
 			} else {
 				sLabel = JOptionPane.showInputDialog("Label:");
 				if (sLabel != null) {
-					repo.addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
+					RepositoryInterface.getRepository().addShape(shapeToDraw, e.getX(), e.getY(), sLabel);
 				}
 			}
 			lineStart = null;
@@ -81,10 +80,10 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 					} else {
 						statusBar.setMessage("Line finished. Drawing it...");
 						Arrow a = new Arrow((lineStart.getArrowPoint(s))[0], lineStart.getArrowPoint(s)[1],
-						s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1], lineStart, s);
+						s.getArrowPoint(lineStart)[0], s.getArrowPoint(lineStart)[1], s, lineStart);
 						lineStart.addOutArrow(a);
 						s.addInArrow(a);
-						Repository.getRepository().update();
+						RepositoryInterface.getRepository().update();
 					}
 				} else {
 					statusBar.setMessage("Not drawing a line to the same object");
@@ -108,28 +107,28 @@ public class ControlHandler implements ActionListener, MouseListener, MouseMotio
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		if (Repository.getRepository().anyContains(e.getX(), e.getY()) != null && draggedShape == null) {
-			draggedShape = Repository.getRepository().anyContains(e.getX(), e.getY());
+		if (RepositoryInterface.getRepository().anyContains(e.getX(), e.getY()) != null && draggedShape == null) {
+			draggedShape = RepositoryInterface.getRepository().anyContains(e.getX(), e.getY());
 		} else if (draggedShape != null) {
 			draggedShape.setX(e.getX());
 			draggedShape.setY(e.getY());
 			if (draggedShape.getInDegree() > 0) {
 				for (Arrow a : draggedShape.getInArrows()) {
-					a.setX2(a.getOutShape().getArrowPoint(draggedShape)[0]);
-					a.setY2(a.getOutShape().getArrowPoint(draggedShape)[1]);
+					a.setX2(a.getInShape().getArrowPoint(draggedShape)[0]);
+					a.setY2(a.getInShape().getArrowPoint(draggedShape)[1]);
 				}
 			}
 			if (draggedShape.getOutDegree() > 0) {
 				for (Arrow a : draggedShape.getOutArrows()) {
-					a.setX1(draggedShape.getArrowPoint(a.getInShape())[0]); 
-					a.setY1(draggedShape.getArrowPoint(a.getInShape())[1]);
+					a.setX1(draggedShape.getArrowPoint(a.getOutShape())[0]);
+					a.setY1(draggedShape.getArrowPoint(a.getOutShape())[1]);
 				}
 			}
 		} else {
-			Repository.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
+			RepositoryInterface.getRepository().setOutlineShape(shapeToDraw, e.getX(), e.getY());
 		}
 		statusBar.setMessage("dragging mouse");
-		Repository.getRepository().update();
+		RepositoryInterface.getRepository().update();
 	}
 
 	@Override

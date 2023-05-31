@@ -92,7 +92,7 @@ public class InputOutputShape extends Shape{
     public int[] getArrowPoint(Shape s) {
         //top point of shape
         int m1 = this.getX();
-        int m2 = (this.getX() + length);
+        int m2 = (this.getX() + (length/2));
         int m4 = x1 + getDistance(x1, height, length);
         int m3 = x2 - getDistance(x2, height, length);
 

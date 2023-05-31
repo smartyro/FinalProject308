@@ -4,6 +4,8 @@ import java.util.*;
 
 import View.Problem;
 
+import javax.swing.*;
+
 public class Repository extends Observable implements RepositoryInterface {
     private static Repository repository ;
     private Stack<Shape> shapes;
@@ -11,11 +13,16 @@ public class Repository extends Observable implements RepositoryInterface {
     private Shape outlineShape;
     private int problemNum;
     private List<Problem> problems;
+    private Stack<Shape> undoShapes;
+
+    private ArrayList<String> messages;
 
     private Repository(){
         shapes = new Stack<>();
         saved = new HashMap<>();
         problems = new ArrayList<Problem>();
+        messages = new ArrayList<>();
+        undoShapes = new Stack<>();
         problemNum = 0;
     }
 
@@ -59,8 +66,13 @@ public class Repository extends Observable implements RepositoryInterface {
      */
     public void addShape(Shape shape){
         shapes.add(shape);
+        undoShapes.removeAllElements();
         setChanged();
         notifyObservers();
+    }
+
+    public boolean getProblemIsCorrect(){
+        return CheckDiagram.getCorrectValue();
     }
     
     /**
@@ -125,7 +137,13 @@ public class Repository extends Observable implements RepositoryInterface {
     }
 
 
+    public int getProblemNum() {
+        return problemNum;
+    }
 
+    public void setProblemNum(int num) {
+        this.problemNum = num;
+    }
     public Problem getProblem() {
         try{
             return this.problems.get(problemNum);
@@ -212,10 +230,58 @@ public class Repository extends Observable implements RepositoryInterface {
         notifyObservers();
     }
 
+    @Override
+    public ArrayList<String> getMessages() {
+        return this.messages;
+    }
+
     public void Undo() {
-        if (!this.shapes.empty()) {
-            this.shapes.pop();
+        if (!shapes.empty()) {
+            Shape undoShape = shapes.pop();
+            if (!undoShape.getInArrows().isEmpty()) {
+                for (Arrow inArrow : undoShape.getInArrows()) {
+                    Shape outShape = inArrow.getOutShape();
+                    for (int i = 0; i < outShape.getOutDegree(); i++) {
+                        Arrow outArrow = outShape.getOutArrows().get(i);
+                        if (outArrow.getX2() == inArrow.getX2()
+                                && outArrow.getY2() == inArrow.getY2()) {
+                            outShape.getOutArrows().remove(i);
+                            break;
+                        }
+                    }
+                }
+            }
+            undoShapes.push(undoShape);
             update();
         }
     }
+    public void Clear() {
+        if (!this.shapes.empty()) {
+            this.shapes.clear();
+            update();
+        }
+    }
+
+    public void Redo() {
+        if(!undoShapes.empty()) {
+            Shape redoShape = undoShapes.pop();
+            if (!redoShape.getInArrows().isEmpty()) {
+                for (Arrow inArrow : redoShape.getInArrows()) {
+                    Shape outShape = inArrow.getOutShape();
+                    inArrow.setX2(redoShape.getArrowPoint(outShape)[0]);
+                    inArrow.setY2(redoShape.getArrowPoint(outShape)[1]);
+                    outShape.getOutArrows().add(inArrow);
+                }
+            }
+            shapes.push(redoShape);
+            update();
+        }
+	}
+
+    public void addMessage(String message) {
+        this.messages.add(message);
+        setChanged();
+        notifyObservers();
+    }
+
 }
