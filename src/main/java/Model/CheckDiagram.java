@@ -1,9 +1,7 @@
 package Model;
 
 import java.util.Stack;
-
 import javax.swing.JOptionPane;
-
 import View.HintPanel;
 import View.Problem;
 
@@ -11,7 +9,8 @@ public class CheckDiagram {
     private static boolean isCorrect[] = new boolean[10];
     public static void check(Stack<Shape> diagram, Problem key) {
         if (key == null) {
-            JOptionPane.showMessageDialog(null, "You need to set the problem!");
+            String message = "You need to set the problem!\n";
+            JOptionPane.showConfirmDialog(null, message, "Error: Set Problem", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             return;
         }
 
@@ -20,62 +19,65 @@ public class CheckDiagram {
         
         Flowchart.DiffResult diffResult = correct.diff(toCheck);
         String message;
+        String errorTitle = "Error!";
+        String congrats = "Good Job!";
         
         switch(diffResult.summary) {
             case NONE:
                 message = "Your diagram is correct!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, congrats, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 isCorrect[RepositoryInterface.getRepository().getProblemNum()] = true;
                 break;
             case TOO_MANY_ELEMENTS:
                 message = "You have too many elements!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_ELEMENTS:
                 message = "You don't have enough elements!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case TOO_MANY_SPECIFIC:
                 message = "You don't have enough " + diffResult.specificType + " elements!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_SPECIFIC:
                 message = "You have too many " + diffResult.specificType + " elements!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case TOO_MANY_EDGES:
                 message = "You have too many connections!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_EDGES:
                 message = "You don't have enough connections!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case TOO_MANY_EDGES_SPECIFIC:
                 message = "You have too many connections from " + diffResult.specificTypeFrom + " to " + diffResult.specificTypeTo + "!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
             case NOT_ENOUGH_EDGES_SPECIFIC:
                 message = "You don't have enough connections from " + diffResult.specificTypeFrom + " to " + diffResult.specificTypeTo + "!";
-                JOptionPane.showMessageDialog(null, message);
+                JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 RepositoryInterface.getRepository().addMessage(message);
                 break;
         }
     }
  
     public static boolean getCorrectValue() {
+        String message = "Your diagram must be correct to move onto the next question.";
+        String errorTitle = "Error: Not Complete";
         if (!isCorrect[RepositoryInterface.getRepository().getProblemNum()]){
-            JOptionPane.showMessageDialog(null, "Your diagram must be correct to move onto the next question.");
+            JOptionPane.showConfirmDialog(null, message, errorTitle, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
         }
         return isCorrect[RepositoryInterface.getRepository().getProblemNum()];
-
     }
 
     public static void setCorrectValue(boolean reset){
@@ -86,6 +88,5 @@ public class CheckDiagram {
         for(int i = 0; i < num; i ++){
             isCorrect[i] = true; 
         }
-        
     }
 }
