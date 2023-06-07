@@ -90,50 +90,47 @@ public class Login extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String act = e.getActionCommand();
-		if (act.equals("Login"))
-		{
-
-            String tryLogin = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
-            if(tryLogin == "no exist"){
-                loginText.setText("Username not found.");
-            }
-            else if (tryLogin == "unmatched"){
-                loginText.setText("Username and password do not match.");
-            }
-            else{
-                //assuming it is the last problem they got right
-                Repository.getRepository().setProblemNum(Integer.parseInt(tryLogin)+1);
-                CheckDiagram.loginCorrectValues(Integer.parseInt(tryLogin)+1);
-                CodePanel.updateProblemText();
+        switch (act) {
+            case "Login":
+            
+                String tryLogin = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
+                if (tryLogin.equals("no exist")) {
+                    loginText.setText("Username not found.");
+                } else if (tryLogin.equals("unmatched")) {
+                    loginText.setText("Username and password do not match.");
+                } else {
+                    //assuming it is the last problem they got right
+                    Repository.getRepository().setProblemNum(Integer.parseInt(tryLogin) + 1);
+                    CheckDiagram.loginCorrectValues(Integer.parseInt(tryLogin) + 1);
+                    CodePanel.updateProblemText();
+                    dispose();
+                }
+                break;
+            case "Continue as a Guest":
                 dispose();
-            }
-		}
-		else if (act.equals("Continue as a Guest")) {
-            dispose();
-		}
-        else if (act.equals("Create an Account"))
-        {
-            btnLogin.setText("Create Account");
-            btnGuest.setVisible(false);
-            loginText.setText(" ");
-            createAccount.setText("Back to Login");
-        }
-        else if(act.equals("Create Account")){
-            String tryAccount = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
-            if(tryAccount == "no exist"){
-                DatabaseConnect.addUser(getTfUsername(), getPfPassword());
-                dispose();
-            }
-            else {
-                loginText.setText("Username already taken.");
-            }
-
-        }
-        else if (act.equals("Back to Login")){
-            btnGuest.setVisible(true);
-            loginText.setText(" ");
-            createAccount.setText("Create an Account");
-            btnLogin.setText("Login");
+                break;
+            case "Create an Account":
+                btnLogin.setText("Create Account");
+                btnGuest.setVisible(false);
+                loginText.setText(" ");
+                createAccount.setText("Back to Login");
+                break;
+            case "Create Account":
+                String tryAccount = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
+                if (tryAccount.equals("no exist")) {
+                    DatabaseConnect.addUser(getTfUsername(), getPfPassword());
+                    dispose();
+                } else {
+                    loginText.setText("Username already taken.");
+                }
+            
+                break;
+            case "Back to Login":
+                btnGuest.setVisible(true);
+                loginText.setText(" ");
+                createAccount.setText("Create an Account");
+                btnLogin.setText("Login");
+                break;
         }
 	}
 

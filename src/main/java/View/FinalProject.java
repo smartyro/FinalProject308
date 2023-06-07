@@ -8,14 +8,11 @@ import javax.swing.border.TitledBorder;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class FinalProject extends JFrame {
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 400;
-	public static final Color myBlack = new Color(34, 34, 34);
-
+	
 	/**
 	 * Main method for the FinalProject
 	 */
@@ -73,11 +70,7 @@ public class FinalProject extends JFrame {
 		buttonPanel.add(redoButton);
 
 		JButton clearButton = new JButton("Clear");
-		clearButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RepositoryInterface.getRepository().Clear();
-			}
-		});
+		clearButton.addActionListener(e -> RepositoryInterface.getRepository().Clear());
 		buttonPanel.add(clearButton);
 
 		JPanel spacingPanel = new JPanel();
