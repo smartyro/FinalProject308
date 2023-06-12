@@ -12,7 +12,7 @@ import java.awt.*;
 public class FinalProject extends JFrame {
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 400;
-	
+
 	/**
 	 * Main method for the FinalProject
 	 */
@@ -77,8 +77,11 @@ public class FinalProject extends JFrame {
 		spacingPanel.setOpaque(false);
 
 		menu.add(Box.createHorizontalGlue());
+		//menu.add(Box.createHorizontalStrut(400));
 
-		menu.add(spacingPanel);
+		//menu.add(spacingPanel);
+		userPanel userpanel = userPanel.getUserPanel();
+		menu.add(userpanel);
 		menu.add(buttonPanel);
 
 		GridBagLayout layout = new GridBagLayout();

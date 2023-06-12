@@ -1,6 +1,7 @@
 package View;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -99,6 +100,7 @@ public class Login extends JDialog implements ActionListener {
                 } else if (tryLogin.equals("unmatched")) {
                     loginText.setText("Username and password do not match.");
                 } else {
+                    userPanel.getUserPanel().setUsername(getTfUsername());
                     //assuming it is the last problem they got right
                     Repository.getRepository().setProblemNum(Integer.parseInt(tryLogin) + 1);
                     CheckDiagram.loginCorrectValues(Integer.parseInt(tryLogin) + 1);
