@@ -53,25 +53,26 @@ public class problemContainer {
         // Problem 3
         BeginShape b2 = new BeginShape(0, 0, "");
         EndShape e2 = new EndShape(0,0, "");
+        VariableShape v1 = new VariableShape(0,0, "int i = 0;");
         ConditionShape c2 = new ConditionShape(0,0, "if A[i] == x:");
         ConditionShape c3 = new ConditionShape(0,0,"i < len(A)");
-        InputOutputShape i3 = new InputOutputShape(0,0, "return 1");
+        InputOutputShape i3 = new InputOutputShape(0,0, "return True");
         InstructionShape m1 = new InstructionShape(0,0, "i++");
-        InputOutputShape i4 = new InputOutputShape(0,0, "return 0");
+        InputOutputShape i4 = new InputOutputShape(0,0, "return False");
         Stack<Shape> s2 = new Stack<Shape>();
-        Arrow a1P2 = new Arrow(0,0,0,0, c2, b2);
-        Arrow a2P2 = new Arrow(0,0,0,0,i3,c2);
-        Arrow a3P2 = new Arrow(0,0,0,0,c3,c2);
-        Arrow a4P2 = new Arrow(0,0,0,0,m1,c3);
-        Arrow a5P2 = new Arrow(0,0,0,0, c2, m1);
+        Arrow a1P2 = new Arrow(0,0,0,0, v1, b2);
+        Arrow a3P2 = new Arrow(0,0,0,0,c3,v1);
         Arrow a6P2 = new Arrow(0,0,0,0, i4, c3);
+        Arrow a9P2 = new Arrow(0,0,0,0, c2, c3);
+        Arrow a4P2 = new Arrow(0,0,0,0,m1,c2);
+        Arrow a2P2 = new Arrow(0,0,0,0,i3,c2);
+        Arrow a5P2 = new Arrow(0,0,0,0, c3, m1);
         Arrow a7P2 = new Arrow(0,0,0,0,e2,i4);
         Arrow a8P2 = new Arrow(0,0,0,0,e2, i3);
-        c2.addInArrow(a1P2); b2.addOutArrow(a1P2); i3.addInArrow(a2P2); c2.addOutArrow(a2P2);
-        c3.addInArrow(a3P2); c2.addOutArrow(a3P2); m1.addInArrow(a4P2); c3.addOutArrow(a4P2); c2.addInArrow(a5P2);
-        m1.addOutArrow(a5P2); i4.addInArrow(a6P2); c3.addOutArrow(a6P2); e2.addInArrow(a7P2);
-        i4.addOutArrow(a7P2); e2.addInArrow(a8P2); i3.addOutArrow(a8P2);
-        s2.add(b2); s2.add(e2); s2.add(c2); s2.add(i3); s2.add(m1); s2.add(i4);
+        v1.addInArrow(a1P2); b2.addOutArrow(a1P2); c3.addInArrow(a3P2); v1.addOutArrow(a3P2); i4.addInArrow(a6P2); c3.addOutArrow(a6P2);
+        c2.addInArrow(a9P2); c3.addOutArrow(a9P2); m1.addInArrow(a4P2); c2.addOutArrow(a4P2); i3.addInArrow(a2P2); c2.addOutArrow(a2P2);
+        c3.addInArrow(a5P2); m1.addOutArrow(a5P2); e2.addInArrow(a7P2); i4.addOutArrow(a7P2); e2.addInArrow(a8P2); i3.addOutArrow(a8P2);
+        s2.add(b2); s2.add(e2); s2.add(c2); s2.add(c3); s2.add(i3); s2.add(m1); s2.add(i4); s2.add(v1);
         Problem p2 = new Problem("<html>def simpleSearch(x, A):<br/>&emsp for i in range(len(A)):<br/>" +
                 "&emsp &emsp if A[i] == x:<br/> &emsp &emsp &emsp return True <br/> &emsp return False", s2);
         RepositoryInterface.getRepository().addProblem(p2);
