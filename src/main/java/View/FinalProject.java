@@ -83,6 +83,7 @@ public class FinalProject extends JFrame {
 		userPanel userpanel = userPanel.getUserPanel();
 		menu.add(userpanel);
 		menu.add(buttonPanel);
+		
 
 		GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);

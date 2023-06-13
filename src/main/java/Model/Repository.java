@@ -156,6 +156,8 @@ public class Repository extends Observable implements RepositoryInterface {
     public void checkDiagram() {
         try{
             CheckDiagram.check(shapes, problems.get(problemNum));
+            setChanged();
+            notifyObservers();
         }
         catch(IndexOutOfBoundsException e){
 

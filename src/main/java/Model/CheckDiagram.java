@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Observable;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 import View.HintPanel;
@@ -7,8 +8,10 @@ import View.Problem;
 import javazoom.jl.player.Player;
 import java.io.FileInputStream;
 
-public class CheckDiagram {
+public class CheckDiagram extends Observable {
     private static boolean isCorrect[] = new boolean[10];
+    private static int level = 0;
+    
     public static void check(Stack<Shape> diagram, Problem key) {
         if (key == null) {
             String message = "You need to set the problem!\n";
@@ -42,6 +45,7 @@ public class CheckDiagram {
                 message = "Your diagram is correct!";
                 JOptionPane.showConfirmDialog(null, message, congrats, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 isCorrect[RepositoryInterface.getRepository().getProblemNum()] = true;
+                level++;
                 break;
             case TOO_MANY_ELEMENTS:
                 message = "You have too many elements!";
@@ -104,4 +108,6 @@ public class CheckDiagram {
             isCorrect[i] = true; 
         }
     }
+    
+    public static int getLevel() {return level;}
 }
