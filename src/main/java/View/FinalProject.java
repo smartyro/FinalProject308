@@ -60,6 +60,10 @@ public class FinalProject extends JFrame {
 
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.setOpaque(false);
+		
+		
+		teacherView teacherV = teacherView.getInstance("Teacher View");
+		buttonPanel.add(teacherV);
 
 		JButton undoButton = new JButton("Undo");
 		undoButton.addActionListener(e -> RepositoryInterface.getRepository().Undo());
