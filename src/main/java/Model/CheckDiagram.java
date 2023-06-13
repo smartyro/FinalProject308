@@ -4,6 +4,8 @@ import java.util.Stack;
 import javax.swing.JOptionPane;
 import View.HintPanel;
 import View.Problem;
+import javazoom.jl.player.Player;
+import java.io.FileInputStream;
 
 public class CheckDiagram {
     private static boolean isCorrect[] = new boolean[10];
@@ -24,6 +26,19 @@ public class CheckDiagram {
         
         switch(diffResult.summary) {
             case NONE:
+                try {
+                    FileInputStream fis = new FileInputStream("src/main/java/Model/star.mp3");
+                    Player playMP3 = new Player(fis);
+                    new Thread() {
+                        public void run() {
+                            try { playMP3.play(); }
+                            catch (Exception e) { System.out.println(e); }
+                        }
+                    }.start();
+
+                } catch(Exception e) {
+                    System.out.println(e);
+                }
                 message = "Your diagram is correct!";
                 JOptionPane.showConfirmDialog(null, message, congrats, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE );
                 isCorrect[RepositoryInterface.getRepository().getProblemNum()] = true;

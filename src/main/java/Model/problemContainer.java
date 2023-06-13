@@ -53,25 +53,26 @@ public class problemContainer {
         // Problem 3
         BeginShape b2 = new BeginShape(0, 0, "");
         EndShape e2 = new EndShape(0,0, "");
+        VariableShape v1 = new VariableShape(0,0, "int i = 0;");
         ConditionShape c2 = new ConditionShape(0,0, "if A[i] == x:");
         ConditionShape c3 = new ConditionShape(0,0,"i < len(A)");
-        InputOutputShape i3 = new InputOutputShape(0,0, "return 1");
+        InputOutputShape i3 = new InputOutputShape(0,0, "return True");
         InstructionShape m1 = new InstructionShape(0,0, "i++");
-        InputOutputShape i4 = new InputOutputShape(0,0, "return 0");
+        InputOutputShape i4 = new InputOutputShape(0,0, "return False");
         Stack<Shape> s2 = new Stack<Shape>();
-        Arrow a1P2 = new Arrow(0,0,0,0, c2, b2);
-        Arrow a2P2 = new Arrow(0,0,0,0,i3,c2);
-        Arrow a3P2 = new Arrow(0,0,0,0,c3,c2);
-        Arrow a4P2 = new Arrow(0,0,0,0,m1,c3);
-        Arrow a5P2 = new Arrow(0,0,0,0, c2, m1);
+        Arrow a1P2 = new Arrow(0,0,0,0, v1, b2);
+        Arrow a3P2 = new Arrow(0,0,0,0,c3,v1);
         Arrow a6P2 = new Arrow(0,0,0,0, i4, c3);
+        Arrow a9P2 = new Arrow(0,0,0,0, c2, c3);
+        Arrow a4P2 = new Arrow(0,0,0,0,m1,c2);
+        Arrow a2P2 = new Arrow(0,0,0,0,i3,c2);
+        Arrow a5P2 = new Arrow(0,0,0,0, c3, m1);
         Arrow a7P2 = new Arrow(0,0,0,0,e2,i4);
         Arrow a8P2 = new Arrow(0,0,0,0,e2, i3);
-        c2.addInArrow(a1P2); b2.addOutArrow(a1P2); i3.addInArrow(a2P2); c2.addOutArrow(a2P2);
-        c3.addInArrow(a3P2); c2.addOutArrow(a3P2); m1.addInArrow(a4P2); c3.addOutArrow(a4P2); c2.addInArrow(a5P2);
-        m1.addOutArrow(a5P2); i4.addInArrow(a6P2); c3.addOutArrow(a6P2); e2.addInArrow(a7P2);
-        i4.addOutArrow(a7P2); e2.addInArrow(a8P2); i3.addOutArrow(a8P2);
-        s2.add(b2); s2.add(e2); s2.add(c2); s2.add(i3); s2.add(m1); s2.add(i4);
+        v1.addInArrow(a1P2); b2.addOutArrow(a1P2); c3.addInArrow(a3P2); v1.addOutArrow(a3P2); i4.addInArrow(a6P2); c3.addOutArrow(a6P2);
+        c2.addInArrow(a9P2); c3.addOutArrow(a9P2); m1.addInArrow(a4P2); c2.addOutArrow(a4P2); i3.addInArrow(a2P2); c2.addOutArrow(a2P2);
+        c3.addInArrow(a5P2); m1.addOutArrow(a5P2); e2.addInArrow(a7P2); i4.addOutArrow(a7P2); e2.addInArrow(a8P2); i3.addOutArrow(a8P2);
+        s2.add(b2); s2.add(e2); s2.add(c2); s2.add(c3); s2.add(i3); s2.add(m1); s2.add(i4); s2.add(v1);
         Problem p2 = new Problem("<html>def simpleSearch(x, A):<br/>&emsp for i in range(len(A)):<br/>" +
                 "&emsp &emsp if A[i] == x:<br/> &emsp &emsp &emsp return True <br/> &emsp return False", s2);
         RepositoryInterface.getRepository().addProblem(p2);
@@ -128,6 +129,45 @@ public class problemContainer {
                 "<br/>&emsp else:<br/>&emsp &emsp return l2[0] + merge(l1, l2[1:])</html>", s8);
 
         RepositoryInterface.getRepository().addProblem(p8);
+
+        // Problem 6
+        Stack<Shape> s9 = new Stack<Shape>();
+        BeginShape b9 = new BeginShape(0,0, "");
+        VariableShape v9 = new VariableShape(0,0, "mid = (max + min) // 2");
+        ConditionShape cs9 = new ConditionShape(0,0, "if max < min:");
+        ConditionShape cs92 = new ConditionShape(0,0, "else if x < A[mid]:");
+        ConditionShape cs93 = new ConditionShape(0,0, "else if x > A[mid]:");
+        InputOutputShape io91 = new InputOutputShape(0, 0, "return -1");
+        InputOutputShape io92 = new InputOutputShape(0, 0, "return binarySearch(A, x, min, mid-1");
+        InputOutputShape io93 = new InputOutputShape(0, 0, "return binarySearch(A, x, mid + 1, max");
+        InputOutputShape io94 = new InputOutputShape(0, 0, "return mid");
+        EndShape e9 = new EndShape(0,0, "");
+        Arrow a91 = new Arrow(0,0,0,0, v9, b9);
+        Arrow a92 = new Arrow(0,0,0,0, cs9, v9);
+        Arrow a93 = new Arrow(0,0,0,0, cs92, cs9);
+        Arrow a94 = new Arrow(0,0,0,0, io91, cs9);
+        Arrow a95 = new Arrow(0,0,0,0, cs93, cs92);
+        Arrow a98 = new Arrow(0, 0, 0, 0, io92, cs92);
+        Arrow a96 = new Arrow(0,0,0,0, io93, cs93);
+        Arrow a97 = new Arrow(0,0,0,0, io94, cs93);
+        Arrow a99 = new Arrow(0,0,0,0, e9, io94);
+        Arrow a910 = new Arrow(0,0,0,0, e9, io91);
+        Arrow a911 = new Arrow(0,0,0,0, v9, io92);
+        Arrow a912 = new Arrow(0,0,0,0, v9, io93);
+        v9.addInArrow(a91); b9.addOutArrow(a91); cs9.addInArrow(a92); v9.addOutArrow(a92); cs92.addInArrow(a93);
+        cs9.addOutArrow(a93); io91.addInArrow(a94); cs9.addOutArrow(a94); cs93.addInArrow(a95); cs92.addOutArrow(a95);
+        io92.addInArrow(a98); cs92.addOutArrow(a98); io93.addInArrow(a96); cs93.addOutArrow(a96); io94.addInArrow(a97);
+        cs93.addOutArrow(a97); e9.addInArrow(a99); io94.addOutArrow(a99); e9.addInArrow(a910); io91.addOutArrow(a910);
+        v9.addInArrow(a911); io92.addOutArrow(a911); v9.addInArrow(a912); io93.addOutArrow(a912);
+        s9.add(b9); s9.add(v9); s9.add(cs9); s9.add(cs92); s9.add(cs93); s9.add(io91); s9.add(io92); s9.add(io93);
+        s9.add(io94); s9.add(e9);
+
+        Problem p9 = new Problem("<html>def binarySearch(A, x, min, max):<br/> &emsp mid = (max + min) // 2<br/>" +
+                "&emsp if max < min: &emsp &emsp return -1 <br/> &emsp else if x < A[mid]: <br/> &emsp &emsp " +
+                "return binarySearch(A, x, min, mid-1) <br/> &emsp else if x > A[mid]: <br/> &emsp &emsp " +
+                "return binarySearch(A, x, mid + 1, max) <br/> &emsp else: <br/> &emsp &emsp return mid <html>", s9);
+
+        Repository.getRepository().addProblem(p9);
 
     }
 }

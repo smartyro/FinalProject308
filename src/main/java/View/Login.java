@@ -1,12 +1,15 @@
 package View;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import Model.CheckDiagram;
 import Model.DatabaseConnect;
 import Model.Repository;
+import javax.swing.JComboBox;
+
 
 public class Login extends JDialog implements ActionListener {
     private JTextField tfUsername;
@@ -15,6 +18,10 @@ public class Login extends JDialog implements ActionListener {
     private JButton btnLogin;
     private JButton createAccount;
     private JButton btnGuest;
+    private JComboBox<String> roleComboBox;
+
+
+
 
     public Login(Frame parent){
         super(parent, "Login", true);
@@ -32,7 +39,6 @@ public class Login extends JDialog implements ActionListener {
         cs.gridy = 0;
         cs.gridwidth = 2;
         panel.add(tfUsername, cs);
-        cs.fill = GridBagConstraints.HORIZONTAL;
 
         JLabel lbPassword = new JLabel("Password: ");
         cs.gridx = 0;
@@ -45,11 +51,29 @@ public class Login extends JDialog implements ActionListener {
         cs.gridy = 1;
         cs.gridwidth = 2;
         panel.add(pfPassword, cs);
+        cs.fill = GridBagConstraints.HORIZONTAL;
         panel.setBorder(new LineBorder(Color.GRAY));
+
+        // JLabel lbRole = new JLabel("Role: ");
+        // cs.gridx = 0;
+        // cs.gridy = 2;
+        // cs.gridwidth = 1;
+        // panel.add(lbRole, cs);
+
+
+        String[] roles = {"Student", "Teacher"};
+        roleComboBox = new JComboBox<>(roles);
+        cs.gridx = 1;
+        cs.gridy = 2;
+        cs.gridwidth = 2;
+        panel.add(roleComboBox, cs);
+        roleComboBox.setVisible(false);
+
+
 
         btnLogin = new JButton("Login");
         cs.gridx = 1;
-        cs.gridy = 2;
+        cs.gridy = 4;
         btnLogin.addActionListener(this);
         panel.add(btnLogin, cs);
 
@@ -61,7 +85,7 @@ public class Login extends JDialog implements ActionListener {
 
         btnGuest = new JButton("Continue as a Guest");
         cs.gridx = 0;
-        cs.gridy = 4;
+        cs.gridy = 5;
         cs.gridwidth = 3;
         btnGuest.addActionListener(this);
         panel.add(btnGuest, cs);
@@ -85,6 +109,7 @@ public class Login extends JDialog implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(parent);
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }
 
     @Override
@@ -99,6 +124,7 @@ public class Login extends JDialog implements ActionListener {
                 } else if (tryLogin.equals("unmatched")) {
                     loginText.setText("Username and password do not match.");
                 } else {
+                    userPanel.getUserPanel().setUsername(getTfUsername());
                     //assuming it is the last problem they got right
                     Repository.getRepository().setProblemNum(Integer.parseInt(tryLogin) + 1);
                     CheckDiagram.loginCorrectValues(Integer.parseInt(tryLogin) + 1);
@@ -112,13 +138,15 @@ public class Login extends JDialog implements ActionListener {
             case "Create an Account":
                 btnLogin.setText("Create Account");
                 btnGuest.setVisible(false);
+                roleComboBox.setVisible(true);
                 loginText.setText(" ");
                 createAccount.setText("Back to Login");
                 break;
             case "Create Account":
+                String selectedRole = (String) roleComboBox.getSelectedItem();
                 String tryAccount = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
                 if (tryAccount.equals("no exist")) {
-                    DatabaseConnect.addUser(getTfUsername(), getPfPassword());
+                    DatabaseConnect.addUser(getTfUsername(), getPfPassword(), selectedRole);
                     dispose();
                 } else {
                     loginText.setText("Username already taken.");
@@ -126,6 +154,7 @@ public class Login extends JDialog implements ActionListener {
             
                 break;
             case "Back to Login":
+                roleComboBox.setVisible(false);
                 btnGuest.setVisible(true);
                 loginText.setText(" ");
                 createAccount.setText("Create an Account");

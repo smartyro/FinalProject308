@@ -40,7 +40,7 @@ public class DatabaseConnect {
      }
     
 
-    public static void addUser(String username, String password){
+    public static void addUser(String username, String password, String role){
       Connection conn = null;
         try {
            Class.forName("org.postgresql.Driver");
@@ -49,7 +49,7 @@ public class DatabaseConnect {
               USER, PASS);
 
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO USERS (USERNAME, PASSWORD, problem_num) SELECT '"+username+"','"+password+"', 0 WHERE NOT EXISTS (SELECT 1 FROM USERS WHERE USERNAME = '"+username+"');";
+            String sql = "INSERT INTO USERS (USERNAME, PASSWORD, PROBLEM_NUM, ROLE) VALUES ('"+username+"', '"+password+"', 1, '"+role+"');";
             stmt.executeUpdate(sql);
             
 
