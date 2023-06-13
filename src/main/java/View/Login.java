@@ -12,13 +12,14 @@ import javax.swing.JComboBox;
 
 
 public class Login extends JDialog implements ActionListener {
-    private JTextField tfUsername;
-    private JPasswordField pfPassword;
+    private static JTextField tfUsername;
+    private static JPasswordField pfPassword;
     private JLabel loginText;
     private JButton btnLogin;
     private JButton createAccount;
     private JButton btnGuest;
     private JComboBox<String> roleComboBox;
+
 
 
 
@@ -117,20 +118,16 @@ public class Login extends JDialog implements ActionListener {
         switch (act) {
             case "Login":
             
-                String tryLogin = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
-                if (tryLogin.equals("no exist")) {
+                int tryLogin = DatabaseConnect.checkUser(getUsername(), getPassword());
+                if (tryLogin == -2) {
                     loginText.setText("Username not found.");
-                } else if (tryLogin.equals("unmatched")) {
+                } else if (tryLogin == -1) {
                     loginText.setText("Username and password do not match.");
                 } else {
-                    boolean roleIsTeacher = DatabaseConnect.checkIfTeacher(getTfUsername());
-                    if (roleIsTeacher){
-                        showTeacherView();
-                    }
-                    userPanel.getUserPanel().setUsername(getTfUsername());
+                    userPanel.getUserPanel().setUsername(getUsername());
                     //assuming it is the last problem they got right
-                    Repository.getRepository().setProblemNum(Integer.parseInt(tryLogin) + 1);
-                    CheckDiagram.loginCorrectValues(Integer.parseInt(tryLogin) + 1);
+                    Repository.getRepository().setProblemNum(tryLogin + 1);
+                    CheckDiagram.loginCorrectValues(tryLogin + 1);
                     CodePanel.updateProblemText();
                     dispose();
                 }
@@ -147,13 +144,9 @@ public class Login extends JDialog implements ActionListener {
                 break;
             case "Create Account":
                 String selectedRole = (String) roleComboBox.getSelectedItem();
-                String tryAccount = DatabaseConnect.checkUserExists(getTfUsername(), getPfPassword());
-                if (tryAccount.equals("no exist")) {
-                    if (selectedRole == "Teacher"){
-                        showTeacherView();
-                    }
-                    DatabaseConnect.addUser(getTfUsername(), getPfPassword(), selectedRole);
-
+                int tryAccount = DatabaseConnect.checkUser(getUsername(), getPassword());
+                if (tryAccount == -1) {
+                    DatabaseConnect.addUser(getUsername(), getPassword(), selectedRole);
                     dispose();
                 } else {
                     loginText.setText("Username already taken.");
@@ -170,24 +163,17 @@ public class Login extends JDialog implements ActionListener {
         }
 	}
 
-    public void showTeacherView() {
-        teacherView teacherV = teacherView.getTeacherViewInstance();
-        teacherV.setTeacherViewVisible();
-    }
-
-    public String getTfUsername() {
+    public static String getUsername() {
         return tfUsername.getText().trim();
     }
 
-    public void setTfUsername(String username) {
+    public void setUsername(String username) {
         this.tfUsername.setText(username);
     }
 
-    public String getPfPassword() {
+    public static String getPassword() {
         return new String(pfPassword.getPassword());
     }
-
-
 
 
 }
