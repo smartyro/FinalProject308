@@ -1,6 +1,9 @@
 package Model;
 import java.sql.* ;
 import java.util.Stack;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class DatabaseConnect {
     static final String DB_URL = "jdbc:postgresql://db.vfanjifsjvgthigoppsc.supabase.co:5432/postgres?user=postgres&password=29xkz2N5!!?";
@@ -206,7 +209,79 @@ public class DatabaseConnect {
          default: return false;
       }
       }
+    
+    
+    
+   //method for checking if a users role is "Teacher", and returns true if so:
+   public static boolean checkIfTeacher(String username){
+      Connection conn = null;
+      try {
+         Class.forName("org.postgresql.Driver");
+         conn = DriverManager
+            .getConnection(DB_URL,
+            USER, PASS);
 
+            String sql = "SELECT 1 FROM users WHERE username = '"+username+"'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            //stmt.setString(1, usernameToCheck);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                sql = "SELECT 1 FROM users WHERE username = '"+username+"' AND role = 'Teacher'";
+                stmt = conn.prepareStatement(sql);
+                //stmt.setString(1, usernameToCheck);
+                rs = stmt.executeQuery();
+                if (rs.next()){
+                  return true;
+                }
+                else{
+                  return false;
+                }
+                
+               }
+         return false;
+          
+      
+      } catch (Exception e) {
+         e.printStackTrace();
+         System.err.println(e.getClass().getName()+": "+e.getMessage());
+         System.exit(0);
+      }
+      return false;
+   }
+
+   //method for selecting the username and problem_num of all users who are students, and returns a list of the query:
+   public static String[][] getStudentProgress(){
+      Connection conn = null;
+      try {
+         Class.forName("org.postgresql.Driver");
+         conn = DriverManager
+            .getConnection(DB_URL,
+            USER, PASS);
+
+            String sql = "SELECT username, problem_num FROM users WHERE role = 'Student'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            //stmt.setString(1, usernameToCheck);
+            ResultSet rs = stmt.executeQuery();
+
+            String[][] studentProgress = new String[100][2];
+            int i = 0;
+            while (rs.next()) {
+                studentProgress[i][0] = rs.getString("username");
+                studentProgress[i][1] = rs.getString("problem_num");
+                i++;
+            }
+            return studentProgress;
+          
+      
+      } catch (Exception e) {
+         e.printStackTrace();
+         System.err.println(e.getClass().getName()+": "+e.getMessage());
+         System.exit(0);
+      }
+      return null;
+   }
+    
    public static int checkUser(String username, String password){
       Connection conn = null;
       try {
