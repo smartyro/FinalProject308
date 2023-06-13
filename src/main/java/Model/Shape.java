@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public abstract class Shape{
     private int x, y;
-    private String label;
+    protected String label;
     protected int maxIn, maxOut;
     private ArrayList<Arrow> inArrows, outArrows;
     
@@ -158,6 +158,7 @@ public abstract class Shape{
         int [] ret = {0,0};
         return ret;
     }
+
     
     public abstract ShapeType getShapeType();
 }

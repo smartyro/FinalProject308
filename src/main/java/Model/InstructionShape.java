@@ -81,6 +81,8 @@ public class InstructionShape extends Shape {
     
     @Override
     public String toString() {
-        return getShapeType().toString();
+        return getShapeType().toString() + " "
+        + Integer.toString(getX()) + " " + Integer.toString(getY()) + " "
+        + label + " ";
     }
 }

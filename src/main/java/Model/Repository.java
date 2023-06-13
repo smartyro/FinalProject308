@@ -2,6 +2,7 @@ package Model;
 
 import java.util.*;
 
+import View.Login;
 import View.Problem;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class Repository extends Observable implements RepositoryInterface {
     private int problemNum;
     private List<Problem> problems;
     private Stack<Shape> undoShapes;
-
+    private int problemsCorrect[];
     private ArrayList<String> messages;
 
     private Repository(){
@@ -40,7 +41,7 @@ public class Repository extends Observable implements RepositoryInterface {
      * Changes to next problem in the list.
      */
     public void nextProblem(){
-        if (problemNum < 4)
+        if (problemNum < 8)
         {
             this.problemNum++;
         }
@@ -121,6 +122,7 @@ public class Repository extends Observable implements RepositoryInterface {
      */
     public void saveShapes(String key){
         this.saved.put(key, shapes);
+        DatabaseConnect.saveChart(Login.getUsername(), key, this.shapes);
         this.shapes = new Stack<Shape>();
         setChanged();
         notifyObservers();
@@ -131,7 +133,8 @@ public class Repository extends Observable implements RepositoryInterface {
      * @param key
      */
     public void loadShapes(String key){
-        this.shapes = this.saved.get(key);
+        this.shapes = DatabaseConnect.loadChart(Login.getUsername(), key);
+        //this.shapes = this.saved.get(key);
         setChanged();
         notifyObservers();
     }
