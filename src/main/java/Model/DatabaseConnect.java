@@ -79,7 +79,7 @@ public class DatabaseConnect {
             System.out.println("Opened database successfully");
 
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO saved_charts_test (key, username, chart_array_string) VALUES ('"+key+"', '"+username+"','"+shape_array+"');";
+            String sql = "INSERT INTO saved_charts (key, username, chart_array_string) VALUES ('"+key+"', '"+username+"','"+shape_array+"');";
             stmt.executeUpdate(sql);
             
 
@@ -101,14 +101,14 @@ public class DatabaseConnect {
               USER, PASS);
 
 
-            String sql = "SELECT 1 FROM saved_charts_test WHERE key = '"+key+"' AND username = '"+username+"'";
+            String sql = "SELECT 1 FROM saved_charts WHERE key = '"+key+"' AND username = '"+username+"'";
             PreparedStatement stmt = conn.prepareStatement(sql);
             //stmt.setString(1, usernameToCheck);
             ResultSet rs = stmt.executeQuery();
 
                 if (rs.next()){
 
-                  sql = "SELECT chart_array_string FROM saved_charts_test WHERE key = '"+key+"'";
+                  sql = "SELECT chart_array_string FROM saved_charts WHERE key = '"+key+"'";
                   stmt = conn.prepareStatement(sql);
                   //stmt.setInt(1, primaryKeyValue);
                   rs = stmt.executeQuery();
