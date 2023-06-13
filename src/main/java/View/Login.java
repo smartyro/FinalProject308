@@ -124,6 +124,10 @@ public class Login extends JDialog implements ActionListener {
                 } else if (tryLogin == -1) {
                     loginText.setText("Username and password do not match.");
                 } else {
+		    boolean roleIsTeacher = DatabaseConnect.checkIfTeacher(getUsername());
+                    if (roleIsTeacher){
+                        showTeacherView();
+                    }
                     userPanel.getUserPanel().setUsername(getUsername());
                     //assuming it is the last problem they got right
                     Repository.getRepository().setProblemNum(tryLogin + 1);
@@ -146,6 +150,9 @@ public class Login extends JDialog implements ActionListener {
                 String selectedRole = (String) roleComboBox.getSelectedItem();
                 int tryAccount = DatabaseConnect.checkUser(getUsername(), getPassword());
                 if (tryAccount == -1) {
+		    if (selectedRole == "Teacher"){
+                        showTeacherView();
+                    }
                     DatabaseConnect.addUser(getUsername(), getPassword(), selectedRole);
                     dispose();
                 } else {
@@ -163,6 +170,12 @@ public class Login extends JDialog implements ActionListener {
         }
 	}
 
+	
+    public void showTeacherView() {
+        teacherView teacherV = teacherView.getTeacherViewInstance();
+        teacherV.setTeacherViewVisible();
+    }
+	
     public static String getUsername() {
         return tfUsername.getText().trim();
     }
