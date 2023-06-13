@@ -149,7 +149,7 @@ public class Login extends JDialog implements ActionListener {
             case "Create Account":
                 String selectedRole = (String) roleComboBox.getSelectedItem();
                 int tryAccount = DatabaseConnect.checkUser(getUsername(), getPassword());
-                if (tryAccount == -1) {
+                if (tryAccount == -2) {
 		    if (selectedRole == "Teacher"){
                         showTeacherView();
                     }
