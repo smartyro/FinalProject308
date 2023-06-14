@@ -10,7 +10,7 @@ import org.json.*;
 
 public class Chat extends JPanel {
     String urlStr = "https://api.openai.com/v1/chat/completions";
-    String apiKey = "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";
+    String apiKey = "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";
     String model = "gpt-4";
 
     public Chat(String input) {
@@ -55,7 +55,7 @@ public class Chat extends JPanel {
         String text = choices.getJSONObject(0).getString("text");
         return text.trim();
         } else {
-        throw new Exception("HTTP request failed with error code: " + responseCode);
+        throw new Exception("HTTP request failed with error code: " + responseCode + ", message: " + con.getResponseMessage());
         }
     }
 }
