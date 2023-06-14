@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9012403e-43be-4118-8a94-30c728e3c1ec" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/BackgroundMusicPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/CheckDiagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/CheckDiagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/RepositoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/RepositoryInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/FinalProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/ControlHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/ControlHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Arrow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Arrow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/BeginShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/BeginShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/CheckDiagram$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/CheckDiagram$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/CheckDiagram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/CheckDiagram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/ConditionShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/ConditionShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/DatabaseConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/DatabaseConnect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/EndShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/EndShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Flowchart$DiffResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Flowchart$DiffResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Flowchart$DiffSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Flowchart$DiffSummary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Flowchart$Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Flowchart$Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Flowchart$Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Flowchart$Vertex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Flowchart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Flowchart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/InputOutputShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/InputOutputShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/InstructionShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/InstructionShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MethodShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MethodShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Repository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/RepositoryInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/RepositoryInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Shape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/VariableShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/VariableShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/problemContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/problemContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Blackboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Blackboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/CodePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CodePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/FinalProject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/HintPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/HintPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Problem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Problem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/fileMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/fileMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/helpMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/helpMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/shapeMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/shapeMenu.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2Qo7Ljg3DFTgkmzTuXSOZ92hc7a" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/liamh/OneDrive/Desktop/csc308/FinalProject308",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="FinalProject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="View.FinalProject" />
+      <module name="flowchart.tutor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="FinalProject308" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="FinalProject308" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.FinalProject" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9012403e-43be-4118-8a94-30c728e3c1ec" name="Changes" comment="" />
+      <created>1686008027826</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686008027826</updated>
+      <workItem from="1686008028900" duration="644000" />
+      <workItem from="1686599056022" duration="3916000" />
+      <workItem from="1686774471724" duration="2286000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

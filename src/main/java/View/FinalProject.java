@@ -77,6 +77,17 @@ public class FinalProject extends JFrame {
 		clearButton.addActionListener(e -> RepositoryInterface.getRepository().Clear());
 		buttonPanel.add(clearButton);
 
+		JButton muteButton = new JButton("Mute");
+		muteButton.addActionListener(e -> {
+			if (RepositoryInterface.getRepository().musicMuted()) {
+				RepositoryInterface.getRepository().unmuteMusic();
+			}
+			else {
+				RepositoryInterface.getRepository().muteMusic();
+			}
+		});
+		buttonPanel.add(muteButton);
+
 		JPanel spacingPanel = new JPanel();
 		spacingPanel.setOpaque(false);
 

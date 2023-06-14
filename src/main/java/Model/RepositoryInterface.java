@@ -26,5 +26,8 @@ public interface RepositoryInterface {
     void clearOutlineShape();
     void update();
     ArrayList<String> getMessages();
-
+    void muteMusic();
+    void unmuteMusic();
+    boolean musicMuted();
+    void playMusic(String mp3Path);
 }

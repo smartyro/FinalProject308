@@ -17,6 +17,7 @@ public class Repository extends Observable implements RepositoryInterface {
     private Stack<Shape> undoShapes;
     private int problemsCorrect[];
     private ArrayList<String> messages;
+    private BackgroundMusicPlayer player;
 
     private Repository(){
         shapes = new Stack<>();
@@ -25,6 +26,8 @@ public class Repository extends Observable implements RepositoryInterface {
         messages = new ArrayList<>();
         undoShapes = new Stack<>();
         problemNum = 0;
+        player = new BackgroundMusicPlayer("src/main/java/Model/Main Menu - Mario Kart 8 Deluxe OST.mp3");
+        player.playBackgroundMusic();
     }
 
     /**
@@ -165,6 +168,22 @@ public class Repository extends Observable implements RepositoryInterface {
         catch(IndexOutOfBoundsException e){
 
         }
+    }
+
+    public void muteMusic() {
+        player.mute();
+    }
+
+    public void unmuteMusic() {
+        player.unmute();
+    }
+
+    public boolean musicMuted() {
+        return player.isMuted();
+    }
+
+    public void playMusic(String mp3Path) {
+        player.playOtherMusic(mp3Path);
     }
 
     public void addProblem(Problem problem) {this.problems.add(problem);}
