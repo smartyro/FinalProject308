@@ -48,7 +48,7 @@ public class DatabaseConnect {
               USER, PASS);
 
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO USERS (USERNAME, PASSWORD, PROBLEM_NUM, ROLE) VALUES ('"+username+"', '"+password+"', 1, '"+role+"');";
+            String sql = "INSERT INTO USERS (USERNAME, PASSWORD, PROBLEM_NUM, ROLE) VALUES ('"+username+"', '"+password+"', 0, '"+role+"');";
             stmt.executeUpdate(sql);
             
 
