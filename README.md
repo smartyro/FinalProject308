@@ -1,4 +1,4 @@
-# FinalProject308
+# Flowchart Tutoring System
 
 This program is a tool to easily create control flow diagrams. Implemented with Java Swing
 
